@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>165,122 Neurons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#eef1ea; --surface:#f8f9f4; --surface-2:#eceee5;
+  --ink:#141b17; --ink-dim:#55645c; --line:#c7d0c2; --line-soft:#dbe1d4;
+  --accent:#5f47c9; --accent-ink:#ffffff;
+  --accent-2:#1f8a7c;
+  --dopamine:#c97a12;
+  --shadow: 0 1px 2px rgba(20,27,23,.06), 0 8px 24px rgba(20,27,23,.07);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a0d0c; --surface:#111815; --surface-2:#161f1a;
+    --ink:#e7ece7; --ink-dim:#9fb0a6; --line:#26332c; --line-soft:#1b2521;
+    --accent:#a292ff; --accent-ink:#0a0d0c;
+    --accent-2:#5fd9c6;
+    --dopamine:#ffbf5c;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a0d0c; --surface:#111815; --surface-2:#161f1a;
+  --ink:#e7ece7; --ink-dim:#9fb0a6; --line:#26332c; --line-soft:#1b2521;
+  --accent:#a292ff; --accent-ink:#0a0d0c;
+  --accent-2:#5fd9c6;
+  --dopamine:#ffbf5c;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  line-height:1.55;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:2.4rem 1.5rem 4rem;}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent-2); font-weight:600;
+}
+h1{
+  font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(2.1rem,4.2vw,3.1rem);
+  margin:.35rem 0 .6rem; text-wrap:balance; letter-spacing:-.01em;
+}
+h1 em{font-style:italic; font-weight:500; color:var(--accent);}
+.lede{max-width:62ch; color:var(--ink-dim); font-size:1.03rem; margin:0 0 1.8rem;}
+
+.stage-panel{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  box-shadow:var(--shadow); overflow:hidden; position:relative;
+}
+.stage-top{
+  display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;
+  padding:.9rem 1.1rem; border-bottom:1px solid var(--line-soft); flex-wrap:wrap;
+}
+.readout{font-family:"IBM Plex Mono",monospace; font-size:.78rem; color:var(--ink-dim);}
+.readout b{color:var(--ink); font-weight:600;}
+.readout .lbl{text-transform:uppercase; letter-spacing:.08em; font-size:.66rem; color:var(--ink-dim); display:block; margin-bottom:.15rem;}
+.status-pill{
+  display:inline-flex; align-items:center; gap:.4rem; font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem; padding:.3rem .6rem; border-radius:99px; background:var(--surface-2);
+  border:1px solid var(--line); color:var(--ink-dim);
+}
+.status-dot{width:7px; height:7px; border-radius:50%; background:var(--ink-dim); flex:none;}
+.status-pill.live .status-dot{background:var(--dopamine); box-shadow:0 0 0 3px color-mix(in srgb, var(--dopamine) 25%, transparent);}
+.status-pill.playing .status-dot{background:var(--accent-2); box-shadow:0 0 0 3px color-mix(in srgb, var(--accent-2) 25%, transparent);}
+
+.stage-split{display:grid; grid-template-columns:1fr 1.35fr;}
+@media (max-width:820px){ .stage-split{grid-template-columns:1fr;} }
+.canvas-holder{position:relative; height:min(52vh,520px); min-height:320px;}
+.canvas-holder.brain{border-right:1px solid var(--line-soft);}
+@media (max-width:820px){ .canvas-holder.brain{border-right:none; border-bottom:1px solid var(--line-soft); height:min(42vh,380px);} }
+.panel-tag{
+  position:absolute; top:.6rem; left:.7rem; font-family:"IBM Plex Mono",monospace; font-size:.66rem;
+  text-transform:uppercase; letter-spacing:.08em; color:var(--ink-dim); background:color-mix(in srgb, var(--surface) 70%, transparent);
+  padding:.2rem .5rem; border-radius:5px; border:1px solid var(--line-soft); z-index:5;
+}
+canvas.gl{display:block; width:100%; height:100%;}
+.legend{
+  position:absolute; left:0; right:0; bottom:0; display:flex; gap:.9rem; flex-wrap:wrap;
+  padding:.55rem 1.1rem; background:linear-gradient(to top, color-mix(in srgb, var(--surface) 88%, transparent), transparent);
+  font-family:"IBM Plex Mono",monospace; font-size:.68rem; color:var(--ink-dim); pointer-events:none;
+}
+.legend span{display:inline-flex; align-items:center; gap:.35rem;}
+.legend i{width:8px; height:8px; border-radius:50%; display:inline-block;}
+
+.node-labels{position:absolute; inset:0; pointer-events:none;}
+.node-label{
+  position:absolute; transform:translate(-50%,-135%); white-space:nowrap;
+  font-family:"IBM Plex Mono",monospace; font-size:.64rem; letter-spacing:.02em;
+  padding:.1rem .38rem; border-radius:5px; background:color-mix(in srgb, var(--surface) 55%, transparent);
+  border:1px solid var(--line-soft); color:var(--ink-dim); transition:color .1s linear, border-color .1s linear;
+}
+
+.controls{
+  display:grid; grid-template-columns:1.3fr 1fr; gap:1rem; margin-top:1.1rem;
+}
+@media (max-width:760px){ .controls{grid-template-columns:1fr;} }
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:14px;
+  padding:1.1rem 1.2rem; box-shadow:var(--shadow);
+}
+.card h2{
+  font-family:"Fraunces",serif; font-weight:600; font-size:1.05rem; margin:0 0 .8rem;
+}
+.transport{display:flex; flex-wrap:wrap; gap:.55rem; align-items:center;}
+button{
+  font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:.86rem;
+  padding:.6rem 1.05rem; border-radius:9px; border:1px solid var(--line); cursor:pointer;
+  background:var(--surface-2); color:var(--ink); transition:transform .08s ease, background .15s ease;
+}
+button:hover{background:color-mix(in srgb, var(--accent) 10%, var(--surface-2));}
+button:active{transform:scale(.97);}
+button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+button.primary{background:var(--accent); color:var(--accent-ink); border-color:transparent;}
+button.primary:hover{filter:brightness(1.06);}
+button:disabled{opacity:.45; cursor:not-allowed;}
+select{
+  font-family:"IBM Plex Mono",monospace; font-size:.8rem; padding:.5rem .6rem; border-radius:8px;
+  border:1px solid var(--line); background:var(--surface-2); color:var(--ink);
+}
+.row{display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; margin-top:.7rem;}
+.row label{font-family:"IBM Plex Mono",monospace; font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-dim);}
+
+.fitness-wrap{margin-top:.9rem;}
+canvas#fitnessChart{width:100%; height:74px; display:block; border-radius:8px; background:var(--surface-2); border:1px solid var(--line-soft);}
+.gen-readout{display:flex; justify-content:space-between; font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--ink-dim); margin-top:.4rem;}
+.gen-readout b{color:var(--ink);}
+
+.now-playing{margin-top:.9rem; padding:.7rem .8rem; border-radius:9px; background:var(--surface-2); border:1px solid var(--line-soft); font-family:"IBM Plex Mono",monospace; font-size:.75rem; color:var(--ink-dim); display:none;}
+.now-playing.on{display:block;}
+.now-playing b{color:var(--accent-2);}
+
+.explainer{margin-top:2.2rem; display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem;}
+@media (max-width:820px){ .explainer{grid-template-columns:1fr;} }
+.explainer h3{
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.09em;
+  color:var(--accent-2); margin:0 0 .5rem; font-weight:600;
+}
+.explainer p{margin:0; font-size:.92rem; color:var(--ink-dim);}
+.explainer p i{font-style:italic; color:var(--ink);}
+.foot-note{margin-top:2rem; font-size:.78rem; color:var(--ink-dim); border-top:1px solid var(--line-soft); padding-top:1rem;}
+.foot-note a{color:var(--accent-2);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="eyebrow">Drosophila melanogaster · male CNS connectome v1.0 · every traced neuron</div>
+  <h1>165,122 <em>Neurons</em></h1>
+  <p class="lede">Every point in the left panel is a real neuron at its real measured soma position — the full FlyEM/Janelia male CNS connectome, 165,122 traced cells and 10,228,000 signed synapses, not a stand-in. Six real motor-neuron populations (foreleg, midleg, hindleg, wing, haltere, neck) play the kit on the right, trained by the same dopamine-gated Kenyon-cell → MBON depression a fly actually learns with, rewarded bar by bar by how closely its motor output matches six real human grooves. If <code>fly_drums_live_server.py</code> is running on this machine, this page finds it and runs the simulation <b>live, on your GPU</b>; otherwise it falls back to replaying a recorded run — same visuals and audio either way, the status pill above says which.</p>
+
+  <div class="stage-panel">
+    <div class="stage-top">
+      <div class="readout" id="statusReadout" style="display:flex; align-items:center; gap:.5rem;">
+        <span class="status-pill" id="statusPill"><span class="status-dot"></span><span id="statusText">resting</span></span>
+        <span class="status-pill" id="audioHint">🔊 tap anywhere for sound</span>
+      </div>
+      <div class="readout" style="text-align:right;">
+        <span class="lbl">male CNS v1.0</span>
+        <b id="neuronCountReadout">—</b> neurons · <span id="edgeCountReadout">—</span> synapses
+      </div>
+    </div>
+    <div class="stage-split">
+      <div class="canvas-holder brain">
+        <span class="panel-tag">Whole CNS — every traced neuron</span>
+        <canvas class="gl" id="glBrain"></canvas>
+        <div class="node-labels" id="nodeLabels"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="canvas-holder">
+        <span class="panel-tag">Kit &amp; performer</span>
+        <canvas class="gl" id="gl"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="card">
+      <h2>Transport</h2>
+      <div class="transport">
+        <button id="btnToggle" disabled>Pause</button>
+        <button id="btnMute">🔊 Mute</button>
+        <button id="btnSource" title="Force this page to the recorded run, or back to live if the server answers">⏺ Use recorded</button>
+      </div>
+      <div class="row">
+        <label>Reading</label>
+        <span class="readout" id="loadStatus">looking for fly_drums_live_server.py …</span>
+      </div>
+      <div class="now-playing" id="nowPlaying">
+        <span class="lbl">now performing</span>
+        <b id="sectionReadout">—</b> · bar <b id="barReadout">0</b> / <span id="barTotal">∞</span>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Real training run — KC→MBON depression</h2>
+      <canvas id="fitnessChart" width="600" height="148"></canvas>
+      <div class="gen-readout">
+        <span><b id="genCount">0</b> generations, real dopamine events</span>
+        <span>final fitness <b id="fitVal">0.0</b></span>
+      </div>
+      <div class="fitness-wrap" style="margin-top:.6rem; font-size:.72rem; color:var(--ink-dim); font-family:'IBM Plex Mono',monospace;">
+        reward-side KC→MBON synapses depressed <b id="dopamineVal" style="color:var(--dopamine);">—</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="explainer">
+    <div>
+      <h3>What's real</h3>
+      <p>The connectome, the leaky integrate-and-fire dynamics, all 165,122 traced neurons and their 10,228,000 measured, signed synapses, the six motor populations (real annotated subclasses <i>fl / ml / hl / wm / hm / nm</i>), and the learning rule — dopamine-gated depression at the Kenyon-cell → MBON synapse, the one place this repo lets a weight move — are unmodified from the real simulation code driving the rest of this project.</p>
+    </div>
+    <div>
+      <h3>What's chosen</h3>
+      <p>Nothing in a real fly asks it to drum. A tonic drive onto the ventral-nerve-cord's own walking pattern-generator population is what wakes the circuit up at all, and the reward — how closely six leg/wing/haltere/neck motor readouts match six real human grooves — is invented, exactly like the "novelty" reward disclosed elsewhere in this repo. The timestep was also widened, 0.2ms → 2.0ms, to make a bar simulate in about a minute instead of about eight.</p>
+    </div>
+    <div>
+      <h3>Live vs. recorded</h3>
+      <p>On CPU, one simulated bar takes about a minute — 500× slower than the audio it produces. On a real GPU (via <i>flysim_gpu.py</i>, sparse synaptic input as one CSR matrix–vector product per step), the same bar simulates in real time. Run <i>fly_drums_live_server.py</i> and this page finds it and streams each bar over a WebSocket the moment it's computed — training and performance both genuinely live. With no server reachable — which is the only option once this page is off your machine, since a published copy of it can't reach into your GPU — it falls back to fly_drums_sim.py's recorded output instead, same page, same visuals.</p>
+    </div>
+  </div>
+
+  <div class="foot-note">Connectome: FlyEM/Janelia, Cambridge Connectomics Group &amp; Google Research, male CNS v1.0, CC BY. Simulation approach after Shiu et al. 2024 (Nature) and the LIF model in this repo's <i>flysim.py</i>; learning rule after Hige et al. 2015 / Cohn et al. 2015, implemented in <i>mushroom.py</i>. Groove reference: Google Magenta's <i>Groove MIDI Dataset</i> (CC BY 4.0). Not affiliated with Janelia, Google, or Magenta.</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" integrity="sha256-XBWWe6gwkYqcrqYzhxLJlMNUvM1O3EVpveQRw+wGo+Y=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+"use strict";
+
+/* ============================= BRAIN MODEL ============================= */
+
+const CHANNELS = ["kick","snare","hihat","tom","cymbal","chord"];
+const CHANNEL_COLOR = {kick:"#c94f3a", snare:"#5f47c9", hihat:"#1f8a7c", tom:"#c97a12", cymbal:"#3a7fc9", chord:"#a05fc9"};
+const KIT = [
+  {ch:"kick",   name:"Kick",   pos:[0, -1.15, 3.6]},
+  {ch:"snare",  name:"Snare",  pos:[-0.9,-0.55, 3.35]},
+  {ch:"hihat",  name:"Hi-hat", pos:[-1.75,-0.15, 3.15]},
+  {ch:"tom",    name:"Tom",    pos:[0.55,-0.35, 3.2]},
+  {ch:"cymbal", name:"Cymbal", pos:[1.6, 0.35, 3.05]},
+  {ch:"chord",  name:"Pad",    pos:[0, 0.9, 3.9]},
+];
+
+
+/* ============================= AUDIO ENGINE ============================= */
+
+let actx = null, master = null, noiseBuffer = null;
+function initAudio(){
+  actx = new (window.AudioContext||window.webkitAudioContext)();
+  master = actx.createGain(); master.gain.value = (typeof muted!=="undefined"&&muted)?0:0.9; master.connect(actx.destination);
+  const len = actx.sampleRate*1.0;
+  noiseBuffer = actx.createBuffer(1, len, actx.sampleRate);
+  const d = noiseBuffer.getChannelData(0);
+  for(let i=0;i<len;i++) d[i] = Math.random()*2-1;
+}
+function noiseSource(){
+  const src = actx.createBufferSource(); src.buffer = noiseBuffer; src.loop = true; return src;
+}
+function env(param, t, attack, peak, decay, sustain){
+  param.cancelScheduledValues(t);
+  param.setValueAtTime(0.0001, t);
+  param.linearRampToValueAtTime(peak, t+attack);
+  param.exponentialRampToValueAtTime(Math.max(sustain,0.0001), t+attack+decay);
+}
+function playKick(t, vel){
+  const osc = actx.createOscillator(), g = actx.createGain();
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(150, t);
+  osc.frequency.exponentialRampToValueAtTime(42, t+0.14);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.linearRampToValueAtTime(0.9*vel, t+0.004);
+  g.gain.exponentialRampToValueAtTime(0.001, t+0.32);
+  osc.connect(g); g.connect(master); osc.start(t); osc.stop(t+0.36);
+}
+function playSnare(t, vel){
+  const src = noiseSource(); const bp = actx.createBiquadFilter(); bp.type="bandpass"; bp.frequency.value=1800; bp.Q.value=0.7;
+  const g = actx.createGain();
+  g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.55*vel, t+0.003); g.gain.exponentialRampToValueAtTime(0.001, t+0.18);
+  src.connect(bp); bp.connect(g); g.connect(master); src.start(t); src.stop(t+0.2);
+  const osc = actx.createOscillator(), og = actx.createGain(); osc.type="triangle"; osc.frequency.value=190;
+  og.gain.setValueAtTime(0.0001,t); og.gain.linearRampToValueAtTime(0.25*vel,t+0.003); og.gain.exponentialRampToValueAtTime(0.001,t+0.12);
+  osc.connect(og); og.connect(master); osc.start(t); osc.stop(t+0.14);
+}
+function playHihat(t, vel, open){
+  const src = noiseSource(); const hp = actx.createBiquadFilter(); hp.type="highpass"; hp.frequency.value=6500;
+  const g = actx.createGain(); const dur = open? 0.35:0.07;
+  g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.28*vel,t+0.002); g.gain.exponentialRampToValueAtTime(0.001, t+dur);
+  src.connect(hp); hp.connect(g); g.connect(master); src.start(t); src.stop(t+dur+0.02);
+}
+function playTom(t, vel, pitch){
+  const osc = actx.createOscillator(), g = actx.createGain();
+  osc.type = "sine"; const f0 = pitch||140;
+  osc.frequency.setValueAtTime(f0, t); osc.frequency.exponentialRampToValueAtTime(f0*0.55, t+0.22);
+  g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.7*vel, t+0.005); g.gain.exponentialRampToValueAtTime(0.001, t+0.34);
+  osc.connect(g); g.connect(master); osc.start(t); osc.stop(t+0.36);
+}
+function playCymbal(t, vel){
+  const src = noiseSource(); const hp = actx.createBiquadFilter(); hp.type="highpass"; hp.frequency.value=4200;
+  const g = actx.createGain();
+  g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.22*vel,t+0.004); g.gain.exponentialRampToValueAtTime(0.001, t+0.9);
+  src.connect(hp); hp.connect(g); g.connect(master); src.start(t); src.stop(t+0.95);
+}
+function playChord(t, vel, freqs){
+  freqs.forEach((f,i)=>{
+    const osc = actx.createOscillator(), g = actx.createGain(), lp = actx.createBiquadFilter();
+    osc.type = "triangle"; osc.frequency.value = f;
+    lp.type="lowpass"; lp.frequency.value=1200;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.linearRampToValueAtTime(0.16*vel/(i*0.3+1), t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0008, t+0.9);
+    osc.connect(lp); lp.connect(g); g.connect(master);
+    osc.start(t); osc.stop(t+0.95);
+  });
+}
+function triggerDrum(ch, t, vel, extra){
+  if(ch==="kick") playKick(t, vel);
+  else if(ch==="snare") playSnare(t, vel);
+  else if(ch==="hihat") playHihat(t, vel, vel>0.75);
+  else if(ch==="tom") playTom(t, vel, extra&&extra.pitch);
+  else if(ch==="cymbal") playCymbal(t, vel);
+  else if(ch==="chord") playChord(t, vel, extra&&extra.freqs);
+}
+
+/* Scales for the tonal layer, per genre flavor */
+const SCALES = {
+  funk:[0,3,5,7,10], rock:[0,2,3,7,9], hiphop:[0,3,5,7,10],
+  latin:[0,2,4,5,7,9,11], afrobeat:[0,2,3,5,7,10], "dance-disco":[0,2,4,5,7,9,11], blend:[0,3,5,7,10]
+};
+function chordFreqs(root, scale, degree){
+  const semis = [scale[degree%scale.length], scale[(degree+2)%scale.length], scale[(degree+4)%scale.length]];
+  return semis.map(s=> root*Math.pow(2, s/12));
+}
+
+/* ============================= PATTERN SAMPLING ============================= */
+
+function samplePattern(W, densityScale){
+  densityScale = densityScale===undefined?1:densityScale;
+  const hits = [];
+  for(let s=0;s<16;s++){
+    CHANNELS.forEach(ch=>{
+      const p = W[s][ch]*densityScale;
+      const threshold = ch==="chord" ? 0.55 : 0.5;
+      if(Math.random() < Math.max(0, p - (1-threshold)) + (p>threshold?0.35:0)){
+        hits.push({step:s, ch, vel: Math.min(1, 0.45+p*0.7)});
+      }
+    });
+  }
+  return hits;
+}
+
+/* ============================= THREE.JS SCENE ============================= */
+
+const canvas = document.getElementById("gl");
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
+renderer.outputEncoding = THREE.sRGBEncoding;
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+let camDist = 6.1, camTheta = Math.PI/2, camPhi = 1.12;
+const CAM_PHI_MIN = 0.7, CAM_PHI_MAX = 1.4;
+const lookTarget = new THREE.Vector3(0,-0.1,3.9);
+function updateCamera(){
+  camera.position.set(
+    lookTarget.x + camDist*Math.sin(camPhi)*Math.sin(camTheta),
+    lookTarget.y + camDist*Math.cos(camPhi),
+    lookTarget.z + camDist*Math.sin(camPhi)*Math.cos(camTheta)
+  );
+  camera.lookAt(lookTarget);
+}
+updateCamera();
+
+scene.add(new THREE.AmbientLight(0xfff4e0, 0.5));
+const key = new THREE.DirectionalLight(0xfff2d8, 1.15); key.position.set(3,4.5,4.5); scene.add(key);
+const rim = new THREE.PointLight(0x9c8bff, 0.85, 22); rim.position.set(-3.2,2.2,2.5); scene.add(rim);
+const kicker = new THREE.PointLight(0xffb060, 0.55, 14); kicker.position.set(0.5,-0.6,5.2); scene.add(kicker);
+
+// drum kit geometry — cylinders with metal rims, dished cymbals, tripod stands
+const chromeMat = new THREE.MeshStandardMaterial({color:0xcfd3d6, metalness:0.95, roughness:0.18});
+const brassMat = new THREE.MeshStandardMaterial({color:0xcf9a3f, metalness:0.92, roughness:0.28, emissive:0x2a1a05, emissiveIntensity:0.15});
+let kickBeaterPivot = null, hihatTopMesh = null;
+const kitMeshes = {};
+const kitGroup = new THREE.Group(); scene.add(kitGroup);
+
+function addTripod(x,y,z, legLen, splay){
+  for(let i=0;i<3;i++){
+    const a = (i/3)*Math.PI*2;
+    const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.018,0.018,legLen,6), chromeMat);
+    leg.position.set(x+Math.cos(a)*splay*0.5, y-legLen/2+0.05, z+Math.sin(a)*splay*0.5);
+    leg.rotation.z = Math.cos(a)*0.35; leg.rotation.x = Math.sin(a)*0.35;
+    kitGroup.add(leg);
+  }
+}
+
+KIT.forEach(k=>{
+  const shellGroup = new THREE.Group();
+  shellGroup.position.set(...k.pos);
+  const shellColor = CHANNEL_COLOR[k.ch];
+  let mat = new THREE.MeshStandardMaterial({color:shellColor, emissive:new THREE.Color(shellColor), emissiveIntensity:0.1, metalness:0.3, roughness:0.55});
+  let mesh;
+  if(k.ch==="kick"){
+    mesh = new THREE.Mesh(new THREE.CylinderGeometry(0.62,0.62,0.5,28), mat);
+    mesh.rotation.z = Math.PI/2;
+    const head = new THREE.Mesh(new THREE.CircleGeometry(0.56,28), new THREE.MeshStandardMaterial({color:0xe9e4d6, roughness:0.7}));
+    head.position.x = 0.255; head.rotation.y = Math.PI/2;
+    const rim1 = new THREE.Mesh(new THREE.TorusGeometry(0.62,0.025,8,28), chromeMat); rim1.rotation.y=Math.PI/2; rim1.position.x=0.25;
+    const rim2 = rim1.clone(); rim2.position.x = -0.25;
+    shellGroup.add(mesh, head, rim1, rim2);
+    // beater + pedal
+    const beaterRod = new THREE.Mesh(new THREE.CylinderGeometry(0.012,0.012,0.5,6), chromeMat);
+    beaterRod.rotation.z = Math.PI/2; beaterRod.position.set(0.5,-0.05,0);
+    const beaterBall = new THREE.Mesh(new THREE.SphereGeometry(0.07,10,10), new THREE.MeshStandardMaterial({color:0x2a2a2a}));
+    beaterBall.position.set(0.28,-0.05,0);
+    const pedalPivot = new THREE.Group(); pedalPivot.position.set(0.72,-0.3,0);
+    beaterRod.position.set(-0.22,0,0); beaterBall.position.set(-0.44,0,0);
+    pedalPivot.add(beaterRod, beaterBall);
+    shellGroup.add(pedalPivot);
+    kickBeaterPivot = pedalPivot;
+  } else if(k.ch==="snare"){
+    mesh = new THREE.Mesh(new THREE.CylinderGeometry(0.32,0.32,0.24,24), mat);
+    const rimTop = new THREE.Mesh(new THREE.TorusGeometry(0.32,0.02,8,24), chromeMat); rimTop.rotation.x=Math.PI/2; rimTop.position.y=0.12;
+    const rimBot = rimTop.clone(); rimBot.position.y=-0.12;
+    shellGroup.add(mesh, rimTop, rimBot);
+    addTripod(k.pos[0],k.pos[1]-0.12,k.pos[2],0.75,0.5);
+  } else if(k.ch==="hihat"){
+    mat = brassMat.clone();
+    const top = new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.46,0.035,28), mat); top.position.y=0.07; top.rotation.x=0.06;
+    const bot = new THREE.Mesh(new THREE.CylinderGeometry(0.44,0.48,0.035,28), mat); bot.position.y=-0.02;
+    const clutch = new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.5,6), chromeMat); clutch.position.y=0.25;
+    shellGroup.add(top, bot, clutch);
+    hihatTopMesh = top;
+    addTripod(k.pos[0],k.pos[1]-0.5,k.pos[2],1.0,0.55);
+  } else if(k.ch==="cymbal"){
+    mat = brassMat.clone();
+    mesh = new THREE.Mesh(new THREE.ConeGeometry(0.5,0.09,28,1,true), mat);
+    mesh.rotation.x = Math.PI;
+    shellGroup.add(mesh);
+    const stand = new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.02,0.9,6), chromeMat); stand.position.y=-0.5;
+    shellGroup.add(stand);
+    addTripod(k.pos[0],k.pos[1]-0.95,k.pos[2],0.5,0.5);
+  } else if(k.ch==="tom"){
+    mesh = new THREE.Mesh(new THREE.CylinderGeometry(0.3,0.3,0.36,22), mat);
+    const rimTop = new THREE.Mesh(new THREE.TorusGeometry(0.3,0.018,8,22), chromeMat); rimTop.rotation.x=Math.PI/2; rimTop.position.y=0.18;
+    shellGroup.add(mesh, rimTop);
+    const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.016,0.016,0.5,6), chromeMat); rod.position.y=-0.4;
+    shellGroup.add(rod);
+  } else { // chord pad
+    mesh = new THREE.Mesh(new THREE.TorusGeometry(0.3,0.08,10,24), mat);
+    shellGroup.add(mesh);
+    const rod = new THREE.Mesh(new THREE.CylinderGeometry(0.016,0.016,0.9,6), chromeMat); rod.position.y=-0.55;
+    shellGroup.add(rod);
+  }
+  kitGroup.add(shellGroup);
+  kitMeshes[k.ch] = {mesh:shellGroup, mat, baseScale:1, basePos:shellGroup.position.clone(), baseY:k.pos[1]};
+});
+
+// drum throne behind the kit
+const throneGroup = new THREE.Group(); throneGroup.position.set(0, -1.0, 4.5);
+const seat = new THREE.Mesh(new THREE.CylinderGeometry(0.42,0.42,0.14,24), new THREE.MeshStandardMaterial({color:0x2a2a2a, roughness:0.8}));
+throneGroup.add(seat);
+const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,0.6,8), chromeMat); pole.position.y=-0.37;
+throneGroup.add(pole);
+addTripod(0,-1.67,4.5,0.35,0.55);
+scene.add(throneGroup);
+
+// optional real drum kit model — if models/drum_kit.glb loads, it replaces
+// the procedural kit above; if anything about the load fails (missing file,
+// bad path, GLTFLoader not available), the procedural kit is left showing,
+// so this can never break the page.
+if(window.THREE && THREE.GLTFLoader){
+  try{
+    new THREE.GLTFLoader().load("models/drum_kit.glb", (gltf)=>{
+      const model = gltf.scene;
+      model.layers.set(0);
+      model.traverse(o=>{ if(o.isMesh) o.layers.set(0); });
+      const box = new THREE.Box3().setFromObject(model);
+      const size = box.getSize(new THREE.Vector3());
+      const center = box.getCenter(new THREE.Vector3());
+      const targetSpan = 2.6; // roughly the footprint the procedural kit occupied
+      const scale = targetSpan / Math.max(size.x, size.y, size.z, 0.001);
+      model.scale.setScalar(scale);
+      model.position.set(
+        lookTarget.x - center.x*scale,
+        -1.1 - center.y*scale,
+        3.5 - center.z*scale
+      );
+      scene.add(model);
+      kitGroup.visible = false;
+    }, undefined, (err)=>{ console.warn("drum_kit.glb not loaded, using the procedural kit:", err && err.message); });
+  } catch(e){ console.warn("GLTFLoader unavailable, using the procedural kit:", e.message); }
+}
+
+/* ============================= THE FLY ============================= */
+
+const flyGroup = new THREE.Group();
+flyGroup.position.set(0, 0.35, 4.05);
+flyGroup.scale.setScalar(1.35);
+
+const chitinMat = new THREE.MeshStandardMaterial({color:0x1c2430, metalness:0.75, roughness:0.22, emissive:0x0a3d3a, emissiveIntensity:0.15});
+const abdomenMat = new THREE.MeshStandardMaterial({color:0x8a5a20, metalness:0.4, roughness:0.4});
+const stripeMat = new THREE.MeshStandardMaterial({color:0x14100a, metalness:0.3, roughness:0.5});
+const eyeMat = new THREE.MeshStandardMaterial({color:0xb0203f, metalness:0.6, roughness:0.15, emissive:0x5c0f22, emissiveIntensity:0.35});
+const wingMat = new THREE.MeshStandardMaterial({color:0xcfe8e6, transparent:true, opacity:0.22, side:THREE.DoubleSide, metalness:0.1, roughness:0.1});
+const glassesMat = new THREE.MeshStandardMaterial({color:0x0a0a0a, metalness:0.8, roughness:0.15});
+const bandanaMat = new THREE.MeshStandardMaterial({color:0xb0272f, roughness:0.6});
+const goldMat = new THREE.MeshStandardMaterial({color:0xe0b23a, metalness:0.9, roughness:0.2});
+
+// thorax
+const thorax = new THREE.Mesh(new THREE.SphereGeometry(0.34,20,16), chitinMat);
+thorax.scale.set(1,0.92,1.15);
+flyGroup.add(thorax);
+
+// abdomen with banding, tapering back
+const abdomen = new THREE.Mesh(new THREE.SphereGeometry(0.32,20,16), abdomenMat);
+abdomen.scale.set(0.92,0.85,1.55);
+abdomen.position.set(0,-0.02,0.62);
+flyGroup.add(abdomen);
+[0.32,0.56,0.8].forEach(zz=>{
+  const band = new THREE.Mesh(new THREE.TorusGeometry(0.27-((zz-0.32)*0.22),0.035,8,20), stripeMat);
+  band.position.set(0,-0.02,zz); band.scale.z=0.55;
+  flyGroup.add(band);
+});
+
+// head + compound eyes
+const head = new THREE.Mesh(new THREE.SphereGeometry(0.2,18,14), chitinMat);
+head.position.set(0,0.06,-0.42);
+flyGroup.add(head);
+[-1,1].forEach(side=>{
+  const eye = new THREE.Mesh(new THREE.SphereGeometry(0.15,16,14,0,Math.PI*1.15), eyeMat);
+  eye.position.set(side*0.15,0.07,-0.46);
+  eye.rotation.y = side*1.0;
+  flyGroup.add(eye);
+  const ant = new THREE.Mesh(new THREE.CylinderGeometry(0.012,0.02,0.22,6), chitinMat);
+  ant.position.set(side*0.08,0.24,-0.52); ant.rotation.x=-0.5; ant.rotation.z=side*0.3;
+  flyGroup.add(ant);
+});
+
+// outfit: round aviator sunglasses across the eyes — two glossy lenses + bridge + temples
+const lensMat = new THREE.MeshStandardMaterial({color:0x0a0a0a, metalness:0.3, roughness:0.08, emissive:0x1a2a3a, emissiveIntensity:0.25});
+[-1,1].forEach(side=>{
+  const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.1,0.025,20), lensMat);
+  lens.rotation.x = Math.PI/2; lens.position.set(side*0.155,0.08,-0.6);
+  flyGroup.add(lens);
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(0.1,0.012,8,20), goldMat);
+  rim.position.set(side*0.155,0.08,-0.6);
+  flyGroup.add(rim);
+  const temple = new THREE.Mesh(new THREE.CylinderGeometry(0.008,0.008,0.22,6), glassesMat);
+  temple.rotation.x = Math.PI/2; temple.position.set(side*0.25,0.08,-0.5);
+  flyGroup.add(temple);
+});
+const bridge = new THREE.Mesh(new THREE.CylinderGeometry(0.01,0.01,0.11,6), glassesMat);
+bridge.rotation.z=Math.PI/2; bridge.position.set(0,0.08,-0.6);
+flyGroup.add(bridge);
+
+// outfit: bandana knotted on top of the head
+const bandana = new THREE.Mesh(new THREE.TorusGeometry(0.2,0.045,10,20), bandanaMat);
+bandana.position.set(0,0.16,-0.42); bandana.rotation.x=Math.PI/2;
+flyGroup.add(bandana);
+const knot = new THREE.Mesh(new THREE.SphereGeometry(0.05,8,8), bandanaMat);
+knot.position.set(0.16,0.22,-0.3);
+flyGroup.add(knot);
+
+// outfit: gold chain at the neck
+const chain = new THREE.Mesh(new THREE.TorusGeometry(0.19,0.018,8,20), goldMat);
+chain.position.set(0,-0.08,-0.28); chain.rotation.x=Math.PI/2*0.85;
+flyGroup.add(chain);
+
+// wings — two layered translucent panes for a faint iridescent sheen
+const wingMat2 = new THREE.MeshStandardMaterial({color:0xd9a8e8, transparent:true, opacity:0.13, side:THREE.DoubleSide, metalness:0.15, roughness:0.08});
+[-1,1].forEach(side=>{
+  const wing = new THREE.Mesh(new THREE.SphereGeometry(0.34,10,8), wingMat);
+  wing.scale.set(0.35,0.06,1);
+  wing.position.set(side*0.32,0.22,0.05);
+  wing.rotation.z = side*0.5; wing.rotation.y = side*0.35;
+  flyGroup.add(wing);
+  const wing2 = new THREE.Mesh(new THREE.SphereGeometry(0.3,10,8), wingMat2);
+  wing2.scale.set(0.3,0.05,0.85);
+  wing2.position.set(side*0.3,0.24,0.12);
+  wing2.rotation.z = side*0.42; wing2.rotation.y = side*0.3;
+  flyGroup.add(wing2);
+});
+
+// 4 rear/mid legs, decorative, angled to perches on the throne
+function makeLeg(originX, originY, originZ, dir, len){
+  const g = new THREE.Group(); g.position.set(originX,originY,originZ);
+  const upper = new THREE.Mesh(new THREE.CylinderGeometry(0.028,0.02,len*0.55,6), chitinMat);
+  upper.position.set(dir*len*0.25,-len*0.2,0); upper.rotation.z = dir*0.9;
+  g.add(upper);
+  const lower = new THREE.Mesh(new THREE.CylinderGeometry(0.02,0.014,len*0.6,6), chitinMat);
+  lower.position.set(dir*len*0.42,-len*0.62,0.05); lower.rotation.z = dir*1.6;
+  g.add(lower);
+  return g;
+}
+[[-0.28,-0.05,0.1,-1],[0.28,-0.05,0.1,1],[-0.26,-0.05,0.35,-1],[0.26,-0.05,0.35,1]].forEach(([x,y,z,dir])=>{
+  flyGroup.add(makeLeg(x,y,z,dir,0.6));
+});
+
+// front limbs holding drumsticks — pivoted at the "shoulder" so they can swing
+function makeStickArm(side){
+  const pivot = new THREE.Group();
+  pivot.position.set(side*0.3,0.05,-0.28);
+  const upper = new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.024,0.32,6), chitinMat);
+  upper.position.set(side*0.1,-0.1,-0.06); upper.rotation.z = side*0.8;
+  pivot.add(upper);
+  const stick = new THREE.Mesh(new THREE.CylinderGeometry(0.014,0.02,0.62,6), new THREE.MeshStandardMaterial({color:0xcaa56a, roughness:0.6}));
+  stick.position.set(side*0.24,-0.28,-0.32); stick.rotation.x = -0.55; stick.rotation.z = side*0.3;
+  pivot.add(stick);
+  flyGroup.add(pivot);
+  return pivot;
+}
+const armPivotL = makeStickArm(-1); // left arm: snare / tom side
+const armPivotR = makeStickArm(1);  // right arm: hihat / cymbal side
+const armRestL = armPivotL.rotation.x, armRestR = armPivotR.rotation.x;
+
+// kick leg, doubles as the pedal foot
+const kickLegPivot = new THREE.Group();
+kickLegPivot.position.set(0,-0.3,0.5);
+const kickThigh = new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.024,0.4,6), chitinMat);
+kickThigh.position.set(0,-0.1,0.15); kickThigh.rotation.x=0.9;
+kickLegPivot.add(kickThigh);
+const kickShin = new THREE.Mesh(new THREE.CylinderGeometry(0.024,0.018,0.4,6), chitinMat);
+kickShin.position.set(0,-0.28,0.42); kickShin.rotation.x=1.7;
+kickLegPivot.add(kickShin);
+flyGroup.add(kickLegPivot);
+const kickLegRest = kickLegPivot.rotation.x;
+
+scene.add(flyGroup);
+
+// spike particle pool
+const MAX_PARTICLES = 40;
+const particleGeo = new THREE.SphereGeometry(0.055, 8, 8);
+const particles = [];
+for(let i=0;i<MAX_PARTICLES;i++){
+  const mat = new THREE.MeshBasicMaterial({color:0xffffff, transparent:true, opacity:0});
+  const mesh = new THREE.Mesh(particleGeo, mat);
+  mesh.visible = false;
+  scene.add(mesh);
+  particles.push({mesh, mat, active:false, from:null, to:null, t0:0, t1:0, color:null});
+}
+function spawnParticle(fromPos, toPos, dur, color){
+  const p = particles.find(p=>!p.active) || particles[0];
+  p.active = true; p.from = fromPos.clone(); p.to = toPos.clone();
+  p.t0 = performance.now(); p.t1 = p.t0 + dur*1000;
+  p.mesh.visible = true; p.mat.opacity = 1; p.mat.color.set(color);
+}
+
+function resize(){
+  const holder = canvas.parentElement;
+  const w = holder.clientWidth, h = holder.clientHeight;
+  renderer.setSize(w,h,false);
+  camera.aspect = w/h; camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(canvas.parentElement);
+resize();
+
+/* ---- dedicated brain panel: same scene, its own close-up camera ---- */
+const canvasBrain = document.getElementById("glBrain");
+const rendererBrain = new THREE.WebGLRenderer({canvas:canvasBrain, antialias:true, alpha:true});
+rendererBrain.setPixelRatio(Math.min(devicePixelRatio,2));
+const cameraBrain = new THREE.PerspectiveCamera(40,1,0.1,50);
+cameraBrain.layers.set(1); // exclusively the real-neuron layer — never the kit/fly on layer 0
+let camThetaBrain = 0.4;
+const brainTarget = new THREE.Vector3(0,-0.45,-0.1);
+function updateCameraBrain(){
+  const d = 7.3, phi = 1.28;
+  cameraBrain.position.set(
+    brainTarget.x + d*Math.sin(phi)*Math.sin(camThetaBrain),
+    brainTarget.y + d*Math.cos(phi),
+    brainTarget.z + d*Math.sin(phi)*Math.cos(camThetaBrain)
+  );
+  cameraBrain.lookAt(brainTarget);
+}
+updateCameraBrain();
+function resizeBrain(){
+  const holder = canvasBrain.parentElement;
+  const w = holder.clientWidth, h = holder.clientHeight;
+  rendererBrain.setSize(w,h,false);
+  cameraBrain.aspect = w/h; cameraBrain.updateProjectionMatrix();
+}
+new ResizeObserver(resizeBrain).observe(canvasBrain.parentElement);
+resizeBrain();
+let brainDragging=false, brainLastX=0, brainAutoRotate=true;
+canvasBrain.addEventListener("pointerdown", e=>{brainDragging=true; brainLastX=e.clientX; brainAutoRotate=false;});
+window.addEventListener("pointerup", ()=>brainDragging=false);
+window.addEventListener("pointermove", e=>{ if(!brainDragging) return; camThetaBrain += (e.clientX-brainLastX)*0.008; brainLastX=e.clientX; });
+
+// pointer orbit controls
+let dragging=false, lastX=0,lastY=0, autoRotate=true;
+canvas.addEventListener("pointerdown", e=>{dragging=true; lastX=e.clientX; lastY=e.clientY; autoRotate=false;});
+window.addEventListener("pointerup", ()=>dragging=false);
+window.addEventListener("pointermove", e=>{
+  if(!dragging) return;
+  camTheta += (e.clientX-lastX)*0.006;
+  camPhi = Math.max(CAM_PHI_MIN, Math.min(CAM_PHI_MAX, camPhi + (e.clientY-lastY)*0.006));
+  lastX=e.clientX; lastY=e.clientY;
+});
+canvas.addEventListener("wheel", e=>{ e.preventDefault(); camDist = Math.max(5, Math.min(10, camDist + e.deltaY*0.004)); }, {passive:false});
+
+/* ============================= UI WIRING ============================= */
+
+const statusPill = document.getElementById("statusPill");
+const statusText = document.getElementById("statusText");
+const neuronCountReadout = document.getElementById("neuronCountReadout");
+const edgeCountReadout = document.getElementById("edgeCountReadout");
+const loadStatus = document.getElementById("loadStatus");
+const fitVal = document.getElementById("fitVal");
+const genCount = document.getElementById("genCount");
+const dopamineVal = document.getElementById("dopamineVal");
+const nowPlaying = document.getElementById("nowPlaying");
+const sectionReadout = document.getElementById("sectionReadout");
+const barReadout = document.getElementById("barReadout");
+const barTotal = document.getElementById("barTotal");
+const btnToggle = document.getElementById("btnToggle");
+const btnMute = document.getElementById("btnMute");
+const btnSource = document.getElementById("btnSource");
+const audioHint = document.getElementById("audioHint");
+let muted = false;
+btnMute.addEventListener("click", ()=>{
+  muted = !muted;
+  if(master) master.gain.setTargetAtTime(muted?0:0.9, actx.currentTime, 0.01);
+  btnMute.textContent = muted ? "🔇 Unmute" : "🔊 Mute";
+});
+
+function setStatus(text, cls){
+  statusText.textContent = text;
+  statusPill.className = "status-pill" + (cls? " "+cls : "");
+}
+
+const fitCanvas = document.getElementById("fitnessChart");
+const fctx = fitCanvas.getContext("2d");
+function drawFitness(history){
+  const w = fitCanvas.width, h = fitCanvas.height;
+  fctx.clearRect(0,0,w,h);
+  const cs = getComputedStyle(document.documentElement);
+  fctx.strokeStyle = cs.getPropertyValue("--line-soft").trim(); fctx.lineWidth=1;
+  for(let i=1;i<4;i++){ const y=h*i/4; fctx.beginPath(); fctx.moveTo(0,y); fctx.lineTo(w,y); fctx.stroke(); }
+  if(history.length<2) return;
+  const max = 100;
+  fctx.strokeStyle = cs.getPropertyValue("--accent").trim(); fctx.lineWidth=2; fctx.beginPath();
+  history.forEach((v,i)=>{
+    const x = i/(Math.max(history.length-1,1))*w, y = h-(v/max)*h*0.92-4;
+    if(i===0) fctx.moveTo(x,y); else fctx.lineTo(x,y);
+  });
+  fctx.stroke();
+  const last = history[history.length-1];
+  const lx = w, ly = h-(last/max)*h*0.92-4;
+  fctx.fillStyle = cs.getPropertyValue("--dopamine").trim();
+  fctx.beginPath(); fctx.arc(Math.min(lx,w-3), ly, 3.5, 0, 7); fctx.fill();
+}
+drawFitness([]);
+
+/* ============================= REAL NEURON POINT CLOUD ============================= */
+
+const legendEl = document.getElementById("legend");
+const SUPERCLASS_PALETTE = {
+  ol_intrinsic:"#3a5a78", cb_intrinsic:"#5a5a68", vnc_intrinsic:"#4a6a5a",
+  visual_projection:"#4f7ba8", vnc_sensory:"#6a8a5a", ol_sensory:"#5f8fc9",
+  cb_sensory:"#8a7a5a", ascending_neuron:"#9a7ab0", descending_neuron:"#b08a4a",
+  visual_centrifugal:"#7a9ac0", cb_motor:"#c97a5a",
+};
+const DEFAULT_SC_COLOR = "#4a4a52";
+
+let cloudMeta = null;
+let channelPulse = {kick:0, snare:0, hihat:0, cymbal:0, tom:0, chord:0};
+let channelPoints = {};
+
+function addLegendFromCloud(cloud, channelSubclassMap){
+  (cloud.superclass_names||[]).slice(0,6).forEach(name=>{
+    const c = SUPERCLASS_PALETTE[name] || DEFAULT_SC_COLOR;
+    const span = document.createElement("span");
+    span.innerHTML = `<i style="background:${c}"></i>${name.replace(/_/g," ")}`;
+    legendEl.appendChild(span);
+  });
+  Object.keys(CHANNEL_COLOR).forEach(ch=>{
+    const span = document.createElement("span");
+    const label = channelSubclassMap ? `${ch} = ${channelSubclassMap[ch]} motor neurons` : ch;
+    span.innerHTML = `<i style="background:${CHANNEL_COLOR[ch]}"></i>${label}`;
+    legendEl.appendChild(span);
+  });
+}
+
+function buildNeuronCloud(cloud){
+  const xyz = cloud.xyz;
+  const n = xyz.length;
+  let minX=Infinity,minY=Infinity,minZ=Infinity,maxX=-Infinity,maxY=-Infinity,maxZ=-Infinity;
+  for(let i=0;i<n;i++){
+    const [x,y,z] = xyz[i];
+    if(x<minX)minX=x; if(x>maxX)maxX=x;
+    if(y<minY)minY=y; if(y>maxY)maxY=y;
+    if(z<minZ)minZ=z; if(z>maxZ)maxZ=z;
+  }
+  const cx=(minX+maxX)/2, cy=(minY+maxY)/2, cz=(minZ+maxZ)/2;
+  const span = Math.max(maxX-minX, maxY-minY, maxZ-minZ) || 1;
+  const scale = 6.0/span;
+
+  const positions = new Float32Array(n*3);
+  const colors = new Float32Array(n*3);
+  const baseColor = new THREE.Color();
+  for(let i=0;i<n;i++){
+    const [x,y,z] = xyz[i];
+    positions[i*3] = (x-cx)*scale;
+    positions[i*3+1] = (y-cy)*scale;
+    positions[i*3+2] = (z-cz)*scale;
+    const scName = cloud.superclass_names[cloud.superclass_code[i]] || "";
+    baseColor.set(SUPERCLASS_PALETTE[scName] || DEFAULT_SC_COLOR);
+    colors[i*3] = baseColor.r; colors[i*3+1] = baseColor.g; colors[i*3+2] = baseColor.b;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.BufferAttribute(positions,3));
+  geo.setAttribute("color", new THREE.BufferAttribute(colors,3));
+  const mat = new THREE.PointsMaterial({size:0.028, vertexColors:true, transparent:true, opacity:0.65, sizeAttenuation:true, depthWrite:false});
+  const points = new THREE.Points(geo, mat);
+  points.layers.set(1);
+  scene.add(points);
+
+  // one brighter overlay per real motor channel, so it can pulse on its own hits
+  cloud.channel_names.forEach((ch, chIdx)=>{
+    const idxs = [];
+    for(let i=0;i<n;i++){ if(cloud.channel_code[i] === chIdx+1) idxs.push(i); }
+    const pos = new Float32Array(idxs.length*3);
+    idxs.forEach((i,j)=>{
+      pos[j*3]=positions[i*3]; pos[j*3+1]=positions[i*3+1]; pos[j*3+2]=positions[i*3+2];
+    });
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.BufferAttribute(pos,3));
+    const m = new THREE.PointsMaterial({size:0.09, color:new THREE.Color(CHANNEL_COLOR[ch]), transparent:true, opacity:0.85, sizeAttenuation:true, depthWrite:false});
+    const p = new THREE.Points(g, m);
+    p.layers.set(1);
+    scene.add(p);
+    channelPoints[ch] = {points:p, mat:m, baseSize:0.09};
+  });
+
+  brainTarget.set(0,0,0);
+}
+
+function pulseChannel(ch, vel){
+  channelPulse[ch] = Math.min(1, (channelPulse[ch]||0) + vel);
+}
+
+/* ============================= LIVE, WITH A RECORDED FALLBACK ============================= */
+/* One page, two ways to get sound: if fly_drums_live_server.py answers a
+   WebSocket at /ws within ~1.5s, this plays the real simulation live off your
+   GPU. If nothing answers (e.g. this is the published Artifact, which can't
+   reach your machine), it falls back to fetching fly_drums_export.json and
+   replaying that recorded run instead. Same visuals, same audio, either way —
+   only the data source and the "live" vs "(recorded)" label differ. */
+
+let mode = null; // "live" | "recorded"
+let playing = false, paused = false;
+let visualEventQueue = [];
+let audioReady = false;
+let pendingAction = null;
+let nextBarTime = null;
+let liveBpm = 100;
+let rewardHistory = [];
+let barCount = 0;
+let ws = null;
+let hitsByBar = [], barSection = [];
+let recordedData = null;      // fetched once, cached, reused every time we switch to recorded
+let recordedTimer = null;     // the recorded-mode setInterval, so switching away can stop it
+let cloudReady = false;       // the neuron cloud is built once, shared by both sources
+
+function fireHit(ch, t, vel){
+  const extra = {};
+  if(ch==="tom") extra.pitch = 130;
+  if(ch==="chord") extra.freqs = chordFreqs(73.4, SCALES.blend, barCount % 4);
+  triggerDrum(ch, t, vel, extra);
+  visualEventQueue.push({time:t, ch, vel});
+}
+
+function scheduleBar(hits, bpmVal, barIdx){
+  liveBpm = bpmVal; barCount = barIdx;
+  const stepDur = 60/liveBpm/4, barDur = stepDur*16;
+  if(nextBarTime===null || nextBarTime < actx.currentTime) nextBarTime = actx.currentTime + 0.1;
+  const barStart = nextBarTime;
+  hits.forEach(h=> fireHit(h.ch, barStart + h.step*stepDur, h.vel));
+  nextBarTime += barDur;
+  playing = true;
+  nowPlaying.classList.add("on");
+  btnToggle.disabled = false; btnToggle.textContent = "Pause";
+}
+
+function ensureCloud(cloud, channelSubclassMap){
+  if(cloudReady) return;
+  cloudReady = true;
+  buildNeuronCloud(cloud);
+  addLegendFromCloud(cloud, channelSubclassMap || null);
+}
+
+/* ---- live mode: fly_drums_live_server.py is answering ---- */
+function handleLiveMessage(ev){
+  const msg = JSON.parse(ev.data);
+  if(msg.type==="meta"){
+    neuronCountReadout.textContent = msg.neurons.toLocaleString();
+    edgeCountReadout.textContent = msg.edges.toLocaleString();
+    loadStatus.textContent = `live on ${msg.device} · dt=${msg.dt_ms}ms · drive=${msg.drive_hz}Hz`;
+  } else if(msg.type==="training"){
+    genCount.textContent = msg.gen;
+    fitVal.textContent = msg.fitness.toFixed(1);
+    dopamineVal.textContent = msg.depressed.toLocaleString() + " / " + msg.synapses.toLocaleString();
+    rewardHistory.push(msg.fitness);
+    drawFitness(rewardHistory);
+    setStatus(`training live · gen ${msg.gen}/${msg.total}`, "live");
+  } else if(msg.type==="bar"){
+    sectionReadout.textContent = msg.section;
+    barReadout.textContent = msg.bar+1;
+    barTotal.textContent = "∞";
+    if(mode!=="live" || paused) return;
+    const doIt = ()=>{ scheduleBar(msg.hits, msg.bpm, msg.bar); setStatus("performing live · "+msg.compute_s+"s/bar on your GPU","playing"); };
+    if(audioReady) doIt(); else pendingAction = doIt;
+  }
+}
+
+function useLive(sock){
+  if(recordedTimer){ clearInterval(recordedTimer); recordedTimer = null; }
+  mode = "live"; ws = sock; nextBarTime = null;
+  btnSource.textContent = "⏺ Use recorded"; btnSource.disabled = false;
+  if(!cloudReady){
+    fetch("/neuron_cloud.json").then(r=>r.json()).then(cloud=> ensureCloud(cloud, null)).catch(()=>{});
+  }
+}
+
+/* ---- recorded: cached after first fetch, reusable any time we switch to it ---- */
+function useRecorded(reason){
+  mode = "recorded"; nextBarTime = null;
+  btnSource.textContent = "▶ Try live"; btnSource.disabled = false;
+  const withData = (data)=>{
+    recordedData = data;
+    ensureCloud(data.neuron_cloud, data.meta.channel_subclass);
+    neuronCountReadout.textContent = data.meta.neurons.toLocaleString();
+    edgeCountReadout.textContent = data.meta.edges.toLocaleString();
+    genCount.textContent = data.meta.generations;
+    fitVal.textContent = (data.bar_fitness[data.bar_fitness.length-1]||0).toFixed(1);
+    dopamineVal.textContent = data.mushroom_stats.depressed.toLocaleString() + " / " + data.mushroom_stats.synapses.toLocaleString();
+    drawFitness(data.reward_history);
+    barTotal.textContent = data.meta.bars;
+    loadStatus.textContent = `${reason} · ${data.meta.neurons.toLocaleString()} neurons · ${data.meta.wall_clock_s}s to simulate`;
+
+    const bars = data.meta.bars;
+    hitsByBar = new Array(bars).fill(0).map(()=>[]);
+    barSection = new Array(bars).fill("groove");
+    data.hits.forEach(h=>{ hitsByBar[h.bar].push(h); barSection[h.bar] = h.section; });
+
+    const startPlayback = ()=>{
+      let cur = 0;
+      playing = true; paused = false;
+      nowPlaying.classList.add("on");
+      btnToggle.disabled = false; btnToggle.textContent = "Pause";
+      setStatus("performing (recorded)", "playing");
+      nextBarTime = actx.currentTime + 0.15;
+      recordedTimer = setInterval(()=>{
+        if(mode!=="recorded" || !playing || paused) return;
+        while(nextBarTime < actx.currentTime + 0.12){
+          scheduleBar(hitsByBar[cur], 100, cur);
+          sectionReadout.textContent = barSection[cur];
+          barReadout.textContent = cur+1;
+          cur = (cur+1) % bars;
+        }
+      }, 25);
+    };
+    if(audioReady) startPlayback(); else pendingAction = startPlayback;
+  };
+  if(recordedData){ withData(recordedData); return; }
+  fetch("fly_drums_export.json").then(r=>{
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    return r.json();
+  }).then(withData).catch(err=>{
+    loadStatus.textContent = "no live server and couldn't load fly_drums_export.json either. " + err.message;
+    setStatus("no data", "");
+  });
+}
+
+function tryLive(onFail){
+  const proto = location.protocol==="https:" ? "wss://" : "ws://";
+  let settled = false, sock;
+  try { sock = new WebSocket(proto + location.host + "/ws"); }
+  catch(e){ onFail(); return; }
+  const timer = setTimeout(()=>{ if(!settled){ settled=true; try{ sock.close(); }catch(e){} onFail(); } }, 1500);
+  sock.onmessage = (ev)=>{
+    if(!settled){
+      settled = true; clearTimeout(timer);
+      useLive(sock);
+      sock.onerror = ()=>{ if(mode==="live") setStatus("disconnected",""); };
+      sock.onclose = ()=>{ if(mode==="live") setStatus("disconnected",""); };
+    }
+    handleLiveMessage(ev);
+  };
+  sock.onerror = ()=>{ if(!settled){ settled=true; clearTimeout(timer); onFail(); } };
+  sock.onclose = ()=>{ if(!settled){ settled=true; clearTimeout(timer); onFail(); } };
+}
+
+tryLive(()=>useRecorded("recorded run (no live server found)"));
+
+btnSource.addEventListener("click", ()=>{
+  if(mode==="live"){
+    if(ws){ ws.onmessage=null; ws.onerror=null; ws.onclose=null; try{ ws.close(); }catch(e){} ws=null; }
+    useRecorded("recorded run (switched manually)");
+  } else {
+    btnSource.disabled = true; btnSource.textContent = "checking …";
+    tryLive(()=>{ btnSource.textContent = "▶ Try live"; btnSource.disabled = false; loadStatus.textContent = "still no live server found — staying on the recorded run."; });
+  }
+});
+
+/* ============================= RENDER LOOP ============================= */
+
+function renderLoop(){
+  requestAnimationFrame(renderLoop);
+  const now = performance.now();
+
+  while(visualEventQueue.length && actx && visualEventQueue[0].time*1000 <= actx.currentTime*1000 + 5){
+    const ev = visualEventQueue.shift();
+    bumpKit(ev.ch, ev.vel);
+    pulseChannel(ev.ch, ev.vel);
+  }
+
+  Object.keys(channelPulse).forEach(ch=>{
+    channelPulse[ch] *= 0.9;
+    const cp = channelPoints[ch];
+    if(cp){
+      cp.mat.size = cp.baseSize * (1 + channelPulse[ch]*2.2);
+      cp.mat.opacity = 0.55 + channelPulse[ch]*0.45;
+    }
+  });
+
+  particles.forEach(p=>{
+    if(!p.active) return;
+    const t = (now - p.t0)/(p.t1-p.t0);
+    if(t>=1){ p.active=false; p.mesh.visible=false; return; }
+    p.mesh.position.lerpVectors(p.from, p.to, t);
+    p.mat.opacity = 1-t;
+  });
+
+  Object.values(kitMeshes).forEach(k=>{
+    k.mesh.position.y += (k.baseY - k.mesh.position.y)*0.25;
+    k.mesh.scale.x += (1-k.mesh.scale.x)*0.2; k.mesh.scale.z += (1-k.mesh.scale.z)*0.2;
+    k.mat.emissiveIntensity *= 0.88;
+  });
+
+  armPivotL.rotation.x += (armRestL - armPivotL.rotation.x)*0.22;
+  armPivotR.rotation.x += (armRestR - armPivotR.rotation.x)*0.22;
+  kickLegPivot.rotation.x += (kickLegRest - kickLegPivot.rotation.x)*0.22;
+  if(kickBeaterPivot) kickBeaterPivot.rotation.z *= 0.78;
+  if(hihatTopMesh) hihatTopMesh.position.y += (0.07 - hihatTopMesh.position.y)*0.3;
+  flyGroup.position.y = 0.35 + Math.sin(now*0.0022)*0.02;
+
+  if(autoRotate) camTheta += 0.0014;
+  updateCamera();
+  renderer.render(scene, camera);
+
+  if(brainAutoRotate) camThetaBrain += 0.0025;
+  updateCameraBrain();
+  rendererBrain.render(scene, cameraBrain);
+}
+function bumpKit(ch, vel){
+  const k = kitMeshes[ch]; if(!k) return;
+  k.mesh.position.y = k.baseY - 0.06*vel;
+  k.mesh.scale.x = 1+0.1*vel; k.mesh.scale.z = 1+0.1*vel;
+  k.mat.emissiveIntensity = 1.4*vel;
+
+  if(ch==="snare"||ch==="tom"){ armPivotL.rotation.x = armRestL - 0.9*vel; }
+  if(ch==="hihat"||ch==="cymbal"){ armPivotR.rotation.x = armRestR - 0.9*vel; if(hihatTopMesh) hihatTopMesh.position.y = 0.07-0.05*vel; }
+  if(ch==="chord"){ armPivotL.rotation.x = armRestL - 0.5*vel; armPivotR.rotation.x = armRestR - 0.5*vel; }
+  if(ch==="kick"){
+    kickLegPivot.rotation.x = kickLegRest - 0.55*vel;
+    if(kickBeaterPivot) kickBeaterPivot.rotation.z = 0.5*vel;
+  }
+}
+
+requestAnimationFrame(renderLoop);
+
+/* ============================= BUTTON HANDLERS ============================= */
+
+function unlockAudioOnce(){
+  if(!actx) initAudio();
+  const proceed = ()=>{
+    audioHint.style.display = "none";
+    audioReady = true;
+    if(pendingAction){ pendingAction(); pendingAction=null; }
+  };
+  if(actx.state === "suspended") actx.resume().then(proceed); else proceed();
+  document.removeEventListener("pointerdown", unlockAudioOnce);
+  document.removeEventListener("keydown", unlockAudioOnce);
+}
+document.addEventListener("pointerdown", unlockAudioOnce);
+document.addEventListener("keydown", unlockAudioOnce);
+
+btnToggle.addEventListener("click", ()=>{
+  if(!playing) return;
+  paused = !paused;
+  btnToggle.textContent = paused ? "Resume" : "Pause";
+  setStatus(paused? "paused (still training live)" : "performing live", paused? "" : "playing");
+  if(!paused) nextBarTime = actx.currentTime + 0.1;
+});
+</script>
+
+</body>
+</html>
