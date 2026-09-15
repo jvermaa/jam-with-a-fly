@@ -16,10 +16,19 @@ Research, released under CC-BY 4.0, and it stays under CC-BY wherever it
 goes. If you fork this, keep that attribution — it's the whole reason any of
 this is real.
 
-Groove reference data (`fly_drums_export.json`'s reward target) is quantized
-from six tracks in Google Magenta's
+Groove reference data (part of the reward target in `fly_drums_sim.py`) is
+quantized from six tracks in Google Magenta's
 [Groove MIDI Dataset](https://magenta.withgoogle.com/datasets/groove)
-(CC BY 4.0).
+(CC BY 4.0) and committed in `reference_data/`.
+
+The rest of that reward target, when available, comes from
+[MDBDrums](https://github.com/CarlSouthall/MDBDrums) (C. Southall, C. Wu,
+A. Lerch, J. Hockman, *MDB Drums — An Annotated Subset of MedleyDB for
+Automatic Drum Transcription*, ISMIR 2017), which is **CC BY-NC-SA 4.0** —
+non-commercial and share-alike. Because of that, nothing derived from it is
+committed here: `fly_drums_sim.py` reads it live from your own local
+checkout (see README) and folds it into the reward target at training time,
+never redistributing it.
 
 The bundled `models/drum_kit.glb` drum kit model — check its own licence
 before reusing it outside this project if it did not originate here.

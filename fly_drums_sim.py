@@ -5,9 +5,10 @@ Not a demo of "AI drumming" — the leg, wing, haltere and neck motor neurons
 read out here are real, measured cells (superclass vnc_motor, subclass fl/ml/
 hl/wm/hm/nm). The learning is the real one too: mushroom.MushroomBody, the same
 dopamine-gated Kenyon-cell -> MBON depression rule used elsewhere in this repo,
-rewarded here by how closely the real motor output's 16-step rhythm matches six
-real human grooves (Google Magenta's Groove MIDI Dataset, already reduced to a
-16-step probability grid for the browser demo in ../ganglion-groove.html).
+rewarded here by how closely the real motor output's 16-step rhythm matches
+real human drumming: six tracks from Google Magenta's Groove MIDI Dataset
+(electronic kit) blended with real acoustic-kit performances from MDBDrums,
+when a local checkout of the latter is available -- see build_mdb_grid().
 
 WHAT IS REAL AND WHAT IS CHOSEN, STATED PLAINLY
 * The connectome, the LIF dynamics, the six motor populations and the KC->MBON
@@ -41,6 +42,7 @@ also makes a much longer final performance affordable.
 """
 import copy
 import json
+import os
 import re
 import time
 from pathlib import Path
@@ -84,11 +86,69 @@ POP_SIZE = 4          # candidate gain-vectors evaluated per generation
 MUTATE_SIGMA = 0.14
 FINAL_BARS = 24
 
-GROOVE_JSON = Path(
-    r"C:/Users/sykeriin/AppData/Local/Temp/claude/"
-    r"C--Users-sykeriin-Desktop-Projects-fly-drums/f0b37337-1fe6-413e-8003-4a277cd291c3/"
-    r"scratchpad/groove/groove_reference.json"
-)
+GROOVE_JSON = ROOT / "reference_data" / "groove_reference.json"
+
+# MDBDrums (Southall et al. 2017, ISMIR) is CC BY-NC-SA 4.0 -- share-alike and
+# non-commercial. So unlike the Groove MIDI Dataset (CC-BY, no such
+# restriction), nothing derived from it is committed to this repo: this reads
+# your own local checkout of https://github.com/CarlSouthall/MDBDrums, at
+# MDB_DRUMS_DIR (env var) or the default sibling-folder guess below, and
+# quietly skips it if that path doesn't exist. Class-annotation labels
+# (KD/SD/HH/TT/CY/OT) map onto the same six channels the Groove data does;
+# "OT" (other percussion) has no equivalent here and is dropped.
+MDB_DRUMS_DIR = Path(os.environ.get("MDB_DRUMS_DIR", ROOT.parent / "MDBDrums" / "MDB Drums"))
+MDB_LABEL_MAP = {"KD": "kick", "SD": "snare", "HH": "hihat", "TT": "tom", "CY": "cymbal"}
+
+
+def build_mdb_grid():
+    """16-step probability grid from local MDBDrums onset+beat annotations, or None if absent."""
+    class_dir, beats_dir = MDB_DRUMS_DIR / "annotations" / "class", MDB_DRUMS_DIR / "annotations" / "beats"
+    if not class_dir.is_dir():
+        return None
+    grid = {ch: np.zeros(16) for ch in CHANNEL_SUBCLASS}
+    n_tracks = 0
+    for class_file in sorted(class_dir.glob("*_class.txt")):
+        base = class_file.name[: -len("_class.txt")]
+        beats_file = beats_dir / f"{base}_MIX.beats"
+        if not beats_file.exists():
+            continue
+        beats = []
+        for line in beats_file.read_text().splitlines():
+            parts = line.split()
+            if len(parts) == 2:
+                beats.append((float(parts[0]), int(parts[1])))
+        if len(beats) < 2:
+            continue
+        n_tracks += 1
+        hits = []
+        for line in class_file.read_text().splitlines():
+            parts = line.split("\t")
+            if len(parts) < 2:
+                continue
+            hits.append((float(parts[0].strip()), parts[1].strip()))
+        for t, label in hits:
+            ch = MDB_LABEL_MAP.get(label)
+            if ch is None:
+                continue
+            i = 0
+            while i + 1 < len(beats) and beats[i + 1][0] <= t:
+                i += 1
+            if i + 1 >= len(beats):
+                continue
+            t0, b0 = beats[i]
+            t1, _ = beats[i + 1]
+            if t1 <= t0:
+                continue
+            frac = min(max((t - t0) / (t1 - t0), 0.0), 0.999)
+            step = ((b0 - 1) * 4 + round(frac * 4)) % 16
+            grid[ch][step] += 1.0  # onset-only annotations: no velocity, every hit counts equally
+    if n_tracks == 0:
+        return None
+    for ch in MDB_LABEL_MAP.values():
+        m = grid[ch].max() or 1.0
+        grid[ch] = grid[ch] / m
+    print(f"  MDBDrums: folded in {n_tracks} real acoustic-kit tracks from {MDB_DRUMS_DIR}")
+    return grid
 
 
 def build_target_grid():
@@ -107,6 +167,17 @@ def build_target_grid():
     for ch in drum_map:
         m = grid[ch].max() or 1.0
         grid[ch] = grid[ch] / m
+
+    mdb_grid = build_mdb_grid()
+    if mdb_grid is not None:
+        # blend: real electronic-kit grooves (Groove MIDI) averaged with real
+        # acoustic-kit performances (MDBDrums), equal weight
+        for ch in drum_map:
+            grid[ch] = (grid[ch] + mdb_grid[ch]) / 2.0
+    else:
+        print(f"  MDBDrums not found at {MDB_DRUMS_DIR} -- training on Groove MIDI alone "
+              f"(set MDB_DRUMS_DIR to fold it in)")
+
     grid["chord"] = np.array([0.75, 0, 0, 0, 0.15, 0, 0.2, 0, 0.6, 0, 0, 0, 0.25, 0, 0.15, 0])
     return {k: v.tolist() for k, v in grid.items()}
 

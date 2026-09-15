@@ -9,8 +9,10 @@ integrate-and-fire simulation, reads six real, annotated motor-neuron
 populations (foreleg, midleg, hindleg, wing, haltere, neck) as drum voices,
 and trains them with the same mechanism a fly actually learns odors with:
 dopamine-gated depression at the Kenyon-cell → MBON synapse. It's rewarded by
-how closely its output matches six real human drum performances from
-Google Magenta's Groove MIDI Dataset.
+how closely its output matches real human drumming — six electronic-kit
+performances from Google Magenta's Groove MIDI Dataset, blended with 23 real
+acoustic-kit performances from MDBDrums when you have a local checkout of it
+(see "Real drumming data" below).
 
 **[See it running](real-brain.html)** — a three.js page: every traced neuron
 plotted at its real measured position on the left, a fly performing on a kit
@@ -60,6 +62,23 @@ https://storage.googleapis.com/flyem-male-cns/v1.0/connectome-data/flat-connecto
 ```
 
 Put those three files in `data/`, then `py build_graph.py`.
+
+## Real drumming data
+
+The reward target in `fly_drums_sim.py` is quantized real drumming, not
+invented rhythm:
+
+- **Groove MIDI Dataset** (Google Magenta, CC BY 4.0) — six electronic-kit
+  performances, `reference_data/groove_reference.json`, committed here since
+  its licence permits that.
+- **[MDBDrums](https://github.com/CarlSouthall/MDBDrums)** (Southall et al.
+  2017, CC BY-NC-SA 4.0) — 23 real acoustic-kit performances. Its licence is
+  share-alike and non-commercial, so **nothing derived from it is committed
+  to this repo**. Clone it yourself as a sibling folder —
+  `git clone https://github.com/CarlSouthall/MDBDrums ../MDBDrums` from this
+  repo's parent directory — and `fly_drums_sim.py` finds it automatically
+  (or point `MDB_DRUMS_DIR` at wherever you put it). Training works fine
+  without it; the reward is just Groove MIDI alone in that case.
 
 ## What's real, what's chosen — stated plainly
 
