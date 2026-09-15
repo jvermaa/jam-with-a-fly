@@ -474,6 +474,7 @@ scene.add(throneGroup);
 // the procedural kit above; if anything about the load fails (missing file,
 // bad path, GLTFLoader not available), the procedural kit is left showing,
 // so this can never break the page.
+let glbModel = null, glbBaseScale = 1, glbBasePos = null, glbPulse = 0;
 if(window.THREE && THREE.GLTFLoader){
   try{
     new THREE.GLTFLoader().load("models/drum_kit.glb", (gltf)=>{
@@ -483,7 +484,7 @@ if(window.THREE && THREE.GLTFLoader){
       const box = new THREE.Box3().setFromObject(model);
       const size = box.getSize(new THREE.Vector3());
       const center = box.getCenter(new THREE.Vector3());
-      const targetSpan = 2.6; // roughly the footprint the procedural kit occupied
+      const targetSpan = 4.4; // big enough to read clearly next to the fly
       const scale = targetSpan / Math.max(size.x, size.y, size.z, 0.001);
       model.scale.setScalar(scale);
       model.position.set(
@@ -493,6 +494,7 @@ if(window.THREE && THREE.GLTFLoader){
       );
       scene.add(model);
       kitGroup.visible = false;
+      glbModel = model; glbBaseScale = scale; glbBasePos = model.position.clone();
     }, undefined, (err)=>{ console.warn("drum_kit.glb not loaded, using the procedural kit:", err && err.message); });
   } catch(e){ console.warn("GLTFLoader unavailable, using the procedural kit:", e.message); }
 }
@@ -1043,6 +1045,14 @@ function renderLoop(){
     k.mat.emissiveIntensity *= 0.88;
   });
 
+  if(glbModel){
+    glbPulse *= 0.82;
+    const s = glbBaseScale * (1 + glbPulse*0.12);
+    glbModel.scale.setScalar(s);
+    glbModel.position.y = glbBasePos.y - glbPulse*0.08*glbBaseScale;
+    glbModel.rotation.y = Math.sin(now*0.0006)*0.06; // a faint idle sway so it never looks like a static prop
+  }
+
   armPivotL.rotation.x += (armRestL - armPivotL.rotation.x)*0.22;
   armPivotR.rotation.x += (armRestR - armPivotR.rotation.x)*0.22;
   kickLegPivot.rotation.x += (kickLegRest - kickLegPivot.rotation.x)*0.22;
@@ -1059,10 +1069,13 @@ function renderLoop(){
   rendererBrain.render(scene, cameraBrain);
 }
 function bumpKit(ch, vel){
-  const k = kitMeshes[ch]; if(!k) return;
-  k.mesh.position.y = k.baseY - 0.06*vel;
-  k.mesh.scale.x = 1+0.1*vel; k.mesh.scale.z = 1+0.1*vel;
-  k.mat.emissiveIntensity = 1.4*vel;
+  glbPulse = Math.min(1, glbPulse + vel);
+  const k = kitMeshes[ch];
+  if(k){
+    k.mesh.position.y = k.baseY - 0.06*vel;
+    k.mesh.scale.x = 1+0.1*vel; k.mesh.scale.z = 1+0.1*vel;
+    k.mat.emissiveIntensity = 1.4*vel;
+  }
 
   if(ch==="snare"||ch==="tom"){ armPivotL.rotation.x = armRestL - 0.9*vel; }
   if(ch==="hihat"||ch==="cymbal"){ armPivotR.rotation.x = armRestR - 0.9*vel; if(hihatTopMesh) hihatTopMesh.position.y = 0.07-0.05*vel; }
