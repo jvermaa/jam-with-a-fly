@@ -37,3 +37,5 @@ Simulation approach after Shiu et al. 2024 (*Nature*) and the LIF model in
 `flysim.py`. Learning rule after Hige et al. 2015 / Cohn et al. 2015,
 implemented in `mushroom.py`. Not affiliated with Janelia, Google, Magenta,
 or fruitflydev.
+
+Additional credits: MaleCNS v1.0 (HHMI Janelia FlyEM, Cambridge Connectomics Group, Google Research, CC-BY 4.0); sykeriin/fly-drums (MIT); fruitflydev/flycoinrh; Bagel Fat One font (SIL OFL) used in assets/.

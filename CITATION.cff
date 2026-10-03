@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+title: jam-with-a-fly
+authors:
+  - family-names: Verma
+    given-names: Jatin
+references:
+  - type: article
+    authors:
+      - family-names: Berg
+        given-names: Stuart
+    year: 2026
+    title: "Male whole-brain connectome and deep cell-type census"
+    journal: Cell
+    doi: 10.1016/j.cell.2026.08.015
