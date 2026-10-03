@@ -24,11 +24,13 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Step 1.6 — best-of-10 batch.** Ranked in `results/batch_untrained.json`. 🧑 said to use any run; the top-ranked `untrained_call_01_seed0` was taken.
 
+- **Step 1.7 — export to upstream's viewer.** `fly_drums_export.json` holds `untrained_call_01_seed0` (original kept as `fly_drums_export.original.json`; schema in `docs/legacy_export_schema.md`). 🧑 confirmed: no console errors from our data, viewer pattern matches the `.mid` in Ableton at 120 BPM. One approved viewer change: playback tempo read from `jam.bpm`.
+
 ## In progress
-- **Step 1.7 — export to upstream's viewer.** `fly_drums_export.json` now holds the chosen run (original kept as `fly_drums_export.original.json`; schema in `docs/legacy_export_schema.md`). Waiting on 🧑: confirm the viewer loads with no console errors, neurons pulse, and kit hits match the printed hit list. Known limits of the old viewer: plays at 100 BPM, pulses motor groups rather than real spikes.
+- **Step 1.8 — 🧑 records Post #1.** Clip A: `calls/call_01.mid` in Ableton. Clip B: screen-record the viewer; audio from `answers/untrained_call_01_seed0.mid` through an Ableton kit. Caption must say "best of 10 runs" and "simulation on the real wiring diagram", and credit Janelia FlyEM, Cambridge, Google Research, fly-drums. 🧑 drops the post link below.
 
 ## Next
-- Step 1.8 — 🧑 records Post #1.
+- Merge `phase-1-untrained-demo`, then Phase 2 (viewer upgrade), Step 2.1: lock export schema v1.
 
 ## Blockers
 - None.
