@@ -19,3 +19,6 @@ tools/*.ttf
 # Env files
 .env
 .env.*
+
+# Local working notes (not published)
+DECISIONS.md

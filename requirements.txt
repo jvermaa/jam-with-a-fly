@@ -11,6 +11,12 @@ pyarrow==23.0.1          # pandas needs it to read the .feather annotations
 fastapi==0.128.0
 uvicorn[standard]==0.52.4
 
+# Fly Drum Jam (PLAN.md Step 0.1): MIDI in/out, plots, tests.
+mido==1.3.3
+pretty_midi==0.2.11.post0
+matplotlib==3.11.2
+pytest==9.1.1
+
 # optional: only needed for the live GPU server (fly_drums_live_server.py).
 # The recorded path (fly_drums_sim.py, real-brain.html's fallback) doesn't
 # need a GPU or torch at all.

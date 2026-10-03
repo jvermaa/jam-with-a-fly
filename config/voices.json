@@ -1,0 +1,12 @@
+{
+  "_comment": "Single source of truth for the voice table (PLAN.md section 1). CHOSEN by us, not from the connectome: which drum maps to which motor group and which hearing (Johnston's organ) group. DEFAULT ONLY until the human confirms it in Step 1.1.",
+  "confirmed_by_human": false,
+  "voices": [
+    {"idx": 0, "name": "Kick",       "midi_note": 36, "motor_group": "hl", "motor_label": "hindleg", "jo_group": 0},
+    {"idx": 1, "name": "Snare",      "midi_note": 38, "motor_group": "ml", "motor_label": "midleg",  "jo_group": 1},
+    {"idx": 2, "name": "Closed hat", "midi_note": 42, "motor_group": "fl", "motor_label": "foreleg", "jo_group": 2},
+    {"idx": 3, "name": "Open hat",   "midi_note": 46, "motor_group": "hm", "motor_label": "haltere", "jo_group": 3},
+    {"idx": 4, "name": "Tom",        "midi_note": 45, "motor_group": "nm", "motor_label": "neck",    "jo_group": 4},
+    {"idx": 5, "name": "Crash",      "midi_note": 49, "motor_group": "wm", "motor_label": "wing",    "jo_group": 5}
+  ]
+}
