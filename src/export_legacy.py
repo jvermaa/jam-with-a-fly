@@ -75,8 +75,11 @@ def neuron_cloud(voices):
 def main():
     run_id = sys.argv[1]
     score = json.loads((ROOT / "results" / f"score_{run_id}.json").read_text())
-    batch = json.loads((ROOT / "results" / "batch_untrained.json").read_text())
+    # The run may come from any of the untrained batches; the honest "best of N" counts them all.
+    batches = {f.name: json.loads(f.read_text()) for f in sorted((ROOT / "results").glob("batch_untrained*.json"))}
+    batch_name, batch = next((n, b) for n, b in batches.items() if any(r["run_id"] == run_id for r in b["runs"]))
     batch_row = next(r for r in batch["runs"] if r["run_id"] == run_id)
+    total_runs = sum(b["n_runs"] for b in batches.values())
     voices = encode.load_voices()
     name = {v["idx"]: v["name"] for v in voices}
 
@@ -121,7 +124,8 @@ def main():
             "f1": score["f1"],
             "baseline_f1": score["baseline_f1"],
             "lag_steps": score["lag_steps"],
-            "selection": f"rank {batch_row['rank']} of {batch['n_runs']} untrained runs",
+            "selection": f"chosen by the human from {total_runs} untrained runs "
+                         f"(rank {batch_row['rank']} of {batch['n_runs']} in results/{batch_name})",
         },
     }
     out = ROOT / "fly_drums_export.json"
