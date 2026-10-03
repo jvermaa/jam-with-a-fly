@@ -8,11 +8,15 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Step 0.3 — upstream demo untouched** (tag `step-0.3`). 🧑 confirmed on `http://localhost:8000/real-brain.html`: neuron cloud renders and colours, the fly plays the kit, audio plays. No upstream file changed.
 
+- **Step 0.4 — connectome + graph** (tag `step-0.4`). Three MaleCNS v1.0 files downloaded to `data/` (MD5s match the server's). `build_graph.py` run unchanged via `src/build_graph_report.py`; pass check met, numbers in `results/build_graph.json`.
+
+**Phase 0 complete.**
+
 ## In progress
-- **Step 0.4 — connectome download + `build_graph.py`.** Pass check: 165,122 neurons.
+- Waiting on 🧑 at the step-0.4 checkpoint (approve starting Phase 1).
 
 ## Next
-- Phase 1, Step 1.1 — find hearing (JO) + motor groups.
+- Phase 1, Step 1.1 — find hearing (JO) + motor groups; ends in a 🧑 checkpoint to confirm the voice table.
 
 ## Blockers
 - None. (Step 0.4 has not been started; it waits on the Step 0.3 reply.)

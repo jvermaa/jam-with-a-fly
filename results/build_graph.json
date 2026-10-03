@@ -1,0 +1,40 @@
+{
+  "step": "0.4",
+  "seed": null,
+  "seed_note": "build_graph.py is deterministic and uses no random numbers",
+  "git_sha": "761090774360eb251134def28e35d20995f939c0",
+  "git_dirty": false,
+  "timestamp": "2026-10-03T18:03:13.504340+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "runtime_s": 13.05,
+  "neurons": 165122,
+  "expected_neurons": 165122,
+  "pass": true,
+  "edges_nonzero": 10228000,
+  "edges_excitatory": 6268194,
+  "edges_inhibitory": 3959806,
+  "synapses_in_W": 101915785,
+  "synapses_note": "synapses on the signed edges kept in W (pairs with >=3 synapses, both ends traced neurons, modulatory/unknown-transmitter edges dropped)",
+  "graph_npz_bytes": 37733623,
+  "data_files": {
+    "connectome-weights-male-cns-v1.0-minconf-0.5.feather": 1051241946,
+    "body-neurotransmitters-male-cns-v1.0.feather": 43282834,
+    "body-annotations-male-cns-v1.0-minconf-0.5.feather": 14483314
+  },
+  "build_graph_stdout": [
+    "loading weights (keeping pairs with >= 3 synapses) ...",
+    "  151,856,684 pre->post pairs on disk",
+    "  23,014,406 pairs kept, 148,334,624 synapses",
+    "loading annotations ...",
+    "loading neurotransmitters ...",
+    "  165,122 traced neurons (of 211,577 annotated bodies)",
+    "  10,511,038 neuron->neuron edges, 104,213,656 synapses",
+    "building sparse matrix ...",
+    "  W: 165,122 x 165,122, 10,228,000 nonzero edges",
+    "  excitatory edges: 6,268,194",
+    "  inhibitory edges: 3,959,806",
+    "  dropped (modulatory/unknown NT): 283,038",
+    "wrote build/graph.npz"
+  ]
+}
