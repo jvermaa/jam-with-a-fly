@@ -16,11 +16,13 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Step 1.2 — first calls** (tag `step-1.2`). 🧑 exported `calls/call_01.mid` … `call_05.mid` from Ableton; all five pass (tempo 120, length 4.0 s, allowed notes only, all 6 voices used across the set). Report in `results/calls_check.json`.
 
+- **Step 1.3 — encoder.** `src/encode.py` + `config/encoder.json`; tests in `tests/test_encode.py` (written by a subagent) green; raster `results/call_01_input.png` shows a burst at every hit. Tagging stopped at 🧑's request.
+
 ## In progress
-- **Step 1.3 — encoder (MIDI → ears).**
+- **Step 1.4 — run the fly (play-along) + silent baseline.**
 
 ## Next
-- Step 1.4 run the fly, 1.5 decoder + score, 1.6 best-of-10 batch → 🧑 checkpoint to pick a run.
+- Step 1.5 decoder + score, 1.6 best-of-10 batch → 🧑 checkpoint to pick a run.
 
 ## Blockers
 - None. (Step 0.4 has not been started; it waits on the Step 0.3 reply.)
