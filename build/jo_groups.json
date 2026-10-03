@@ -1,7 +1,7 @@
 {
  "_comment": "CHOSEN split of REAL Johnston's organ neurons into 6 input groups. See src/groups.py.",
  "method": "subtypes assigned to groups to balance counts (largest first into smallest group)",
- "git_sha": "5b323a79d608fe767b53d936c2fd7bd3d3ab48ec",
+ "git_sha": "4a4f864c51a8cba4baef500d5b26c35a335a6d96",
  "groups": [
   {
    "group": 0,

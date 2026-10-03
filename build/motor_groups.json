@@ -1,6 +1,6 @@
 {
  "_comment": "Upstream's 6 motor groups: FlyBrain.where(subclass=...), as in fly_drums_sim.py.",
- "git_sha": "5b323a79d608fe767b53d936c2fd7bd3d3ab48ec",
+ "git_sha": "4a4f864c51a8cba4baef500d5b26c35a335a6d96",
  "groups": {
   "fl": [
    10163,
