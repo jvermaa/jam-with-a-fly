@@ -9,8 +9,18 @@ Real vs. chosen
           exists only so that each drum voice has its own input channel. Most JO
           neurons are annotated wind/gravity, not auditory (see the summary file).
 
-Motor groups are selected exactly the way upstream fly_drums_sim.py does it:
-FlyBrain.where(subclass=...). flysim.py is imported, not edited.
+Choices confirmed by the human at the Step 1.1 checkpoint (evidence in
+results/reach_check.json):
+  * All JO subtypes are used, not only the annotated-auditory ones.
+  * JO neurons with no outgoing edge in W are dropped: stimulating them cannot
+    affect anything downstream.
+  * Motor groups start from upstream's selection, FlyBrain.where(subclass=...),
+    and are then restricted to motor-neuron superclasses. Upstream's own
+    selection also picks up descending neurons (mostly in the foreleg group);
+    we drop those so every voice is read from motor neurons only. This is a
+    deliberate difference from upstream fly_drums_sim.py.
+
+flysim.py is imported, not edited.
 
 Usage (from the repo root):  python -m src.groups
 """
@@ -32,6 +42,7 @@ SEED = 0
 N_GROUPS = 6
 JO_TYPE_RE = r"^JO"
 MOTOR_SUBCLASSES = ["fl", "ml", "hl", "wm", "hm", "nm"]  # upstream's 6 motor groups
+MOTOR_SUPERCLASSES = ["vnc_motor", "cb_motor"]  # keep motor neurons only
 MIN_JO_TOTAL = 50  # PLAN.md stop condition: fewer than this means a wrong filter
 
 ANNOTATIONS = ROOT / "data" / "body-annotations-male-cns-v1.0-minconf-0.5.feather"
@@ -79,10 +90,11 @@ def main():
     has_output = np.diff(fb.indptr) > 0  # neuron has >=1 outgoing edge in W
 
     # ---- hearing input: Johnston's organ ---------------------------------
-    jo = fb.where(type_re=JO_TYPE_RE)
+    jo_all = fb.where(type_re=JO_TYPE_RE)
+    jo = jo_all[has_output[jo_all]]  # drop JO neurons that connect to nothing in W
     jo_types = fb.types[jo]
     type_counts = counts(jo_types)
-    print(f"JO neurons in the graph: {len(jo)} across {len(type_counts)} subtypes")
+    print(f"JO neurons in the graph: {len(jo_all)}; with output in W: {len(jo)} across {len(type_counts)} subtypes")
     for name, n in sorted(type_counts.items(), key=lambda kv: (-kv[1], kv[0])):
         print(f"  {name:14} {n}")
     if len(jo) < MIN_JO_TOTAL:
@@ -121,9 +133,13 @@ def main():
     # ---- motor output: upstream's 6 groups, selected upstream's way ------
     motor_groups, motor_summary = {}, {}
     for sub in MOTOR_SUBCLASSES:
-        idx = fb.where(subclass=sub)
+        upstream_idx = fb.where(subclass=sub)
+        is_motor = np.isin(fb.superclass[upstream_idx], MOTOR_SUPERCLASSES)
+        idx = upstream_idx[is_motor]
         motor_groups[sub] = sorted(int(b) for b in fb.bodies[idx])
-        motor_summary[sub] = {"count": len(idx), "superclass": counts(fb.superclass[idx])}
+        motor_summary[sub] = {"count": len(idx), "superclass": counts(fb.superclass[idx]),
+                              "upstream_count": len(upstream_idx),
+                              "dropped_non_motor": counts(fb.superclass[upstream_idx[~is_motor]])}
 
     jo_ok = all(s["count"] > 0 for s in jo_summary) and all(s["side"].get("L", 0) > 0 and s["side"].get("R", 0) > 0 for s in jo_summary)
     motor_ok = all(s["count"] > 0 for s in motor_summary.values())
@@ -134,7 +150,7 @@ def main():
         "method": method, "git_sha": prov["git_sha"], "groups": jo_groups,
     }, indent=1) + "\n")
     (BUILD / "motor_groups.json").write_text(json.dumps({
-        "_comment": "Upstream's 6 motor groups: FlyBrain.where(subclass=...), as in fly_drums_sim.py.",
+        "_comment": "Upstream's 6 motor groups (FlyBrain.where(subclass=...)) restricted to motor-neuron superclasses. Differs from upstream, which keeps descending neurons too.",
         "git_sha": prov["git_sha"], "groups": motor_groups,
     }, indent=1) + "\n")
 
@@ -143,7 +159,9 @@ def main():
         **prov,
         "seed_note": "grouping is deterministic; no random numbers were drawn",
         "jo": {
-            "filter": f"FlyBrain.where(type_re={JO_TYPE_RE!r}) on build/graph.npz",
+            "filter": f"FlyBrain.where(type_re={JO_TYPE_RE!r}) on build/graph.npz, keeping neurons with >=1 outgoing edge in W",
+            "total_before_dropping_unconnected": len(jo_all),
+            "dropped_unconnected": len(jo_all) - len(jo),
             "method": method,
             "total": len(jo),
             "n_subtypes": len(type_counts),
@@ -154,7 +172,7 @@ def main():
             "groups": jo_summary,
         },
         "motor": {
-            "filter": "FlyBrain.where(subclass=<name>), same as upstream fly_drums_sim.py",
+            "filter": "FlyBrain.where(subclass=<name>) as upstream, then superclass in " + str(MOTOR_SUPERCLASSES),
             "groups": motor_summary,
         },
         "pass": {
