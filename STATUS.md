@@ -22,11 +22,13 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Step 1.5 — decoder + score.** `src/decode.py`, `src/score.py`; tests (subagent-written) green. `call_01` seed 0: answer written to `answers/untrained_call_01_seed0.mid`, score in `results/score_untrained_call_01_seed0.json` (F1 and random baseline both reported; answer is neither silent nor saturated).
 
+- **Step 1.6 — best-of-10 batch.** Ranked in `results/batch_untrained.json`. 🧑 said to use any run; the top-ranked `untrained_call_01_seed0` was taken.
+
 ## In progress
-- **Step 1.6 — best-of-10 batch.** 10 runs done and ranked in `results/batch_untrained.json`; answers in `answers/untrained_call_0X_seedY.mid`. Waiting on 🧑 checkpoint: listen to the top 3 in Ableton and reply with the chosen run ID.
+- **Step 1.7 — export to upstream's viewer.** `fly_drums_export.json` now holds the chosen run (original kept as `fly_drums_export.original.json`; schema in `docs/legacy_export_schema.md`). Waiting on 🧑: confirm the viewer loads with no console errors, neurons pulse, and kit hits match the printed hit list. Known limits of the old viewer: plays at 100 BPM, pulses motor groups rather than real spikes.
 
 ## Next
-- Step 1.7 — export the chosen run to upstream's viewer format.
+- Step 1.8 — 🧑 records Post #1.
 
 ## Blockers
 - None.
