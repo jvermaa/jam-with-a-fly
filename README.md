@@ -48,7 +48,7 @@ Built on the real wiring diagram of a male fruit fly, mapped neuron by neuron by
 ### Try it
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/jam-with-a-fly
+git clone https://github.com/jvermaa/jam-with-a-fly
 cd jam-with-a-fly
 pip install -r requirements.txt
 python build_graph.py
