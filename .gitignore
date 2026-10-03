@@ -23,3 +23,6 @@ tools/*.ttf
 # Local working notes (not published)
 DECISIONS.md
 claude_decisions.md
+
+# Per-run spike recordings (large; regenerate with src/run_fly.py)
+results/*.npz
