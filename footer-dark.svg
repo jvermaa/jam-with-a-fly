@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 140" width="1280" height="140" role="img" aria-label="a fruit fly between your beat and its beat">
+<circle cx="150" cy="70" r="5" fill="#FF5C97" opacity="0.25"/>
+<circle cx="1130" cy="70" r="5" fill="#7184FF" opacity="0.25"/>
+<circle cx="178" cy="70" r="3.5" fill="#FF5C97" opacity="0.30"/>
+<circle cx="1102" cy="70" r="3.5" fill="#7184FF" opacity="0.30"/>
+<circle cx="206" cy="70" r="3.5" fill="#FF5C97" opacity="0.35"/>
+<circle cx="1074" cy="70" r="3.5" fill="#7184FF" opacity="0.35"/>
+<circle cx="234" cy="70" r="3.5" fill="#FF5C97" opacity="0.40"/>
+<circle cx="1046" cy="70" r="3.5" fill="#7184FF" opacity="0.40"/>
+<circle cx="262" cy="70" r="5" fill="#FF5C97" opacity="0.45"/>
+<circle cx="1018" cy="70" r="5" fill="#7184FF" opacity="0.45"/>
+<circle cx="290" cy="70" r="3.5" fill="#FF5C97" opacity="0.50"/>
+<circle cx="990" cy="70" r="3.5" fill="#7184FF" opacity="0.50"/>
+<circle cx="318" cy="70" r="3.5" fill="#FF5C97" opacity="0.55"/>
+<circle cx="962" cy="70" r="3.5" fill="#7184FF" opacity="0.55"/>
+<circle cx="346" cy="70" r="3.5" fill="#FF5C97" opacity="0.60"/>
+<circle cx="934" cy="70" r="3.5" fill="#7184FF" opacity="0.60"/>
+<circle cx="374" cy="70" r="5" fill="#FF5C97" opacity="0.65"/>
+<circle cx="906" cy="70" r="5" fill="#7184FF" opacity="0.65"/>
+<circle cx="402" cy="70" r="3.5" fill="#FF5C97" opacity="0.70"/>
+<circle cx="878" cy="70" r="3.5" fill="#7184FF" opacity="0.70"/>
+<circle cx="430" cy="70" r="3.5" fill="#FF5C97" opacity="0.75"/>
+<circle cx="850" cy="70" r="3.5" fill="#7184FF" opacity="0.75"/>
+<circle cx="458" cy="70" r="3.5" fill="#FF5C97" opacity="0.80"/>
+<circle cx="822" cy="70" r="3.5" fill="#7184FF" opacity="0.80"/>
+<circle cx="486" cy="70" r="5" fill="#FF5C97" opacity="0.85"/>
+<circle cx="794" cy="70" r="5" fill="#7184FF" opacity="0.85"/>
+<circle cx="514" cy="70" r="3.5" fill="#FF5C97" opacity="0.90"/>
+<circle cx="766" cy="70" r="3.5" fill="#7184FF" opacity="0.90"/>
+<circle cx="542" cy="70" r="3.5" fill="#FF5C97" opacity="0.95"/>
+<circle cx="738" cy="70" r="3.5" fill="#7184FF" opacity="0.95"/>
+<circle cx="570" cy="70" r="3.5" fill="#FF5C97" opacity="1.00"/>
+<circle cx="710" cy="70" r="3.5" fill="#7184FF" opacity="1.00"/>
+<g transform="translate(640 76) scale(1.5)">
+  <ellipse cx="-14" cy="-10" rx="20" ry="9" fill="#7184FF" opacity=".28" transform="rotate(-28 -14 -10)"/>
+  <ellipse cx="14" cy="-10" rx="20" ry="9" fill="#7184FF" opacity=".28" transform="rotate(28 14 -10)"/>
+  <path d="M-6 6 L-16 16 M6 6 L16 16 M-7 0 L-19 2 M7 0 L19 2 M-6 -4 L-15 -10 M6 -4 L15 -10" stroke="#F4F2FF" stroke-width="2.4" stroke-linecap="round"/>
+  <ellipse cx="0" cy="6" rx="8" ry="13" fill="#F4F2FF"/>
+  <circle cx="0" cy="-10" r="8" fill="#F4F2FF"/>
+  <circle cx="-5" cy="-12" r="4.2" fill="#FF5C97"/>
+  <circle cx="5" cy="-12" r="4.2" fill="#FF5C97"/>
+</g>
+</svg>
