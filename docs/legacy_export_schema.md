@@ -44,9 +44,10 @@ the viewer never reads them.
   overlay of that channel's neurons. The export carries no spike data, and the
   viewer has nowhere to put any. What flashes is "the motor group that produced
   this hit", not "the neurons that fired".
-- **Tempo is hard-coded to 100 BPM in recorded mode** (`scheduleBar(…, 100, …)`).
-  Our material is 120 BPM, so the viewer plays the answer 1.2× slower than the
-  `.mid`. It cannot be changed from the data.
+- **Tempo.** Upstream hard-codes 100 BPM in recorded mode. We changed that one
+  line (with the human's approval): the viewer now uses `jam.bpm` when the
+  export has it and falls back to 100 otherwise, so upstream's own export
+  plays exactly as before and ours plays at 120.
 - **Six fixed channels.** There is no open-hat piece.
 
 ## How our run maps onto it (`src/export_legacy.py`)
@@ -73,4 +74,4 @@ the viewer never reads them.
   is the real KC→MBON synapse count.
 - An extra top-level `jam` object carries provenance (`run_id`, `seed`,
   `git_sha`, `timestamp`, `bpm`, `f1`, `baseline_f1`, `lag_steps`). The viewer
-  ignores it.
+  reads only `jam.bpm` (playback tempo).

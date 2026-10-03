@@ -5,9 +5,9 @@ docs/legacy_export_schema.md, so the unmodified real-brain.html can play the
 fly's answer. The original file is kept as fly_drums_export.original.json.
 
 The hits are the decoded answer exactly as scored: nothing is added, removed or
-moved. Known limits of the old viewer (it plays at 100 BPM, it pulses a motor
-group on each hit rather than showing real spikes, it has no open-hat piece)
-are listed in the schema doc.
+moved. Known limits of the old viewer (it pulses a motor group on each hit
+rather than showing real spikes, it has no open-hat piece) are listed in the
+schema doc. Playback tempo comes from jam.bpm.
 
 Usage (from the repo root):  python -m src.export_legacy untrained_call_01_seed0
 """
@@ -118,7 +118,6 @@ def main():
             "source_score": f"results/score_{run_id}.json",
             "answer_mid": score["answer_mid"],
             "bpm": c.BPM,
-            "viewer_playback_bpm": 100,
             "f1": score["f1"],
             "baseline_f1": score["baseline_f1"],
             "lag_steps": score["lag_steps"],
