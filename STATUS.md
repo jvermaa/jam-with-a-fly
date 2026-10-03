@@ -18,11 +18,13 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Step 1.3 — encoder.** `src/encode.py` + `config/encoder.json`; tests in `tests/test_encode.py` (written by a subagent) green; raster `results/call_01_input.png` shows a burst at every hit. Tagging stopped at 🧑's request.
 
+- **Step 1.4 — run the fly.** `src/run_fly.py` plays a call into the JO groups through the unmodified simulator and runs a silent baseline with identical random numbers. Pass check met for `call_01`, seed 0: motor spike counts differ from silent (`results/run_meta.json`). Spike recordings (`results/*.npz`) are gitignored (about 30 MB each).
+
 ## In progress
-- **Step 1.4 — run the fly (play-along) + silent baseline.**
+- **Step 1.5 — decoder + score.**
 
 ## Next
-- Step 1.5 decoder + score, 1.6 best-of-10 batch → 🧑 checkpoint to pick a run.
+- Step 1.6 best-of-10 batch → 🧑 checkpoint to pick a run.
 
 ## Blockers
 - None. (Step 0.4 has not been started; it waits on the Step 0.3 reply.)
