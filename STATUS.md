@@ -23,13 +23,13 @@ Updated at the end of every step (PLAN.md guardrail 8).
 - **Step 1.5 — decoder + score.** `src/decode.py`, `src/score.py`; tests (subagent-written) green. `call_01` seed 0: answer written to `answers/untrained_call_01_seed0.mid`, score in `results/score_untrained_call_01_seed0.json` (F1 and random baseline both reported; answer is neither silent nor saturated).
 
 ## In progress
-- **Step 1.6 — best-of-10 batch** (calls 01–05 × seeds 0–1), ends in a 🧑 checkpoint to pick a run.
+- **Step 1.6 — best-of-10 batch.** 10 runs done and ranked in `results/batch_untrained.json`; answers in `answers/untrained_call_0X_seedY.mid`. Waiting on 🧑 checkpoint: listen to the top 3 in Ableton and reply with the chosen run ID.
 
 ## Next
 - Step 1.7 — export the chosen run to upstream's viewer format.
 
 ## Blockers
-- CI's pytest step fails on this branch until `.github/workflows/ci.yml` installs `requirements.txt` (the git token cannot push workflow files; 🧑 is making the edit).
+- None.
 
 ## Post links
 - Post #1: —
