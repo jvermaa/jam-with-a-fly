@@ -52,6 +52,8 @@ Scientific honesty is non-negotiable: keep the "real vs. chosen" distinction (co
 - **Always delegate test writing to a subagent.** Whoever is doing a plan step (the main session or any agent) must not write tests itself: spawn a subagent with the module path, the behaviour to cover and the step's pass check, and have it write and run the tests. The delegating agent only reads the pass/fail result. Reason: one task per agent; the agent doing the step should not spend its tokens on testing.
 - **Work goes through a branch, not straight onto `main`.** Commit and tag on a concisely but descriptively named branch and push that; `main` only moves by merge.
 
+- **Keep personal details out of the public repo.** `DECISIONS.md` is a local working log: it is gitignored and must never be committed or pushed. Nothing committed (code, docs, `results/`) may contain absolute paths, usernames, machine names, emails or real names; use repo-relative paths.
+
 ### Human checkpoint protocol
 
 When a step is marked `🧑 CHECKPOINT`, stop, print exactly this block, then wait:
