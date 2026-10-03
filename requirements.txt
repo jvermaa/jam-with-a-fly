@@ -1,0 +1,17 @@
+# What this needs to run. Versions are the ones it's been run against.
+#
+# After installing these, fetch the connectome (~1.1 GB, CC-BY, no account
+# needed — see README) into data/, then: py build_graph.py
+
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.1
+pyarrow==23.0.1          # pandas needs it to read the .feather annotations
+
+fastapi==0.128.0
+uvicorn[standard]==0.52.4
+
+# optional: only needed for the live GPU server (fly_drums_live_server.py).
+# The recorded path (fly_drums_sim.py, real-brain.html's fallback) doesn't
+# need a GPU or torch at all.
+# torch==2.5.1  # install the CUDA build matching your GPU driver from pytorch.org
