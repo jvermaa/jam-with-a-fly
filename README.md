@@ -15,6 +15,7 @@
   <img alt="status: day 1" src="https://img.shields.io/badge/status-day_1-FF4D8D?style=flat-square">
   <img alt="data: MaleCNS v1.0" src="https://img.shields.io/badge/data-MaleCNS_v1.0-3D5AFE?style=flat-square">
   <img alt="license: MIT" src="https://img.shields.io/badge/license-MIT-FFB800?style=flat-square">
+  <img alt="ci: passing" src="https://github.com/jvermaa/jam-with-a-fly/actions/workflows/ci.yml/badge.svg?style=flat-square">
 </p>
 
 <br>
