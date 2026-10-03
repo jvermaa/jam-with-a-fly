@@ -1,0 +1,14 @@
+name: Idea
+description: Propose an improvement or experiment
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Proposal
+      description: What should change and why?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Scope
+      description: Any risks, dependencies, or data requirements.

@@ -1,0 +1,21 @@
+# Python defaults
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Virtual environments
+.venv/
+.venv*/
+
+# Project data and generated artifacts
+data/
+build/graph.npz
+checkpoints/
+*.feather
+tools/*.ttf
+
+# Env files
+.env
+.env.*

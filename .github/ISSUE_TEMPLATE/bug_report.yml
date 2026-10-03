@@ -1,0 +1,14 @@
+name: Bug report
+description: Report a reproducible problem
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Include expected vs actual behavior and steps to reproduce.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Environment
+      description: OS, Python version, and commit/branch.
