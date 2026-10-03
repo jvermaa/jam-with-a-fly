@@ -13,10 +13,10 @@ Updated at the end of every step (PLAN.md guardrail 8).
 **Phase 0 complete.**
 
 ## In progress
-- Waiting on 🧑 at the step-0.4 checkpoint (approve starting Phase 1).
+- **Step 1.1 — hearing + motor groups.** Automated pass checks met (`results/groups_summary.json`, `build/jo_groups.json`, `build/motor_groups.json`, `results/annotation_columns.txt`). Waiting on 🧑 checkpoint: confirm/edit the voice table, and decide the two honesty questions (which JO neurons count as "hearing"; whether the foreleg group keeps its descending neurons).
 
 ## Next
-- Phase 1, Step 1.1 — find hearing (JO) + motor groups; ends in a 🧑 checkpoint to confirm the voice table.
+- Step 1.2 — 🧑 exports `calls/call_01.mid` … `call_05.mid` from Ableton; 🤖 validates them.
 
 ## Blockers
 - None. (Step 0.4 has not been started; it waits on the Step 0.3 reply.)
