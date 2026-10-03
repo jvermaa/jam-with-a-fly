@@ -1,9 +1,9 @@
 {
   "step": "1.2",
   "seed": null,
-  "git_sha": "c40a777432302fcf2c77ad11fee8380e661ac5c3",
+  "git_sha": "cb02b9d8d39603d1a609e26531d8e9b0c9cc611c",
   "git_dirty": false,
-  "timestamp": "2026-10-03T18:39:10.127902+00:00",
+  "timestamp": "2026-10-03T19:17:55.521385+00:00",
   "machine": "macOS-15.6.1-arm64-arm-64bit",
   "python": "3.12.8",
   "seed_note": "validation only; no random numbers used",
@@ -203,6 +203,115 @@
         "Closed hat": "..x.....x.....x.................",
         "Open hat": "......................x.........",
         "Tom": "..........................x....."
+      }
+    },
+    {
+      "file": "calls/call_06.mid",
+      "sha256": "9f7559c6884137faf36afeb80c62aa793aeabe851f4d566e4609df622e556a5c",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 6,
+      "hits_per_voice": {
+        "Kick": 4,
+        "Snare": 2,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x...x...........x...x...........",
+        "Snare": "........x...............x......."
+      }
+    },
+    {
+      "file": "calls/call_07.mid",
+      "sha256": "4b58609b75938874c47ea1a07a54fa33982d7ed6b7381557fd3b897898ef881a",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 8,
+      "hits_per_voice": {
+        "Kick": 6,
+        "Snare": 2,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.....x.x.......x.....x.x.......",
+        "Snare": "............x...............x..."
+      }
+    },
+    {
+      "file": "calls/call_08.mid",
+      "sha256": "77120db650487d6923587d8f510b8c76d965cd6c213bbb05e4220d66e9fc192e",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 34,
+      "hits_per_voice": {
+        "Kick": 8,
+        "Snare": 10,
+        "Closed hat": 16,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.x.......xx....x.x.......xx....",
+        "Snare": "....x..x.x..x..x....x..x.x..x..x",
+        "Closed hat": "x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x."
       }
     }
   ]
