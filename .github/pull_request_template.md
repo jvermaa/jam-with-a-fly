@@ -1,0 +1,3 @@
+- [ ] I opened/linked an issue for this change.
+- [ ] I did not commit connectome data, checkpoints, or generated large artifacts.
+- [ ] I ran relevant local checks (lint/tests, when applicable).
