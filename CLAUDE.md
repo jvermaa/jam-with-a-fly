@@ -47,6 +47,11 @@ Copied from PLAN.md section 0. PLAN.md is the authority if the two ever differ.
 
 Scientific honesty is non-negotiable: keep the "real vs. chosen" distinction (connectome/dynamics/learning rule are real; the drumming goal, drive onto vnc_intrinsic, and reward are chosen) explicit in docs and code comments.
 
+### Working preferences (from the human)
+
+- **Always delegate test writing to a subagent.** Whoever is doing a plan step (the main session or any agent) must not write tests itself: spawn a subagent with the module path, the behaviour to cover and the step's pass check, and have it write and run the tests. The delegating agent only reads the pass/fail result. Reason: one task per agent; the agent doing the step should not spend its tokens on testing.
+- **Work goes through a branch, not straight onto `main`.** Commit and tag on a concisely but descriptively named branch and push that; `main` only moves by merge.
+
 ### Human checkpoint protocol
 
 When a step is marked `🧑 CHECKPOINT`, stop, print exactly this block, then wait:
