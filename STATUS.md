@@ -20,14 +20,16 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Step 1.4 — run the fly.** `src/run_fly.py` plays a call into the JO groups through the unmodified simulator and runs a silent baseline with identical random numbers. Pass check met for `call_01`, seed 0: motor spike counts differ from silent (`results/run_meta.json`). Spike recordings (`results/*.npz`) are gitignored (about 30 MB each).
 
+- **Step 1.5 — decoder + score.** `src/decode.py`, `src/score.py`; tests (subagent-written) green. `call_01` seed 0: answer written to `answers/untrained_call_01_seed0.mid`, score in `results/score_untrained_call_01_seed0.json` (F1 and random baseline both reported; answer is neither silent nor saturated).
+
 ## In progress
-- **Step 1.5 — decoder + score.**
+- **Step 1.6 — best-of-10 batch** (calls 01–05 × seeds 0–1), ends in a 🧑 checkpoint to pick a run.
 
 ## Next
-- Step 1.6 best-of-10 batch → 🧑 checkpoint to pick a run.
+- Step 1.7 — export the chosen run to upstream's viewer format.
 
 ## Blockers
-- None. (Step 0.4 has not been started; it waits on the Step 0.3 reply.)
+- CI's pytest step fails on this branch until `.github/workflows/ci.yml` installs `requirements.txt` (the git token cannot push workflow files; 🧑 is making the edit).
 
 ## Post links
 - Post #1: —
