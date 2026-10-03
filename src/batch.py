@@ -7,9 +7,12 @@ used, then echo F1, then whether hit density is within 10-40%.
 Picking the best of 10 is a selection we make; anything shown from this batch
 must be described as "best of 10 runs".
 
-Usage (from the repo root):  python -m src.batch
+Usage (from the repo root):
+  python -m src.batch                       # calls 01-05 -> results/batch_untrained.json
+  python -m src.batch --calls call_06 call_07 call_08 --out batch_untrained_famous.json
 """
 
+import argparse
 import json
 import pathlib
 import sys
@@ -30,6 +33,11 @@ RESULTS = ROOT / "results"
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--calls", nargs="+", default=CALLS)
+    ap.add_argument("--out", default="batch_untrained.json")
+    args = ap.parse_args()
+
     fb = FlyBrain(p=run_fly.SimParams())
     runs = []
     for seed in SEEDS:
@@ -38,7 +46,7 @@ def main():
         np.savez_compressed(silent_npz, **silent_arrays)
         print(f"silent seed {seed}: {silent_summary['runtime_s']} s", flush=True)
 
-        for call in CALLS:
+        for call in args.calls:
             arrays, summary = run_fly.run(fb, ROOT / "calls" / f"{call}.mid", seed)
             run_npz = RESULTS / f"run_{call}_seed{seed}.npz"
             np.savez_compressed(run_npz, **arrays)
@@ -71,6 +79,7 @@ def main():
     result = {
         "step": "1.6",
         **provenance(SEEDS),
+        "calls": args.calls,
         "ranking": "voices_used (more first), then f1 (higher first), then hit density within 10-40%",
         "n_runs": len(ranked),
         "mean_f1": float(np.mean([r["f1"] for r in ranked])),
@@ -78,8 +87,8 @@ def main():
         "any_usable": any(r["not_silent_not_saturated"] for r in ranked),
         "runs": ranked,
     }
-    (RESULTS / "batch_untrained.json").write_text(json.dumps(result, indent=2) + "\n")
-    print(f"wrote results/batch_untrained.json; mean F1 {result['mean_f1']:.3f} vs random {result['mean_baseline_f1']:.3f}")
+    (RESULTS / args.out).write_text(json.dumps(result, indent=2) + "\n")
+    print(f"wrote results/{args.out}; mean F1 {result['mean_f1']:.3f} vs random {result['mean_baseline_f1']:.3f}")
     if not result["any_usable"]:
         raise SystemExit("STOP: every answer is silent or saturated")
 

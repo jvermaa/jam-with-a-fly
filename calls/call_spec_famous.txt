@@ -1,4 +1,4 @@
-CALL SPEC (FAMOUS BEATS) - three 2-bar drum patterns to export from Ableton as MIDI
+CALL SPEC (FAMOUS BEATS) - three 2-bar drum patterns, turned into MIDI by src/make_calls.py
 
 These are well-known drum patterns re-programmed on our grid. They are our own
 transcriptions at 120 BPM, not copies of any recording or MIDI file, so they
@@ -12,7 +12,7 @@ RULES FOR EVERY FILE (same as call_spec.txt)
 - Note length: one sixteenth. Nothing may ring past the end of bar 2.
 - Velocity 110 for every hit.
 - One MIDI track per file.
-- Export as:
+- Written as:
     calls/call_06.mid
     calls/call_07.mid
     calls/call_08.mid
