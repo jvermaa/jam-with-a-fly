@@ -12,11 +12,13 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 **Phase 0 complete.**
 
+- **Step 1.1 — hearing + motor groups** (tag `step-1.1`). 🧑 confirmed the voice table and three choices: all JO subtypes are used (wording: "antennal sound and wind sensors", not "hearing neurons"); JO neurons with no outgoing connection are dropped before balancing; motor groups are motor neurons only (differs from upstream, which keeps descending neurons). Numbers in `results/groups_summary.json`, evidence in `results/reach_check.json`.
+
 ## In progress
-- **Step 1.1 — hearing + motor groups.** Automated pass checks met (`results/groups_summary.json`, `build/jo_groups.json`, `build/motor_groups.json`, `results/annotation_columns.txt`). Waiting on 🧑 checkpoint: confirm/edit the voice table, and decide the two honesty questions (which JO neurons count as "hearing"; whether the foreleg group keeps its descending neurons).
+- **Step 1.2 — first calls.** Waiting on 🧑: export `calls/call_01.mid` … `calls/call_05.mid` from Ableton (120 BPM, 4/4, 2 bars, only notes 36 38 42 46 45 49, all 6 voices used at least once across the set).
 
 ## Next
-- Step 1.2 — 🧑 exports `calls/call_01.mid` … `call_05.mid` from Ableton; 🤖 validates them.
+- 🤖 validates every call → `results/calls_check.json`, then Step 1.3 (encoder; tests delegated to a subagent).
 
 ## Blockers
 - None. (Step 0.4 has not been started; it waits on the Step 0.3 reply.)
