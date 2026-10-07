@@ -1,0 +1,7 @@
+{
+  "_comment": "Tempo per call file, keyed by file stem. CHOSEN by us. A call not listed here runs at default_bpm (PLAN.md's locked 120). wwry: 82 BPM matches the drum score we checked the pattern against (the reference MIDI file itself says 85).",
+  "default_bpm": 120,
+  "calls": {
+    "wwry": {"bpm": 82}
+  }
+}

@@ -24,7 +24,7 @@ import sys
 import mido
 import numpy as np
 
-from src import constants as c
+from src.timing import DEFAULT, Timing
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DEFAULT_SEED = 0
@@ -48,13 +48,16 @@ def load_jo_groups():
     return [np.array(g["bodyIds"], dtype=np.int64) for g in sorted(groups, key=lambda g: g["group"])]
 
 
-def read_hits(path, voices=None):
+def read_hits(path, voices=None, timing=None):
     """Read a call file -> list of {"t": seconds, "voice": idx, "vel": 1..127}, sorted by time.
+
+    timing: the call's tempo; by default looked up in config/calls.json (120 BPM unless listed).
 
     Notes that are not in the voice table are ignored here; src/check_calls.py is
     what rejects files containing them.
     """
     voices = voices or load_voices()
+    timing = timing or Timing.for_call(path)
     note_to_voice = {v["midi_note"]: v["idx"] for v in voices}
     mid = mido.MidiFile(path)
     hits = []
@@ -63,8 +66,9 @@ def read_hits(path, voices=None):
         for msg in track:
             tick += msg.time
             if msg.type == "note_on" and msg.velocity > 0 and msg.note in note_to_voice:
-                # Fixed 120 BPM (PLAN.md locked decision), so ticks map straight to seconds.
-                t = tick / mid.ticks_per_beat * 60.0 / c.BPM
+                # The tempo is the configured one, not the file's own tempo event
+                # (src/check_calls.py checks the two agree), so ticks map straight to seconds.
+                t = tick / mid.ticks_per_beat * timing.beat_sec
                 hits.append({"t": t, "voice": note_to_voice[msg.note], "vel": int(msg.velocity)})
     return sorted(hits, key=lambda h: (h["t"], h["voice"]))
 
@@ -110,7 +114,7 @@ def encode(hits, jo_groups, config=None, seed=DEFAULT_SEED, voices=None):
     return {"bursts": bursts, "spike_t": t, "spike_body": body, "spike_group": group}
 
 
-def plot_input_raster(encoded, jo_groups, out_path, title, voices=None):
+def plot_input_raster(encoded, jo_groups, out_path, title, voices=None, timing=DEFAULT):
     """Raster: 6 rows = JO groups (one dot per input spike), MIDI hits overlaid as ticks."""
     import matplotlib
 
@@ -135,14 +139,14 @@ def plot_input_raster(encoded, jo_groups, out_path, title, voices=None):
         hit_t = [b["t"] for b in encoded["bursts"] if b["group"] == g]
         ax.vlines(hit_t, g + 0.80, g + 0.97, color=ink, linewidth=1.6)
 
-    for beat in np.arange(0, c.CALL_SEC + 1e-9, 60.0 / c.BPM):
+    for beat in np.arange(0, timing.call_sec + 1e-9, timing.beat_sec):
         ax.axvline(beat, color=muted, linewidth=0.4, alpha=0.5, zorder=0)
-    ax.axvline(c.BAR_SEC, color=muted, linewidth=0.9, zorder=0)
+    ax.axvline(timing.bar_sec, color=muted, linewidth=0.9, zorder=0)
 
     ax.set_yticks([g + 0.45 for g in range(len(jo_groups))])
     ax.set_yticklabels([f"{by_group[g]['name']}\nJO group {g} ({len(jo_groups[g])} neurons)" for g in range(len(jo_groups))], color=ink, fontsize=8)
     ax.set_ylim(len(jo_groups), 0)
-    ax.set_xlim(-0.05, c.CALL_SEC + 0.05)
+    ax.set_xlim(-0.05, timing.call_sec + 0.05)
     ax.set_xlabel("time (s)", color=ink)
     ax.tick_params(colors=muted, length=0)
     for side in ("top", "right", "left"):
@@ -162,7 +166,8 @@ def main():
     hits = read_hits(call)
     encoded = encode(hits, jo_groups, seed=DEFAULT_SEED)
     out = ROOT / "results" / f"{call.stem}_input.png"
-    plot_input_raster(encoded, jo_groups, out, f"{call.stem}: what the fly's antennal neurons receive (seed {DEFAULT_SEED})")
+    plot_input_raster(encoded, jo_groups, out, f"{call.stem}: what the fly's antennal neurons receive (seed {DEFAULT_SEED})",
+                      timing=Timing.for_call(call))
     print(f"{call.name}: {len(hits)} hits -> {len(encoded['spike_t'])} input spikes; wrote {out.relative_to(ROOT)}")
 
 

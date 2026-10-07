@@ -30,6 +30,18 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Phase 1 code complete** on branch `phase-1-untrained-demo` (to be merged by 🧑). Step 1.8 (record + post) is deferred by 🧑, who is in no rush to post.
 
+## Phase S — "We Will Rock You" sprint (branch `phase-s-wwry-sprint`)
+One-song training sprint requested by 🧑, outside PLAN.md's step order. Five gates (0–4), stop and report at each. Stacked on the Phase 2 branch; step 2.1 stays parked.
+
+- **Gate 0 — facts + setup: done, awaiting 🧑.**
+  - Per-call tempo: `src/timing.py` + `config/calls.json` (default 120, `wwry` 82). Calls 01–08 unchanged (regression test on `call_06` reproduces its committed score).
+  - Target `calls/wwry.mid` built from `calls/call_spec_wwry.txt` (82 BPM, 2 bars = 5.854 s); passes `results/wwry_calls_check.json`.
+  - Pattern equals bars 1–7 of the local reference arrangement with clap 39 → snare 38 (`results/wwry_reference.json`; reference file is gitignored). `NOTICE.md` updated.
+  - One profiled run + what training can change: `results/wwry_profile.json`.
+  - Tests (subagent-written): `tests/test_timing.py`, `tests/test_wwry_reference.py`; 79 passed.
+- Gate 1 — input coupling grid: next.
+- Gates 2–4 — before baseline, train, evaluate: not started.
+
 ## In progress
 - **Step 2.1 — lock export schema v1** on branch `phase-2-viewer-upgrade`. Draft in `docs/export_schema_v1.md`. Waiting on 🧑 checkpoint: approve the schema and decide how to place the antennal (JO) neurons, which have no recorded position.
 
@@ -40,7 +52,7 @@ Updated at the end of every step (PLAN.md guardrail 8).
 - Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
-- None.
+- Phase S: waiting on 🧑 at Gate 0.
 
 ## Post links
 - Post #1: —

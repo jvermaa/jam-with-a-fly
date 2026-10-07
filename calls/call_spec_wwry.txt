@@ -1,0 +1,25 @@
+CALL SPEC (WWRY) - the Phase S target pattern, turned into MIDI by src/make_calls.py
+
+Our own transcription of the "stomp, stomp, clap" pattern of Queen, We Will Rock
+You, at 82 BPM (2 bars = 5.854 s, one sixteenth = 0.1829 s). The stomps are the
+kick; the clap is played on the snare voice, because our six-voice table has no
+clap. The file is built by us from the grid below. The grid was checked against
+a drum score and a third-party MIDI arrangement (see NOTICE.md); neither is
+copied or redistributed here.
+
+RULES (same as call_spec.txt, except the tempo)
+- 82 BPM, 4/4, clip length exactly 2 bars.
+- Only Kick 36 and Snare 38.
+- Every hit exactly on a sixteenth-note step, one sixteenth long, velocity 110.
+- One MIDI track.
+- Written as calls/wwry.mid.
+
+HOW TO READ THE GRID
+Each row is one bar of 16 sixteenth-note steps. x = hit, . = rest.
+Steps are grouped in fours, one group per beat. Both bars are identical.
+
+wwry - "stomp, stomp, clap", twice per bar
+Bar 1   Kick        x.x. .... x.x. ....
+        Snare       .... x... .... x...
+Bar 2   Kick        x.x. .... x.x. ....
+        Snare       .... x... .... x...

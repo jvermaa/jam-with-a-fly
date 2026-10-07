@@ -1,0 +1,53 @@
+{
+  "step": "1.2",
+  "seed": null,
+  "git_sha": "141eddf1c844418f9fc20981769dee381f8c1bbb",
+  "git_dirty": true,
+  "timestamp": "2026-10-07T23:39:08.943636+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "seed_note": "validation only; no random numbers used",
+  "pass": true,
+  "set_checks": {
+    "every_file_passes": true
+  },
+  "files": [
+    {
+      "file": "calls/wwry.mid",
+      "sha256": "86a10a2fa9c056939895dc521090567fa962a49d3c221336288b66d334f3d678",
+      "pass": true,
+      "checks": {
+        "tempo_as_configured": true,
+        "length_is_2_bars_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        82.00003553334874
+      ],
+      "expected_bpm": 82.0,
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 5.853656,
+      "disallowed_notes": [],
+      "n_hits": 12,
+      "hits_per_voice": {
+        "Kick": 8,
+        "Snare": 4,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.x.....x.x.....x.x.....x.x.....",
+        "Snare": "....x.......x.......x.......x..."
+      }
+    }
+  ]
+}

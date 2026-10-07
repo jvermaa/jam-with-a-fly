@@ -1,6 +1,6 @@
 """Decoder: motor-neuron spikes -> drum hits -> .mid (PLAN.md Step 1.5).
 
-  1. Bin each motor group's spikes into 16th-note steps of 125 ms.
+  1. Bin each motor group's spikes into 16th-note steps (125 ms at the default 120 BPM).
   2. A step is a hit if its count is above that group's threshold:
      silent-baseline mean + 2 x std of the group's step counts. The threshold
      comes from the silent run only; it is never tuned to the call.
@@ -29,6 +29,7 @@ import numpy as np
 from src import constants as c
 from src import encode, score
 from src.provenance import provenance
+from src.timing import DEFAULT, Timing
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 THRESHOLD_STDS = 2.0     # PLAN.md: mean + 2 x std
@@ -37,12 +38,12 @@ VELOCITY_FULL_STDS = 3.0  # this many silent-run stds above threshold = velocity
 TICKS_PER_BEAT = 480
 
 
-def bin_steps(step_counts, dt_ms):
+def bin_steps(step_counts, dt_ms, timing=DEFAULT):
     """(voices, sim_steps) spike counts -> (voices, n_16th_steps) counts. Only whole 16th steps are kept."""
     step_counts = np.asarray(step_counts)
     t = np.arange(step_counts.shape[1]) * dt_ms / 1000.0
-    bins = np.floor(t / c.STEP_SEC + 1e-9).astype(int)
-    n_bins = int(np.floor(step_counts.shape[1] * dt_ms / 1000.0 / c.STEP_SEC + 1e-9))
+    bins = np.floor(t / timing.step_sec + 1e-9).astype(int)
+    n_bins = int(np.floor(step_counts.shape[1] * dt_ms / 1000.0 / timing.step_sec + 1e-9))
     out = np.zeros((step_counts.shape[0], n_bins), dtype=np.int64)
     for v in range(step_counts.shape[0]):
         out[v] = np.bincount(bins, weights=step_counts[v], minlength=n_bins + 1)[:n_bins]
@@ -55,9 +56,9 @@ def thresholds(silent_binned):
     return mean + THRESHOLD_STDS * std, mean, std
 
 
-def call_grid_from_hits(hit_t, hit_voice, n_voices=6):
+def call_grid_from_hits(hit_t, hit_voice, n_voices=6, timing=DEFAULT):
     grid = np.zeros((n_voices, c.CALL_STEPS), dtype=bool)
-    steps = np.round(np.asarray(hit_t) / c.STEP_SEC).astype(int)
+    steps = np.round(np.asarray(hit_t) / timing.step_sec).astype(int)
     for s, v in zip(steps, hit_voice):
         if 0 <= s < c.CALL_STEPS:
             grid[int(v), s] = True
@@ -71,10 +72,10 @@ def velocities(binned, thr, std):
     return np.clip(np.round(VELOCITY_MIN + frac * (VELOCITY_MAX - VELOCITY_MIN)), VELOCITY_MIN, VELOCITY_MAX).astype(int)
 
 
-def decode(call_motor_steps, silent_motor_steps, call_grid, dt_ms):
+def decode(call_motor_steps, silent_motor_steps, call_grid, dt_ms, timing=DEFAULT):
     """Returns dict: raw_grid, thresholds, lag, answer grid/velocities (call-length), score."""
-    binned = bin_steps(call_motor_steps, dt_ms)
-    thr, mean, std = thresholds(bin_steps(silent_motor_steps, dt_ms))
+    binned = bin_steps(call_motor_steps, dt_ms, timing)
+    thr, mean, std = thresholds(bin_steps(silent_motor_steps, dt_ms, timing))
     raw_grid = binned > thr[:, None]
     vel = velocities(binned, thr, std)
     lag, answer_grid, sc = score.best_lag(call_grid, raw_grid)
@@ -86,15 +87,15 @@ def decode(call_motor_steps, silent_motor_steps, call_grid, dt_ms):
     }
 
 
-def answer_hits(answer_grid, answer_vel):
+def answer_hits(answer_grid, answer_vel, timing=DEFAULT):
     """Sorted list of {"step", "t", "voice", "vel"} for the answer."""
-    hits = [{"step": int(s), "t": float(s * c.STEP_SEC), "voice": int(v), "vel": int(answer_vel[v, s])}
+    hits = [{"step": int(s), "t": float(s * timing.step_sec), "voice": int(v), "vel": int(answer_vel[v, s])}
             for v, s in zip(*np.nonzero(answer_grid))]
     return sorted(hits, key=lambda h: (h["step"], h["voice"]))
 
 
-def write_midi(hits, path, voices=None):
-    """Answer hits -> one-track .mid at 120 BPM, exactly 2 bars, voice-table notes, 16th-note lengths."""
+def write_midi(hits, path, voices=None, timing=DEFAULT, bars=c.CALL_BARS):
+    """Answer hits -> one-track .mid at the call's tempo, exactly `bars` bars, voice-table notes, 16th-note lengths."""
     voices = voices or encode.load_voices()
     note = {v["idx"]: v["midi_note"] for v in voices}
     ticks_per_step = TICKS_PER_BEAT * c.BEATS_PER_BAR // c.STEPS_PER_BAR
@@ -108,13 +109,13 @@ def write_midi(hits, path, voices=None):
     mid = mido.MidiFile(type=0, ticks_per_beat=TICKS_PER_BEAT)
     track = mido.MidiTrack()
     mid.tracks.append(track)
-    track.append(mido.MetaMessage("set_tempo", tempo=mido.bpm2tempo(c.BPM), time=0))
+    track.append(mido.MetaMessage("set_tempo", tempo=mido.bpm2tempo(timing.bpm), time=0))
     track.append(mido.MetaMessage("time_signature", numerator=4, denominator=4, time=0))
     now = 0
     for tick, _, msg in events:
         track.append(msg.copy(time=tick - now))
         now = tick
-    end = c.CALL_BARS * c.BEATS_PER_BAR * TICKS_PER_BEAT
+    end = bars * c.BEATS_PER_BAR * TICKS_PER_BEAT
     track.append(mido.MetaMessage("end_of_track", time=max(end - now, 0)))
     mid.save(path)
 
@@ -124,18 +125,20 @@ def decode_run(run_npz, silent_npz, label="untrained"):
     run_npz, silent_npz = pathlib.Path(run_npz), pathlib.Path(silent_npz)
     run, silent = np.load(run_npz), np.load(silent_npz)
     seed, dt_ms = int(run["seed"]), float(run["dt_ms"])
+    # Recordings made before per-call tempo carry no bpm; they were all 120.
+    timing = Timing(float(run["bpm"])) if "bpm" in run.files else DEFAULT
     if int(silent["seed"]) != seed:
         raise ValueError("silent baseline has a different seed than the run")
     voices = encode.load_voices()
     run_id = run_npz.stem.removeprefix("run_")  # e.g. call_01_seed0
 
-    call_grid = call_grid_from_hits(run["hit_t"], run["hit_voice"])
-    d = decode(run["motor_step_counts"], silent["motor_step_counts"], call_grid, dt_ms)
-    hits = answer_hits(d["answer_grid"], d["answer_vel"])
+    call_grid = call_grid_from_hits(run["hit_t"], run["hit_voice"], timing=timing)
+    d = decode(run["motor_step_counts"], silent["motor_step_counts"], call_grid, dt_ms, timing)
+    hits = answer_hits(d["answer_grid"], d["answer_vel"], timing)
     baseline = score.random_baseline(call_grid, d["raw_grid"], n_runs=100, seed=seed)
 
     mid_path = ROOT / "answers" / f"{label}_{run_id}.mid"
-    write_midi(hits, mid_path, voices)
+    write_midi(hits, mid_path, voices, timing)
 
     n_cells = call_grid.size
     result = {
@@ -145,6 +148,7 @@ def decode_run(run_npz, silent_npz, label="untrained"):
         "run_npz": str(run_npz.resolve().relative_to(ROOT)),
         "silent_npz": str(silent_npz.resolve().relative_to(ROOT)),
         "answer_mid": str(mid_path.relative_to(ROOT)),
+        "bpm": timing.bpm,
         "lag_steps": d["lag_steps"],
         "f1": d["score"]["overall"]["f1"],
         "baseline_f1": baseline["overall_f1_mean"],
