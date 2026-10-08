@@ -48,6 +48,8 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - **C0 — housekeeping.** Seed policy in PLAN.md (training 100/101, screening 200–203, final eval 300–303). The hook fix was not possible from this session (the hook is outside the repo; access blocked) — 🧑 action. Arm A (upstream mushroom-body loop) is deprioritized: if a Gate 1a variant passes, next is the Gate 2 baseline, then Arm B only (PLAN.md addendum).
 - **C1 — sign audit: no mismatch.** `results/sign_audit.json`. ACh excitatory; GABA, glutamate and histamine inhibitory; dopamine, octopamine, serotonin and "unclear" dropped (sign 0). All 10,228,000 matrix edges carry their presynaptic neuron's sign.
 - **C2 — timestep check at dt 0.2 ms: screen FAILED, stopped for 🧑.** `results/wwry_dt02_check.json`. The runaway is not a 2 ms artefact: at 0.2 ms the Kenyon cells sit at 437–450 Hz (ceiling 454.5 Hz) whenever anything fires, and about 11 % of all neurons exceed 200 Hz. New: `src/sign_audit.py`, `src/dt_check.py`; `sim_pool` takes `dt_ms`.
+- **C4 — reset-per-hit transient: FAILED.** `results/wwry_reset_transient.json`. Every neuron reset to rest before each sixteenth step, only that step's input, 100 ms, no tonic drive, seeds 200–203. A single hit reaches runaway (more than half the Kenyon cells firing within 4 ms) in 6–10 ms, in all 48 hit steps; 99.1 % of Kenyon cells fire within 100 ms. Silent steps hold 0 spikes, so a % change against silent is undefined. Which drum was hit shows only briefly: in the first 20 ms the snare group fires +62.5 % [35.2, 89.9] more after a snare hit than after a kick hit; the kick group does not (−12.5 % [−17.5, −7.6]). New: `src/reset_transient.py`, `src/transient.py`.
+- **C3 — input strength at 0 Hz tonic drive: screen FAILED.** `results/wwry_input_strength.json`. All 12 configs (JO set all 554 / auditory-only 75 × 50/150/300 Hz × 15/30 ms, seed 200) ignite a self-sustained state: Kenyon cells 99.8–100 % active per sixteenth step, 3.2–3.9 M spikes in the window later than 500 ms after the last hit. The weakest input (85 input spikes over the whole call) still reaches runaway 18 ms after the first hit. No config went on to the 4-seed coupling run. New: `src/input_strength.py`.
 - Gate 1b (encoder grid), Gates 2–4: not started; blocked on Gate 1a.
 
 ## In progress
@@ -60,7 +62,7 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
-- Phase S: Gate 1a pass check failed twice (tonic-drive grid, then KC→KC scaling). The whole network runs away once anything ignites it; signs are as intended (C1) and a 0.2 ms timestep does not help (C2). Waiting on 🧑.
+- Phase S: Gate 1a fails in every variant tried (tonic-drive grid, KC→KC scaling, dt 0.2 ms, input strength at 0 Hz drive, reset per hit). One hit on a resting network reaches runaway in 6–10 ms; signs are as intended (C1). Waiting on 🧑 at the C1–C4 checkpoint.
 
 ## Post links
 - Post #1: —
