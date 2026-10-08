@@ -362,3 +362,17 @@ fly-jam/                          # fork of sykeriin/fly-drums (name: 🧑 decid
 - Answer is silent or saturated across all 10 Phase 1 runs.
 - Any pass check fails twice.
 - Any temptation to edit protected files or hand-edit hits.
+---
+
+## Phase S addendum — WWRY sprint (added 2026-10-08, 🧑's instructions)
+
+A one-song sprint run outside the step order above. Gates and results are tracked in `STATUS.md`.
+
+### Seed policy
+| Use | Seeds |
+|---|---|
+| Training (both Gate 3 arms) | 100, 101 |
+| Gate screening (Gate 1a onward: saturation, timestep, coupling, encoder grid) | 200–203 |
+| Gate 4 final evaluation and demo | 300–303 |
+
+Seeds 0–3 were used for screening in Gate 1a (tonic-drive grid, zero-drive check, KC→KC scaling) and are therefore not used for the final evaluation. Earlier Gate 0/1a results on seeds 0–3 stay as recorded.
