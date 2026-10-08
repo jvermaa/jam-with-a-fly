@@ -1,0 +1,133 @@
+{
+ "phase": "S",
+ "step": "D3",
+ "seed": null,
+ "git_sha": "993089dad3e1dd5828cc13fee0d480f2f2f823f5",
+ "git_dirty": true,
+ "timestamp": "2026-10-08T05:10:57.949746+00:00",
+ "machine": "macOS-15.6.1-arm64-arm-64bit",
+ "python": "3.12.8",
+ "seed_note": "no random numbers used; no simulation run",
+ "neurons_searched": 165122,
+ "columns_searched": [
+  "type",
+  "flywireType",
+  "instance",
+  "hemibrainType",
+  "supertype",
+  "mancType",
+  "class",
+  "subclass",
+  "synonyms",
+  "matchingNotes",
+  "entryNerve",
+  "exitNerve",
+  "receptorType"
+ ],
+ "patterns": {
+  "sugar": "sugar|sweet|Gr5a|Gr64",
+  "bitter": "bitter|Gr66|Gr33",
+  "taste_general": "GRN|gustat|taste|labell|pharyn",
+  "MN9": "\\bMN9\\b"
+ },
+ "matches_all_neurons": {
+  "sugar": {
+   "synonyms": {
+    "Yao & Scott 2022: Sugar SEL PN": 4,
+    "Yao & Scott 2022: Sugar SEL LN": 2
+   }
+  },
+  "bitter": {
+   "synonyms": {
+    "Yao & Scott 2022: Bitter-SEL": 4
+   }
+  },
+  "taste_general": {
+   "type": {
+    "claw_tpGRN": 50,
+    "BM_Taste": 40,
+    "dorsal_tpGRN": 10
+   },
+   "flywireType": {
+    "claw_tpGRN": 50,
+    "BM_Taste": 40,
+    "dorsal_tpGRN": 10
+   },
+   "instance": {
+    "claw_tpGRN_R": 25,
+    "claw_tpGRN_L": 25,
+    "BM_Taste_L": 23,
+    "BM_Taste_R": 17,
+    "dorsal_tpGRN_R": 5,
+    "dorsal_tpGRN_L": 5
+   },
+   "class": {
+    "gustatory": 1428
+   },
+   "subclass": {
+    "labellar bristle": 163,
+    "pharyngeal sensillum": 87,
+    "taste bristle": 70,
+    "taste peg": 60
+   }
+  },
+  "MN9": {
+   "type": {
+    "MN9": 2
+   }
+  }
+ },
+ "matches_among_sensory_neurons": {
+  "sugar": {},
+  "bitter": {}
+ },
+ "gustatory_class": {
+  "neurons": 1428,
+  "by_subclass": {
+   "leg bristle": 768,
+   "wing bristle": 385,
+   "labellar bristle": 163,
+   "taste peg": 60,
+   "pharyngeal sensillum": 48,
+   "(none)": 4
+  },
+  "labellar_bristle_types": {
+   "LB3d": 26,
+   "LB3c": 23,
+   "LB1e": 18,
+   "LB3a": 17,
+   "LB1c": 16,
+   "LB3b": 11,
+   "LB1a": 11,
+   "LB4b": 7,
+   "LB2c": 6,
+   "LB1b": 6,
+   "LB1d": 5,
+   "LB2a": 4,
+   "LB4a": 4,
+   "LB2d": 4,
+   "LB2b": 2,
+   "LB3": 1
+  },
+  "receptorType_values_in_dataset": {
+   "putative_ppk23": 269,
+   "putative_ppk25": 257,
+   "putative_IR52b": 226
+  }
+ },
+ "mn9": {
+  "found_by_type": true,
+  "neurons": 2,
+  "instances": [
+   "MN9_L",
+   "MN9_R"
+  ],
+  "superclass": [
+   "cb_motor"
+  ]
+ },
+ "sugar_grns_found_by_annotation": false,
+ "bitter_grns_found_by_annotation": false,
+ "d3_can_run": false,
+ "note": "Gustatory sensory neurons are typed (e.g. labellar LB1a-LB4b) but no column says which type senses sugar or bitter. The only 'sugar'/'bitter' strings are synonyms on second-order (non-sensory) neurons. No taste is assigned to an unlabelled type here."
+}

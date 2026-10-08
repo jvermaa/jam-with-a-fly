@@ -50,6 +50,10 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - **C2 — timestep check at dt 0.2 ms: screen FAILED, stopped for 🧑.** `results/wwry_dt02_check.json`. The runaway is not a 2 ms artefact: at 0.2 ms the Kenyon cells sit at 437–450 Hz (ceiling 454.5 Hz) whenever anything fires, and about 11 % of all neurons exceed 200 Hz. New: `src/sign_audit.py`, `src/dt_check.py`; `sim_pool` takes `dt_ms`.
 - **C4 — reset-per-hit transient: FAILED.** `results/wwry_reset_transient.json`. Every neuron reset to rest before each sixteenth step, only that step's input, 100 ms, no tonic drive, seeds 200–203. A single hit reaches runaway (more than half the Kenyon cells firing within 4 ms) in 6–10 ms, in all 48 hit steps; 99.1 % of Kenyon cells fire within 100 ms. Silent steps hold 0 spikes, so a % change against silent is undefined. Which drum was hit shows only briefly: in the first 20 ms the snare group fires +62.5 % [35.2, 89.9] more after a snare hit than after a kick hit; the kick group does not (−12.5 % [−17.5, −7.6]). New: `src/reset_transient.py`, `src/transient.py`.
 - **C3 — input strength at 0 Hz tonic drive: screen FAILED.** `results/wwry_input_strength.json`. All 12 configs (JO set all 554 / auditory-only 75 × 50/150/300 Hz × 15/30 ms, seed 200) ignite a self-sustained state: Kenyon cells 99.8–100 % active per sixteenth step, 3.2–3.9 M spikes in the window later than 500 ms after the last hit. The weakest input (85 input spikes over the whole call) still reaches runaway 18 ms after the first hit. No config went on to the 4-seed coupling run. New: `src/input_strength.py`.
+- **D1 — input-ratio check: done.** `results/input_ratio.json`. Input synapses per neuron in the simulation's weight matrix: whole CNS mean 617.2, median 255; brain-only mean 570.5, median 249. No FlyWire numbers are stored locally, so no ratio and no implied scale were computed. New: `src/input_ratio.py`.
+- **D2 — global weight scale screen: 0.3, 0.2 and 0.1 pass the screen as written.** `results/wwry_scale_screen.json`. Seed 200, no tonic drive. 0.5 still runs away 10 ms after one kick. 0.3 and 0.2 stay under the runaway threshold but one kick still starts activity that has not stopped after 500 ms, and the call run stays self-sustained (KCs 81.7 % and 25.9 % per sixteenth step). At 0.1 one kick dies out after 36 ms and the call barely reaches the motor side (9 kick-group spikes, 0 snare). 0.05: no motor spikes. New: `src/weight_scale.py` (wrapper), `src/scale_screen.py`; `sim_pool` jobs take `weight_scale`.
+- **D3 — Shiu taste validation: STOPPED, sugar GRNs not found by annotation.** `results/taste_search.json`. MN9 is annotated (2 neurons). Gustatory sensory neurons are typed (163 labellar, types LB1a–LB4b) but no column says which sense sugar or bitter; the only "sugar"/"bitter" strings sit on 10 second-order neurons. No taste was assigned by guess. New: `src/taste_search.py`.
+- **D4 — not run** (needs a scale passing D2 and D3). No scale has been chosen.
 - Gate 1b (encoder grid), Gates 2–4: not started; blocked on Gate 1a.
 
 ## In progress
@@ -62,7 +66,7 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
-- Phase S: Gate 1a fails in every variant tried (tonic-drive grid, KC→KC scaling, dt 0.2 ms, input strength at 0 Hz drive, reset per hit). One hit on a resting network reaches runaway in 6–10 ms; signs are as intended (C1). Waiting on 🧑 at the C1–C4 checkpoint.
+- Phase S: global weight scale screen (D2) passes at 0.3 / 0.2 / 0.1, but the calibration step (D3, sugar → MN9) cannot run: sugar and bitter GRNs are not labelled in the MaleCNS annotations. No scale chosen, D4 not run. Waiting on 🧑 at the D1–D4 checkpoint.
 
 ## Post links
 - Post #1: —
