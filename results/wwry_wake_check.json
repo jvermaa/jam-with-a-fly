@@ -1,0 +1,600 @@
+{
+  "phase": "S",
+  "gate": "1a-B",
+  "seed": 0,
+  "git_sha": "ea549174fa8e22870b6512373d3c01ff4ad671da",
+  "git_dirty": true,
+  "timestamp": "2026-10-08T04:28:01.210355+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "call": "calls/wwry.mid",
+  "bpm": 82.0,
+  "dt_ms": 2.0,
+  "encoder": {
+    "burst_duration_ms": 30.0,
+    "max_rate_hz": 150.0,
+    "velocity_full_scale": 127
+  },
+  "jo_set": "all 554 (build/jo_groups.json)",
+  "kc_kc_scale": 1.0,
+  "region_definition": {
+    "cb_intrinsic": "central_brain_non_kc",
+    "cb_endocrine": "central_brain_non_kc",
+    "cb_efferent": "central_brain_non_kc",
+    "ol_intrinsic": "optic",
+    "visual_projection": "optic",
+    "visual_projection_tbc": "optic",
+    "visual_centrifugal": "optic",
+    "vnc_intrinsic": "vnc",
+    "vnc_efferent": "vnc",
+    "vnc_endocrine": "vnc",
+    "vnc_tbc": "vnc",
+    "vnc_motor": "motor",
+    "cb_motor": "motor",
+    "descending_neuron": "descending",
+    "efferent_descending": "descending",
+    "ascending_neuron": "ascending",
+    "efferent_ascending": "ascending"
+  },
+  "region_note": "kc = type name starting KC; sensory = any superclass containing 'sensory', plus ENS; other = no superclass annotated",
+  "saturated_above_hz": 200.0,
+  "levels": [
+    {
+      "tonic_drive_hz": 0.0,
+      "call_run": {
+        "total_spikes": 25871353,
+        "kc": {
+          "n_kc": 4064,
+          "kc_spikes": 6614931,
+          "kc_fired_at_least_once": 4064,
+          "kc_pct_fired_at_least_once": 100.0,
+          "kc_mean_rate_hz": 247.14,
+          "kc_pct_active_per_16th_mean": 99.83,
+          "kc_pct_active_per_16th_max": 100.0
+        },
+        "motor_rate_hz": {
+          "Kick": 44.02,
+          "Snare": 39.93,
+          "Closed hat": 39.01,
+          "Open hat": 118.35,
+          "Tom": 32.81,
+          "Crash": 97.94
+        },
+        "motor_spikes": {
+          "Kick": 37690,
+          "Snare": 30509,
+          "Closed hat": 34688,
+          "Open hat": 12471,
+          "Tom": 9509,
+          "Crash": 43218
+        },
+        "regions": {
+          "all": {
+            "neurons": 165122,
+            "pct_fired": 34.71,
+            "pct_above_200hz": 6.11,
+            "mean_rate_hz": 23.79
+          },
+          "kc": {
+            "neurons": 4064,
+            "pct_fired": 100.0,
+            "pct_above_200hz": 98.01,
+            "mean_rate_hz": 247.14
+          },
+          "central_brain_non_kc": {
+            "neurons": 28172,
+            "pct_fired": 65.35,
+            "pct_above_200hz": 15.06,
+            "mean_rate_hz": 55.61
+          },
+          "optic": {
+            "neurons": 99156,
+            "pct_fired": 24.2,
+            "pct_above_200hz": 0.78,
+            "mean_rate_hz": 7.44
+          },
+          "vnc": {
+            "neurons": 13268,
+            "pct_fired": 58.7,
+            "pct_above_200hz": 4.6,
+            "mean_rate_hz": 31.34
+          },
+          "motor": {
+            "neurons": 815,
+            "pct_fired": 74.23,
+            "pct_above_200hz": 11.41,
+            "mean_rate_hz": 52.76
+          },
+          "descending": {
+            "neurons": 1318,
+            "pct_fired": 78.98,
+            "pct_above_200hz": 13.88,
+            "mean_rate_hz": 55.38
+          },
+          "ascending": {
+            "neurons": 1854,
+            "pct_fired": 52.7,
+            "pct_above_200hz": 5.93,
+            "mean_rate_hz": 30.57
+          },
+          "sensory": {
+            "neurons": 15959,
+            "pct_fired": 2.59,
+            "pct_above_200hz": 0.6,
+            "mean_rate_hz": 1.87
+          },
+          "other": {
+            "neurons": 516,
+            "pct_fired": 3.1,
+            "pct_above_200hz": 0.19,
+            "mean_rate_hz": 1.37
+          }
+        }
+      },
+      "silent_run": {
+        "total_spikes": 0,
+        "kc": {
+          "n_kc": 4064,
+          "kc_spikes": 0,
+          "kc_fired_at_least_once": 0,
+          "kc_pct_fired_at_least_once": 0.0,
+          "kc_mean_rate_hz": 0.0,
+          "kc_pct_active_per_16th_mean": 0.0,
+          "kc_pct_active_per_16th_max": 0.0
+        },
+        "motor_rate_hz": {
+          "Kick": 0.0,
+          "Snare": 0.0,
+          "Closed hat": 0.0,
+          "Open hat": 0.0,
+          "Tom": 0.0,
+          "Crash": 0.0
+        },
+        "motor_spikes": {
+          "Kick": 0,
+          "Snare": 0,
+          "Closed hat": 0,
+          "Open hat": 0,
+          "Tom": 0,
+          "Crash": 0
+        },
+        "regions": {
+          "all": {
+            "neurons": 165122,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "kc": {
+            "neurons": 4064,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "central_brain_non_kc": {
+            "neurons": 28172,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "optic": {
+            "neurons": 99156,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "vnc": {
+            "neurons": 13268,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "motor": {
+            "neurons": 815,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "descending": {
+            "neurons": 1318,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "ascending": {
+            "neurons": 1854,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "sensory": {
+            "neurons": 15959,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          },
+          "other": {
+            "neurons": 516,
+            "pct_fired": 0.0,
+            "pct_above_200hz": 0.0,
+            "mean_rate_hz": 0.0
+          }
+        }
+      },
+      "jo_input_spikes_during_call": 3133,
+      "spikes_beyond_jo_input_call_minus_silent": 25868220
+    },
+    {
+      "tonic_drive_hz": 1.0,
+      "call_run": {
+        "total_spikes": 26765376,
+        "kc": {
+          "n_kc": 4064,
+          "kc_spikes": 6626459,
+          "kc_fired_at_least_once": 4064,
+          "kc_pct_fired_at_least_once": 100.0,
+          "kc_mean_rate_hz": 247.57,
+          "kc_pct_active_per_16th_mean": 100.0,
+          "kc_pct_active_per_16th_max": 100.0
+        },
+        "motor_rate_hz": {
+          "Kick": 49.91,
+          "Snare": 36.37,
+          "Closed hat": 43.03,
+          "Open hat": 111.99,
+          "Tom": 39.7,
+          "Crash": 109.15
+        },
+        "motor_spikes": {
+          "Kick": 42731,
+          "Snare": 27783,
+          "Closed hat": 38261,
+          "Open hat": 11801,
+          "Tom": 11503,
+          "Crash": 48165
+        },
+        "regions": {
+          "all": {
+            "neurons": 165122,
+            "pct_fired": 38.43,
+            "pct_above_200hz": 6.04,
+            "mean_rate_hz": 24.61
+          },
+          "kc": {
+            "neurons": 4064,
+            "pct_fired": 100.0,
+            "pct_above_200hz": 98.08,
+            "mean_rate_hz": 247.57
+          },
+          "central_brain_non_kc": {
+            "neurons": 28172,
+            "pct_fired": 65.22,
+            "pct_above_200hz": 14.88,
+            "mean_rate_hz": 54.95
+          },
+          "optic": {
+            "neurons": 99156,
+            "pct_fired": 24.68,
+            "pct_above_200hz": 0.8,
+            "mean_rate_hz": 8.56
+          },
+          "vnc": {
+            "neurons": 13268,
+            "pct_fired": 99.8,
+            "pct_above_200hz": 3.91,
+            "mean_rate_hz": 33.13
+          },
+          "motor": {
+            "neurons": 815,
+            "pct_fired": 78.28,
+            "pct_above_200hz": 11.66,
+            "mean_rate_hz": 59.5
+          },
+          "descending": {
+            "neurons": 1318,
+            "pct_fired": 78.0,
+            "pct_above_200hz": 13.43,
+            "mean_rate_hz": 57.81
+          },
+          "ascending": {
+            "neurons": 1854,
+            "pct_fired": 54.26,
+            "pct_above_200hz": 6.47,
+            "mean_rate_hz": 33.12
+          },
+          "sensory": {
+            "neurons": 15959,
+            "pct_fired": 3.87,
+            "pct_above_200hz": 0.6,
+            "mean_rate_hz": 2.18
+          },
+          "other": {
+            "neurons": 516,
+            "pct_fired": 3.29,
+            "pct_above_200hz": 0.19,
+            "mean_rate_hz": 1.53
+          }
+        }
+      },
+      "silent_run": {
+        "total_spikes": 24471570,
+        "kc": {
+          "n_kc": 4064,
+          "kc_spikes": 6622492,
+          "kc_fired_at_least_once": 4064,
+          "kc_pct_fired_at_least_once": 100.0,
+          "kc_mean_rate_hz": 247.43,
+          "kc_pct_active_per_16th_mean": 100.0,
+          "kc_pct_active_per_16th_max": 100.0
+        },
+        "motor_rate_hz": {
+          "Kick": 36.84,
+          "Snare": 35.17,
+          "Closed hat": 34.77,
+          "Open hat": 126.79,
+          "Tom": 52.4,
+          "Crash": 107.89
+        },
+        "motor_spikes": {
+          "Kick": 31540,
+          "Snare": 26866,
+          "Closed hat": 30914,
+          "Open hat": 13361,
+          "Tom": 15186,
+          "Crash": 47608
+        },
+        "regions": {
+          "all": {
+            "neurons": 165122,
+            "pct_fired": 38.8,
+            "pct_above_200hz": 5.65,
+            "mean_rate_hz": 22.5
+          },
+          "kc": {
+            "neurons": 4064,
+            "pct_fired": 100.0,
+            "pct_above_200hz": 98.06,
+            "mean_rate_hz": 247.43
+          },
+          "central_brain_non_kc": {
+            "neurons": 28172,
+            "pct_fired": 65.9,
+            "pct_above_200hz": 14.23,
+            "mean_rate_hz": 54.17
+          },
+          "optic": {
+            "neurons": 99156,
+            "pct_fired": 25.46,
+            "pct_above_200hz": 0.44,
+            "mean_rate_hz": 5.88
+          },
+          "vnc": {
+            "neurons": 13268,
+            "pct_fired": 99.64,
+            "pct_above_200hz": 3.92,
+            "mean_rate_hz": 31.09
+          },
+          "motor": {
+            "neurons": 815,
+            "pct_fired": 79.02,
+            "pct_above_200hz": 9.94,
+            "mean_rate_hz": 55.99
+          },
+          "descending": {
+            "neurons": 1318,
+            "pct_fired": 72.23,
+            "pct_above_200hz": 6.9,
+            "mean_rate_hz": 43.0
+          },
+          "ascending": {
+            "neurons": 1854,
+            "pct_fired": 51.56,
+            "pct_above_200hz": 6.8,
+            "mean_rate_hz": 32.29
+          },
+          "sensory": {
+            "neurons": 15959,
+            "pct_fired": 2.46,
+            "pct_above_200hz": 0.5,
+            "mean_rate_hz": 1.59
+          },
+          "other": {
+            "neurons": 516,
+            "pct_fired": 3.68,
+            "pct_above_200hz": 0.39,
+            "mean_rate_hz": 1.63
+          }
+        }
+      },
+      "jo_input_spikes_during_call": 3158,
+      "spikes_beyond_jo_input_call_minus_silent": 2290648
+    },
+    {
+      "tonic_drive_hz": 45.0,
+      "call_run": {
+        "total_spikes": 29475168,
+        "kc": {
+          "n_kc": 4064,
+          "kc_spikes": 6657859,
+          "kc_fired_at_least_once": 4064,
+          "kc_pct_fired_at_least_once": 100.0,
+          "kc_mean_rate_hz": 248.75,
+          "kc_pct_active_per_16th_mean": 100.0,
+          "kc_pct_active_per_16th_max": 100.0
+        },
+        "motor_rate_hz": {
+          "Kick": 54.52,
+          "Snare": 21.71,
+          "Closed hat": 35.03,
+          "Open hat": 80.45,
+          "Tom": 44.95,
+          "Crash": 125.75
+        },
+        "motor_spikes": {
+          "Kick": 46681,
+          "Snare": 16588,
+          "Closed hat": 31143,
+          "Open hat": 8477,
+          "Tom": 13025,
+          "Crash": 55487
+        },
+        "regions": {
+          "all": {
+            "neurons": 165122,
+            "pct_fired": 37.33,
+            "pct_above_200hz": 6.4,
+            "mean_rate_hz": 27.1
+          },
+          "kc": {
+            "neurons": 4064,
+            "pct_fired": 100.0,
+            "pct_above_200hz": 99.06,
+            "mean_rate_hz": 248.75
+          },
+          "central_brain_non_kc": {
+            "neurons": 28172,
+            "pct_fired": 64.91,
+            "pct_above_200hz": 16.81,
+            "mean_rate_hz": 59.91
+          },
+          "optic": {
+            "neurons": 99156,
+            "pct_fired": 23.37,
+            "pct_above_200hz": 0.72,
+            "mean_rate_hz": 6.56
+          },
+          "vnc": {
+            "neurons": 13268,
+            "pct_fired": 99.89,
+            "pct_above_200hz": 4.48,
+            "mean_rate_hz": 69.03
+          },
+          "motor": {
+            "neurons": 815,
+            "pct_fired": 72.76,
+            "pct_above_200hz": 12.15,
+            "mean_rate_hz": 61.48
+          },
+          "descending": {
+            "neurons": 1318,
+            "pct_fired": 71.78,
+            "pct_above_200hz": 14.49,
+            "mean_rate_hz": 57.82
+          },
+          "ascending": {
+            "neurons": 1854,
+            "pct_fired": 48.06,
+            "pct_above_200hz": 5.83,
+            "mean_rate_hz": 28.32
+          },
+          "sensory": {
+            "neurons": 15959,
+            "pct_fired": 2.65,
+            "pct_above_200hz": 0.6,
+            "mean_rate_hz": 1.94
+          },
+          "other": {
+            "neurons": 516,
+            "pct_fired": 3.68,
+            "pct_above_200hz": 0.19,
+            "mean_rate_hz": 1.31
+          }
+        }
+      },
+      "silent_run": {
+        "total_spikes": 28416542,
+        "kc": {
+          "n_kc": 4064,
+          "kc_spikes": 6647413,
+          "kc_fired_at_least_once": 4064,
+          "kc_pct_fired_at_least_once": 100.0,
+          "kc_mean_rate_hz": 248.36,
+          "kc_pct_active_per_16th_mean": 99.96,
+          "kc_pct_active_per_16th_max": 100.0
+        },
+        "motor_rate_hz": {
+          "Kick": 50.86,
+          "Snare": 20.54,
+          "Closed hat": 35.66,
+          "Open hat": 80.29,
+          "Tom": 50.35,
+          "Crash": 120.9
+        },
+        "motor_spikes": {
+          "Kick": 43548,
+          "Snare": 15693,
+          "Closed hat": 31705,
+          "Open hat": 8461,
+          "Tom": 14592,
+          "Crash": 53348
+        },
+        "regions": {
+          "all": {
+            "neurons": 165122,
+            "pct_fired": 37.74,
+            "pct_above_200hz": 5.97,
+            "mean_rate_hz": 26.13
+          },
+          "kc": {
+            "neurons": 4064,
+            "pct_fired": 100.0,
+            "pct_above_200hz": 98.97,
+            "mean_rate_hz": 248.36
+          },
+          "central_brain_non_kc": {
+            "neurons": 28172,
+            "pct_fired": 64.05,
+            "pct_above_200hz": 14.21,
+            "mean_rate_hz": 53.74
+          },
+          "optic": {
+            "neurons": 99156,
+            "pct_fired": 24.56,
+            "pct_above_200hz": 0.74,
+            "mean_rate_hz": 6.79
+          },
+          "vnc": {
+            "neurons": 13268,
+            "pct_fired": 99.8,
+            "pct_above_200hz": 4.58,
+            "mean_rate_hz": 68.88
+          },
+          "motor": {
+            "neurons": 815,
+            "pct_fired": 72.88,
+            "pct_above_200hz": 13.99,
+            "mean_rate_hz": 63.59
+          },
+          "descending": {
+            "neurons": 1318,
+            "pct_fired": 70.41,
+            "pct_above_200hz": 14.57,
+            "mean_rate_hz": 55.59
+          },
+          "ascending": {
+            "neurons": 1854,
+            "pct_fired": 46.6,
+            "pct_above_200hz": 5.77,
+            "mean_rate_hz": 28.79
+          },
+          "sensory": {
+            "neurons": 15959,
+            "pct_fired": 1.28,
+            "pct_above_200hz": 0.48,
+            "mean_rate_hz": 1.57
+          },
+          "other": {
+            "neurons": 516,
+            "pct_fired": 3.68,
+            "pct_above_200hz": 0.19,
+            "mean_rate_hz": 1.26
+          }
+        }
+      },
+      "jo_input_spikes_during_call": 3151,
+      "spikes_beyond_jo_input_call_minus_silent": 1055475
+    }
+  ],
+  "call_alone_wakes_motor": true,
+  "call_alone_neurons_fired_pct": 34.71
+}

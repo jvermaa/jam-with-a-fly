@@ -43,6 +43,8 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
   - APL is GABA and inhibitory in the graph (both cells, every outgoing edge negative); no sign fix needed. The graph is built from `consensus_nt`, the column the malecns-nt-audit README recommends; that README does not mention APL.
   - Tonic drive at 100/50/25/10 % of upstream's 45 Hz: every Kenyon cell fires at the model ceiling at all four levels, call or silent. Motor rates barely follow the drive. Coupling passes at no level.
   - New: `src/coupling.py` (metric), `src/sim_pool.py` (parallel runs), `src/saturation.py`; `run_fly` takes `drive_hz`.
+- **Gate 1a step B — zero / 1 Hz drive: done.** `results/wwry_wake_check.json`. No drive and no sound: 0 spikes. The call alone ignites the same runaway state. Saturation is not KC-only (non-KC central brain, descending and motor neurons also have 12–17 % of cells above 200 Hz).
+- **Gate 1a step A — KC→KC scaled by 0 / 0.25 / 0.5: FAILED, stopped for 🧑.** `results/wwry_kc_gate.json`. KCs stay 67–93 % active per sixteenth step at every scale and drive; the rest of the network is unchanged; coupling confidence intervals (seeds 0–3) all include zero. New: `src/kc_recurrence.py` (wrapper), `src/wake_check.py`, `src/kc_gate.py`.
 - Gate 1b (encoder grid), Gates 2–4: not started; blocked on Gate 1a.
 
 ## In progress
@@ -55,7 +57,7 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
-- Phase S: Gate 1a pass check failed (Kenyon cells saturated at every tonic drive level). Waiting on 🧑.
+- Phase S: Gate 1a pass check failed twice (tonic-drive grid, then KC→KC scaling). The whole network runs away once anything ignites it. Waiting on 🧑.
 
 ## Post links
 - Post #1: —
