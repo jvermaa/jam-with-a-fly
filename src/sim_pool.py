@@ -119,7 +119,8 @@ def run_job(job):
       gain            KC->MBON gain vector to apply for this run (None = untrained, all 1)
       kc_kc_scale     scale on the KC->KC weights (src/kc_recurrence.py); None or 1 = graph as built
       want            names of extra outputs: "motor_neurons" (per motor neuron x 16th-step
-                      spike counts), "kc_windows" (which KCs fired in each 16th step)
+                      spike counts), "kc_windows" (which KCs fired in each 16th step),
+                      "step_counts" (spikes per simulation step: all neurons, and KCs)
       tag             anything; returned unchanged
     """
     from src import run_fly
@@ -207,6 +208,9 @@ def run_job(job):
         np.add.at(mat, (pos[neuron[sel]][keep], b[keep]), 1)
         out["motor_neuron_bins"] = mat
         out["motor_neuron_bodies"] = fb.bodies[_motor_neurons]
+    if "step_counts" in want:
+        out["all_step_counts"] = np.bincount(step, minlength=n_steps).astype(np.int32)
+        out["kc_step_counts"] = np.bincount(step[kc_sel], minlength=n_steps).astype(np.int32)
     if "kc_windows" in want:
         out["kc_windows"] = [kc_neuron[kc_bin == b].astype(np.int32) for b in range(n_bins)]
         out["kc_windows"] = [np.unique(w) for w in out["kc_windows"]]

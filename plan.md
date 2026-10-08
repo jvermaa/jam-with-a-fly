@@ -376,3 +376,6 @@ A one-song sprint run outside the step order above. Gates and results are tracke
 | Gate 4 final evaluation and demo | 300–303 |
 
 Seeds 0–3 were used for screening in Gate 1a (tonic-drive grid, zero-drive check, KC→KC scaling) and are therefore not used for the final evaluation. Earlier Gate 0/1a results on seeds 0–3 stay as recorded.
+
+### Arm A deprioritized (2026-10-08, 🧑's instruction)
+Gate 3 had two arms: A = upstream's mushroom-body loop as is, B = a trained readout from motor neurons only. If any of the Gate 1a follow-up variants (C1–C4: sign audit, timestep 0.2 ms, input strength at 0 Hz tonic drive, reset-per-hit transient) passes Gate 1a, the next step is the Gate 2 baseline and then **Arm B only**. Arm A is not run unless 🧑 asks for it again.
