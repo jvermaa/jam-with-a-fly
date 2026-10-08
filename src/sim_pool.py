@@ -47,6 +47,7 @@ _fb = None
 _mb = None
 _kc = None
 _kck = None
+_gs = None
 _region = None
 _motor_neurons = None
 
@@ -118,6 +119,8 @@ def run_job(job):
       seed, bpm, drive_hz, encoder_config, jo_bodies   passed to run_fly.run
       gain            KC->MBON gain vector to apply for this run (None = untrained, all 1)
       kc_kc_scale     scale on the KC->KC weights (src/kc_recurrence.py); None or 1 = graph as built
+      weight_scale    one factor on ALL weights (src/weight_scale.py); None or 1 = graph as built.
+                      Not meant to be combined with kc_kc_scale or gain in one worker.
       want            names of extra outputs: "motor_neurons" (per motor neuron x 16th-step
                       spike counts), "kc_windows" (which KCs fired in each 16th step),
                       "step_counts" (spikes per simulation step: all neurons, and KCs)
@@ -145,6 +148,15 @@ def run_job(job):
 
             _kck = KCRecurrence(fb)
         _kck.apply(1.0 if scale is None else scale)
+
+    global _gs
+    ws = job.get("weight_scale")
+    if (ws is not None and float(ws) != 1.0) or _gs is not None:
+        if _gs is None:
+            from src.weight_scale import GlobalScale
+
+            _gs = GlobalScale(fb)
+        _gs.apply(1.0 if ws is None else ws)
 
     kwargs = {}
     if job.get("drive_hz") is not None:
@@ -189,6 +201,7 @@ def run_job(job):
         "dt_ms": dt_ms,
         "rate_ceiling_hz": round(rate_ceiling_hz(fb), 2),
         "kc_kc_scale": 1.0 if job.get("kc_kc_scale") is None else float(job["kc_kc_scale"]),
+        "weight_scale": 1.0 if ws is None else float(ws),
         "motor_rate_hz": motor_rate,
         "motor_step_counts": arrays["motor_step_counts"],
         "jo_step_counts": arrays["jo_step_counts"],
