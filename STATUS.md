@@ -53,7 +53,9 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - **D1 — input-ratio check: done.** `results/input_ratio.json`. Input synapses per neuron in the simulation's weight matrix: whole CNS mean 617.2, median 255; brain-only mean 570.5, median 249. No FlyWire numbers are stored locally, so no ratio and no implied scale were computed. New: `src/input_ratio.py`.
 - **D2 — global weight scale screen: 0.3, 0.2 and 0.1 pass the screen as written.** `results/wwry_scale_screen.json`. Seed 200, no tonic drive. 0.5 still runs away 10 ms after one kick. 0.3 and 0.2 stay under the runaway threshold but one kick still starts activity that has not stopped after 500 ms, and the call run stays self-sustained (KCs 81.7 % and 25.9 % per sixteenth step). At 0.1 one kick dies out after 36 ms and the call barely reaches the motor side (9 kick-group spikes, 0 snare). 0.05: no motor spikes. New: `src/weight_scale.py` (wrapper), `src/scale_screen.py`; `sim_pool` jobs take `weight_scale`.
 - **D3 — Shiu taste validation: STOPPED, sugar GRNs not found by annotation.** `results/taste_search.json`. MN9 is annotated (2 neurons). Gustatory sensory neurons are typed (163 labellar, types LB1a–LB4b) but no column says which sense sugar or bitter; the only "sugar"/"bitter" strings sit on 10 second-order neurons. No taste was assigned by guess. New: `src/taste_search.py`.
-- **D4 — not run** (needs a scale passing D2 and D3). No scale has been chosen.
+- **D2b — finer scale screen: 0.12 and 0.14 pass, on seeds 200–203.** `results/wwry_scale_screen_fine.json`. Stricter rule (no runaway after one kick, kick and snare motor groups both spike on the call, all activity over within 500 ms of the last hit). 0.10 fails (no snare-group spikes); 0.16, 0.18, 0.20, 0.30 fail (activity still running at the end of the run). At 0.12 / 0.14 the call run has 6.8 k / 9.6 k spikes in total, no Kenyon cell fires, and the kick/snare motor groups fire 56/16 and 90/65 spikes (seed 200). New: `src/scale_screen_fine.py`.
+- **D3 — taste calibration: STOPPED, table missing.** `reference/tastekin2026_tableS1.xlsx` is not in `reference/` (only the WWRY MIDI is). Nothing inferred from type names. `openpyxl` is also not installed in `.venv`.
+- **D4 — not run** (needs the scale chosen by D2b + D3). No scale has been chosen.
 - Gate 1b (encoder grid), Gates 2–4: not started; blocked on Gate 1a.
 
 ## In progress
@@ -66,7 +68,7 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
-- Phase S: global weight scale screen (D2) passes at 0.3 / 0.2 / 0.1, but the calibration step (D3, sugar → MN9) cannot run: sugar and bitter GRNs are not labelled in the MaleCNS annotations. No scale chosen, D4 not run. Waiting on 🧑 at the D1–D4 checkpoint.
+- Phase S: scales 0.12 and 0.14 pass the finer screen (D2b) on seeds 200–203. Taste calibration (D3) is blocked: `reference/tastekin2026_tableS1.xlsx` is missing. No scale chosen, D4 not run. Waiting on 🧑.
 
 ## Post links
 - Post #1: —

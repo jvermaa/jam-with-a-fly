@@ -61,12 +61,17 @@ def run_row(r, timing, duration_ms):
     if len(r["hit_t"]):
         row["input_spikes_delivered"] = r["summary"]["input_spikes_delivered"]
         row["after_last_hit"] = transient.persistence(r["all_step_counts"], float(np.max(r["hit_t"])) + duration_ms / 1000.0, dt_ms)
+        # D2b: the same, counted from the onset of the last hit rather than the end of its burst.
+        row["last_hit_onset_s"] = round(float(np.max(r["hit_t"])), 4)
+        row["after_last_hit_onset"] = transient.persistence(r["all_step_counts"], float(np.max(r["hit_t"])), dt_ms)
     return row
 
 
-def run_scale(scale):
-    """All three runs for one scale, in one worker."""
+def run_scale(arg):
+    """All three runs for one scale, in one worker. arg: scale, or (scale, seed)."""
     from src import run_fly
+
+    scale, SEED = arg if isinstance(arg, tuple) else (arg, globals()["SEED"])
 
     sim_pool._init()
     fb = sim_pool._fb
@@ -111,7 +116,7 @@ def run_scale(scale):
         "motor_spikes": {v["name"]: int(motor_counts[i].sum()) for i, v in enumerate(voices)},
         "wall_time_s": round(wall, 2),
     }
-    return {"scale": scale, "silent_run": run_row(silent, timing, cfg["burst_duration_ms"]),
+    return {"scale": scale, "seed": SEED, "silent_run": run_row(silent, timing, cfg["burst_duration_ms"]),
             "single_kick_from_rest": single, "call_run": run_row(call, timing, cfg["burst_duration_ms"])}
 
 
