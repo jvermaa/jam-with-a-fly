@@ -45,6 +45,9 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
   - New: `src/coupling.py` (metric), `src/sim_pool.py` (parallel runs), `src/saturation.py`; `run_fly` takes `drive_hz`.
 - **Gate 1a step B — zero / 1 Hz drive: done.** `results/wwry_wake_check.json`. No drive and no sound: 0 spikes. The call alone ignites the same runaway state. Saturation is not KC-only (non-KC central brain, descending and motor neurons also have 12–17 % of cells above 200 Hz).
 - **Gate 1a step A — KC→KC scaled by 0 / 0.25 / 0.5: FAILED, stopped for 🧑.** `results/wwry_kc_gate.json`. KCs stay 67–93 % active per sixteenth step at every scale and drive; the rest of the network is unchanged; coupling confidence intervals (seeds 0–3) all include zero. New: `src/kc_recurrence.py` (wrapper), `src/wake_check.py`, `src/kc_gate.py`.
+- **C0 — housekeeping.** Seed policy in PLAN.md (training 100/101, screening 200–203, final eval 300–303). The hook fix was not possible from this session (the hook is outside the repo; access blocked) — 🧑 action.
+- **C1 — sign audit: no mismatch.** `results/sign_audit.json`. ACh excitatory; GABA, glutamate and histamine inhibitory; dopamine, octopamine, serotonin and "unclear" dropped (sign 0). All 10,228,000 matrix edges carry their presynaptic neuron's sign.
+- **C2 — timestep check at dt 0.2 ms: screen FAILED, stopped for 🧑.** `results/wwry_dt02_check.json`. The runaway is not a 2 ms artefact: at 0.2 ms the Kenyon cells sit at 437–450 Hz (ceiling 454.5 Hz) whenever anything fires, and about 11 % of all neurons exceed 200 Hz. New: `src/sign_audit.py`, `src/dt_check.py`; `sim_pool` takes `dt_ms`.
 - Gate 1b (encoder grid), Gates 2–4: not started; blocked on Gate 1a.
 
 ## In progress
@@ -57,7 +60,7 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
-- Phase S: Gate 1a pass check failed twice (tonic-drive grid, then KC→KC scaling). The whole network runs away once anything ignites it. Waiting on 🧑.
+- Phase S: Gate 1a pass check failed twice (tonic-drive grid, then KC→KC scaling). The whole network runs away once anything ignites it; signs are as intended (C1) and a 0.2 ms timestep does not help (C2). Waiting on 🧑.
 
 ## Post links
 - Post #1: —

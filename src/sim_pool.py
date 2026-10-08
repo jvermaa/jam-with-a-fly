@@ -41,6 +41,7 @@ REGION_OF_SUPERCLASS = {
 }
 REGIONS = ["kc", "central_brain_non_kc", "optic", "vnc", "motor", "descending", "ascending", "sensory", "other"]
 SATURATED_ABOVE_HZ = 200.0
+AT_CEILING_FRACTION = 0.95  # a neuron counts as "at the ceiling" from 95 % of the model's maximum rate
 
 _fb = None
 _mb = None
@@ -50,13 +51,18 @@ _region = None
 _motor_neurons = None
 
 
-def _init():
+def _init(dt_ms=None):
+    """dt_ms: simulation timestep for this worker's brain; None = c.DT_MS (2.0 ms). Set through
+    upstream's own Params object, which is where flysim.py reads it; nothing is edited."""
     global _fb, _kc
     os.environ["OMP_NUM_THREADS"] = "1"
     from flysim import FlyBrain  # upstream, unmodified
     from src import run_fly
 
-    _fb = FlyBrain(p=run_fly.SimParams())
+    params = run_fly.SimParams()
+    if dt_ms is not None:
+        params.dt = float(dt_ms)
+    _fb = FlyBrain(p=params)
     _kc = _fb.where(type_re=r"^KC")
     _set_regions()
 
@@ -71,7 +77,12 @@ def _set_regions():
     _region[_kc] = REGIONS.index("kc")
 
 
-def region_stats(neuron, n, sim_sec):
+def rate_ceiling_hz(fb):
+    """Highest rate the model allows: one spike per refractory period, in whole timesteps."""
+    return 1000.0 / (fb.refr_steps * fb.p.dt)
+
+
+def region_stats(neuron, n, sim_sec, ceiling_hz):
     """Per region and overall: neurons, share that fired, share above SATURATED_ABOVE_HZ, mean rate."""
     rate = np.bincount(neuron, minlength=n) / sim_sec
     out = {}
@@ -81,6 +92,7 @@ def region_stats(neuron, n, sim_sec):
             "neurons": k,
             "pct_fired": round(100.0 * float((rate[m] > 0).mean()), 2) if k else None,
             "pct_above_200hz": round(100.0 * float((rate[m] > SATURATED_ABOVE_HZ).mean()), 2) if k else None,
+            "pct_at_ceiling": round(100.0 * float((rate[m] >= AT_CEILING_FRACTION * ceiling_hz).mean()), 2) if k else None,
             "mean_rate_hz": round(float(rate[m].mean()), 2) if k else None,
         }
     return out
@@ -95,8 +107,8 @@ def _mushroom():
     return _mb
 
 
-def _step_bins(spike_step, timing, n_bins):
-    t = spike_step * (c.DT_MS / 1000.0)
+def _step_bins(spike_step, timing, n_bins, dt_ms):
+    t = spike_step * (dt_ms / 1000.0)
     return np.minimum(np.floor(t / timing.step_sec + 1e-9).astype(np.int64), n_bins)
 
 
@@ -144,13 +156,14 @@ def run_job(job):
 
     step, neuron = arrays["spike_step"], arrays["spike_neuron"]
     n_steps = summary["steps"]
-    n_bins = int(np.floor(n_steps * c.DT_MS / 1000.0 / timing.step_sec + 1e-9))
-    sim_sec = n_steps * c.DT_MS / 1000.0
+    dt_ms = float(fb.p.dt)
+    n_bins = int(np.floor(n_steps * dt_ms / 1000.0 / timing.step_sec + 1e-9))
+    sim_sec = n_steps * dt_ms / 1000.0
 
     is_kc = np.zeros(fb.n, dtype=bool)
     is_kc[_kc] = True
     kc_sel = is_kc[neuron]
-    kc_neuron, kc_bin = neuron[kc_sel], _step_bins(step[kc_sel], timing, n_bins)
+    kc_neuron, kc_bin = neuron[kc_sel], _step_bins(step[kc_sel], timing, n_bins, dt_ms)
     pairs = np.unique(kc_bin.astype(np.int64) * fb.n + kc_neuron)
     per_bin = np.bincount(pairs // fb.n, minlength=n_bins + 1)[:n_bins]
     kc_stats = {
@@ -171,7 +184,9 @@ def run_job(job):
         "tag": job.get("tag"),
         "summary": summary,
         "kc": kc_stats,
-        "regions": region_stats(neuron, fb.n, sim_sec),
+        "regions": region_stats(neuron, fb.n, sim_sec, rate_ceiling_hz(fb)),
+        "dt_ms": dt_ms,
+        "rate_ceiling_hz": round(rate_ceiling_hz(fb), 2),
         "kc_kc_scale": 1.0 if job.get("kc_kc_scale") is None else float(job["kc_kc_scale"]),
         "motor_rate_hz": motor_rate,
         "motor_step_counts": arrays["motor_step_counts"],
@@ -186,7 +201,7 @@ def run_job(job):
         pos = np.full(fb.n, -1, dtype=np.int64)
         pos[_motor_neurons] = np.arange(len(_motor_neurons))
         sel = pos[neuron] >= 0
-        b = _step_bins(step[sel], timing, n_bins)
+        b = _step_bins(step[sel], timing, n_bins, dt_ms)
         keep = b < n_bins
         mat = np.zeros((len(_motor_neurons), n_bins), dtype=np.int32)
         np.add.at(mat, (pos[neuron[sel]][keep], b[keep]), 1)
@@ -198,9 +213,9 @@ def run_job(job):
     return out
 
 
-def run_jobs(jobs, workers=PERFORMANCE_CORES):
-    """Run jobs in parallel; results come back in job order."""
+def run_jobs(jobs, workers=PERFORMANCE_CORES, dt_ms=None):
+    """Run jobs in parallel; results come back in job order. dt_ms: timestep for every job (None = c.DT_MS)."""
     workers = max(1, min(workers, len(jobs)))
     ctx = multiprocessing.get_context("spawn")
-    with ctx.Pool(workers, initializer=_init, maxtasksperchild=None) as pool:
+    with ctx.Pool(workers, initializer=_init, initargs=(dt_ms,), maxtasksperchild=None) as pool:
         return pool.map(run_job, jobs, chunksize=1)
