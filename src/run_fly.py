@@ -78,7 +78,7 @@ def load_groups(fb, jo_bodies=None):
     return voices, jo, motor
 
 
-def simulate(fb, jo_all, input_step, input_neuron, seed, n_steps=None):
+def simulate(fb, jo_all, input_step, input_neuron, seed, n_steps=None, drive_hz=DRIVE_HZ):
     """Simulate n_steps steps (default total_steps()). input_step/input_neuron: one entry per input spike to deliver.
 
     Returns (spike_step, spike_neuron) for every spike of every neuron.
@@ -106,7 +106,7 @@ def simulate(fb, jo_all, input_step, input_neuron, seed, n_steps=None):
             rates = zero
             nxt = min((s for s in by_step if s > step), default=n_steps)
             length = min(nxt, n_steps) - step
-        out = fb.run({tonic_key: DRIVE_HZ, jo_key: rates}, steps=length, seed=seed, spike_log=True, state=state)
+        out = fb.run({tonic_key: drive_hz, jo_key: rates}, steps=length, seed=seed, spike_log=True, state=state)
         state = out["_state"]
         for k, fired in enumerate(out["_spikes"]):
             if len(fired):
@@ -130,13 +130,14 @@ def group_step_counts(spike_step, spike_neuron, groups, n_neurons, n_steps=None)
     return counts
 
 
-def run(fb, call_path, seed, timing=None, encoder_config=None, jo_bodies=None):
+def run(fb, call_path, seed, timing=None, encoder_config=None, jo_bodies=None, drive_hz=DRIVE_HZ):
     """One run. call_path=None is the silent baseline. Returns (arrays for the npz, summary dict).
 
     timing:         tempo; default is the call's configured tempo (120 BPM for a silent run,
                     so pass the call's timing to get a silent baseline of the same length).
     encoder_config: overrides config/encoder.json.
     jo_bodies:      6 bodyId arrays overriding build/jo_groups.json.
+    drive_hz:       tonic drive onto vnc_intrinsic (CHOSEN); default is upstream's DRIVE_HZ.
     """
     timing = timing or Timing.for_call(call_path)
     n_steps = total_steps(timing)
@@ -155,7 +156,7 @@ def run(fb, call_path, seed, timing=None, encoder_config=None, jo_bodies=None):
         input_step, input_neuron = input_step[keep], input_neuron[keep]
 
     t0 = time.time()
-    spike_step, spike_neuron = simulate(fb, jo_all, input_step, input_neuron, seed, n_steps)
+    spike_step, spike_neuron = simulate(fb, jo_all, input_step, input_neuron, seed, n_steps, drive_hz)
     runtime = time.time() - t0
 
     jo_counts = group_step_counts(spike_step, spike_neuron, jo, fb.n, n_steps)
@@ -180,6 +181,7 @@ def run(fb, call_path, seed, timing=None, encoder_config=None, jo_bodies=None):
         "seed": seed,
         "runtime_s": round(runtime, 2),
         "bpm": timing.bpm,
+        "tonic_drive_hz": drive_hz,
         "sim_seconds": n_steps * c.DT_MS / 1000.0,
         "steps": n_steps,
         "n_hits": len(hits),

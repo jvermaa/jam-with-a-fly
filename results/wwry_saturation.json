@@ -1,0 +1,408 @@
+{
+  "phase": "S",
+  "gate": "1a",
+  "seed": 0,
+  "git_sha": "4798cb341def5c27f17c023a03fe45373efb59fd",
+  "git_dirty": true,
+  "timestamp": "2026-10-08T04:22:14.717414+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "call": "calls/wwry.mid",
+  "bpm": 82.0,
+  "dt_ms": 2.0,
+  "encoder": {
+    "burst_duration_ms": 30.0,
+    "max_rate_hz": 150.0,
+    "velocity_full_scale": 127
+  },
+  "jo_set": "all 554 (build/jo_groups.json)",
+  "upstream_drive_hz": 45.0,
+  "kc_pct_definition": "kc_pct_fired_at_least_once = share of the KCs that spike at least once in the whole run (used for the pass check); kc_pct_active_per_16th_* = share that spike within one sixteenth step",
+  "pass_rule": "KC fired-at-least-once < 20.0 %, kick and snare motor groups firing, coupling >= +20.0 % for kick and snare",
+  "graph_facts": {
+    "apl": [
+      {
+        "bodyId": 10540,
+        "type": "APL",
+        "transmitter_in_graph": "gaba",
+        "outgoing_edges": 2389,
+        "excitatory_edges": 0,
+        "inhibitory_edges": 2389,
+        "edges_onto_kc": 2077,
+        "mv_onto_kc_per_spike_total": -26208.3
+      },
+      {
+        "bodyId": 10977,
+        "type": "APL",
+        "transmitter_in_graph": "gaba",
+        "outgoing_edges": 2398,
+        "excitatory_edges": 0,
+        "inhibitory_edges": 2398,
+        "edges_onto_kc": 2133,
+        "mv_onto_kc_per_spike_total": -27589.7
+      }
+    ],
+    "kc_transmitter_in_graph": [
+      "acetylcholine"
+    ],
+    "kc_input_mv_per_presynaptic_spike": {
+      "excitatory_total": 248836.0,
+      "excitatory_from_other_kcs": 135160.0,
+      "inhibitory_total": -63163.0,
+      "inhibitory_from_apl": -53798.0
+    },
+    "kc_to_kc_edges": 117399,
+    "threshold_above_rest_mv": 7.0
+  },
+  "levels": [
+    {
+      "drive_fraction": 1.0,
+      "tonic_drive_hz": 45.0,
+      "kc_call_run": {
+        "n_kc": 4064,
+        "kc_spikes": 6657859,
+        "kc_fired_at_least_once": 4064,
+        "kc_pct_fired_at_least_once": 100.0,
+        "kc_mean_rate_hz": 248.75,
+        "kc_pct_active_per_16th_mean": 100.0,
+        "kc_pct_active_per_16th_max": 100.0
+      },
+      "kc_silent_run": {
+        "n_kc": 4064,
+        "kc_spikes": 6647413,
+        "kc_fired_at_least_once": 4064,
+        "kc_pct_fired_at_least_once": 100.0,
+        "kc_mean_rate_hz": 248.36,
+        "kc_pct_active_per_16th_mean": 99.96,
+        "kc_pct_active_per_16th_max": 100.0
+      },
+      "motor_rate_hz_call_run": {
+        "Kick": 54.52,
+        "Snare": 21.71,
+        "Closed hat": 35.03,
+        "Open hat": 80.45,
+        "Tom": 44.95,
+        "Crash": 125.75
+      },
+      "motor_rate_hz_silent_run": {
+        "Kick": 50.86,
+        "Snare": 20.54,
+        "Closed hat": 35.66,
+        "Open hat": 80.29,
+        "Tom": 50.35,
+        "Crash": 120.9
+      },
+      "total_spikes_call_run": 29475168,
+      "jo_spikes_during_call": {
+        "Kick": 2110,
+        "Snare": 1041,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "coupling_0_100ms": {
+        "Kick": {
+          "hits": 8,
+          "call_spikes": 5762,
+          "silent_spikes": 5359,
+          "change_pct": 7.52,
+          "per_hit_change_pct": [
+            -1.52,
+            -12.56,
+            12.56,
+            19.3,
+            12.75,
+            6.43,
+            8.49,
+            14.51
+          ]
+        },
+        "Snare": {
+          "hits": 4,
+          "call_spikes": 952,
+          "silent_spikes": 857,
+          "change_pct": 11.09,
+          "per_hit_change_pct": [
+            -5.46,
+            -13.25,
+            39.32,
+            21.36
+          ]
+        }
+      },
+      "checks": {
+        "kc_sparse": false,
+        "motor_active": true,
+        "coupling_kick_and_snare": false
+      },
+      "pass": false,
+      "runtime_s": {
+        "call": 63.41,
+        "silent": 61.26
+      }
+    },
+    {
+      "drive_fraction": 0.5,
+      "tonic_drive_hz": 22.5,
+      "kc_call_run": {
+        "n_kc": 4064,
+        "kc_spikes": 6638826,
+        "kc_fired_at_least_once": 4064,
+        "kc_pct_fired_at_least_once": 100.0,
+        "kc_mean_rate_hz": 248.04,
+        "kc_pct_active_per_16th_mean": 100.0,
+        "kc_pct_active_per_16th_max": 100.0
+      },
+      "kc_silent_run": {
+        "n_kc": 4064,
+        "kc_spikes": 6647214,
+        "kc_fired_at_least_once": 4064,
+        "kc_pct_fired_at_least_once": 100.0,
+        "kc_mean_rate_hz": 248.35,
+        "kc_pct_active_per_16th_mean": 99.96,
+        "kc_pct_active_per_16th_max": 100.0
+      },
+      "motor_rate_hz_call_run": {
+        "Kick": 42.9,
+        "Snare": 26.87,
+        "Closed hat": 32.31,
+        "Open hat": 82.75,
+        "Tom": 44.45,
+        "Crash": 123.02
+      },
+      "motor_rate_hz_silent_run": {
+        "Kick": 41.97,
+        "Snare": 24.08,
+        "Closed hat": 30.76,
+        "Open hat": 83.93,
+        "Tom": 42.92,
+        "Crash": 113.58
+      },
+      "total_spikes_call_run": 25748354,
+      "jo_spikes_during_call": {
+        "Kick": 2236,
+        "Snare": 1041,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "coupling_0_100ms": {
+        "Kick": {
+          "hits": 8,
+          "call_spikes": 4465,
+          "silent_spikes": 4121,
+          "change_pct": 8.35,
+          "per_hit_change_pct": [
+            15.77,
+            4.44,
+            2.9,
+            13.22,
+            2.78,
+            2.82,
+            17.49,
+            10.29
+          ]
+        },
+        "Snare": {
+          "hits": 4,
+          "call_spikes": 1149,
+          "silent_spikes": 1195,
+          "change_pct": -3.85,
+          "per_hit_change_pct": [
+            -21.39,
+            -45.92,
+            33.21,
+            37.44
+          ]
+        }
+      },
+      "checks": {
+        "kc_sparse": false,
+        "motor_active": true,
+        "coupling_kick_and_snare": false
+      },
+      "pass": false,
+      "runtime_s": {
+        "call": 57.77,
+        "silent": 58.54
+      }
+    },
+    {
+      "drive_fraction": 0.25,
+      "tonic_drive_hz": 11.25,
+      "kc_call_run": {
+        "n_kc": 4064,
+        "kc_spikes": 6627906,
+        "kc_fired_at_least_once": 4064,
+        "kc_pct_fired_at_least_once": 100.0,
+        "kc_mean_rate_hz": 247.63,
+        "kc_pct_active_per_16th_mean": 100.0,
+        "kc_pct_active_per_16th_max": 100.0
+      },
+      "kc_silent_run": {
+        "n_kc": 4064,
+        "kc_spikes": 6631286,
+        "kc_fired_at_least_once": 4064,
+        "kc_pct_fired_at_least_once": 100.0,
+        "kc_mean_rate_hz": 247.75,
+        "kc_pct_active_per_16th_mean": 100.0,
+        "kc_pct_active_per_16th_max": 100.0
+      },
+      "motor_rate_hz_call_run": {
+        "Kick": 39.18,
+        "Snare": 27.93,
+        "Closed hat": 34.96,
+        "Open hat": 97.9,
+        "Tom": 37.14,
+        "Crash": 101.69
+      },
+      "motor_rate_hz_silent_run": {
+        "Kick": 39.17,
+        "Snare": 27.95,
+        "Closed hat": 33.76,
+        "Open hat": 82.58,
+        "Tom": 40.22,
+        "Crash": 99.26
+      },
+      "total_spikes_call_run": 25893690,
+      "jo_spikes_during_call": {
+        "Kick": 2147,
+        "Snare": 1041,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "coupling_0_100ms": {
+        "Kick": {
+          "hits": 8,
+          "call_spikes": 3901,
+          "silent_spikes": 4166,
+          "change_pct": -6.36,
+          "per_hit_change_pct": [
+            -14.68,
+            5.34,
+            3.51,
+            1.33,
+            5.91,
+            -9.92,
+            -31.54,
+            2.77
+          ]
+        },
+        "Snare": {
+          "hits": 4,
+          "call_spikes": 1352,
+          "silent_spikes": 1389,
+          "change_pct": -2.66,
+          "per_hit_change_pct": [
+            3.12,
+            3.57,
+            0.7,
+            -16.71
+          ]
+        }
+      },
+      "checks": {
+        "kc_sparse": false,
+        "motor_active": true,
+        "coupling_kick_and_snare": false
+      },
+      "pass": false,
+      "runtime_s": {
+        "call": 59.32,
+        "silent": 57.47
+      }
+    },
+    {
+      "drive_fraction": 0.1,
+      "tonic_drive_hz": 4.5,
+      "kc_call_run": {
+        "n_kc": 4064,
+        "kc_spikes": 6627583,
+        "kc_fired_at_least_once": 4064,
+        "kc_pct_fired_at_least_once": 100.0,
+        "kc_mean_rate_hz": 247.62,
+        "kc_pct_active_per_16th_mean": 100.0,
+        "kc_pct_active_per_16th_max": 100.0
+      },
+      "kc_silent_run": {
+        "n_kc": 4064,
+        "kc_spikes": 6630976,
+        "kc_fired_at_least_once": 4064,
+        "kc_pct_fired_at_least_once": 100.0,
+        "kc_mean_rate_hz": 247.74,
+        "kc_pct_active_per_16th_mean": 100.0,
+        "kc_pct_active_per_16th_max": 100.0
+      },
+      "motor_rate_hz_call_run": {
+        "Kick": 39.04,
+        "Snare": 31.73,
+        "Closed hat": 34.44,
+        "Open hat": 107.47,
+        "Tom": 50.42,
+        "Crash": 97.78
+      },
+      "motor_rate_hz_silent_run": {
+        "Kick": 32.81,
+        "Snare": 31.59,
+        "Closed hat": 30.8,
+        "Open hat": 106.82,
+        "Tom": 54.01,
+        "Crash": 102.69
+      },
+      "total_spikes_call_run": 24432868,
+      "jo_spikes_during_call": {
+        "Kick": 2190,
+        "Snare": 1041,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "coupling_0_100ms": {
+        "Kick": {
+          "hits": 8,
+          "call_spikes": 4410,
+          "silent_spikes": 3611,
+          "change_pct": 22.13,
+          "per_hit_change_pct": [
+            3.43,
+            35.95,
+            18.14,
+            54.12,
+            72.25,
+            21.35,
+            -1.59,
+            0.24
+          ]
+        },
+        "Snare": {
+          "hits": 4,
+          "call_spikes": 1373,
+          "silent_spikes": 1245,
+          "change_pct": 10.28,
+          "per_hit_change_pct": [
+            64.11,
+            42.58,
+            3.19,
+            -32.04
+          ]
+        }
+      },
+      "checks": {
+        "kc_sparse": false,
+        "motor_active": true,
+        "coupling_kick_and_snare": false
+      },
+      "pass": false,
+      "runtime_s": {
+        "call": 56.43,
+        "silent": 54.93
+      }
+    }
+  ],
+  "pass": false
+}

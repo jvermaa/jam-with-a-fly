@@ -33,14 +33,17 @@ Updated at the end of every step (PLAN.md guardrail 8).
 ## Phase S — "We Will Rock You" sprint (branch `phase-s-wwry-sprint`)
 One-song training sprint requested by 🧑, outside PLAN.md's step order. Five gates (0–4), stop and report at each. Stacked on the Phase 2 branch; step 2.1 stays parked.
 
-- **Gate 0 — facts + setup: done, awaiting 🧑.**
+- **Gate 0 — facts + setup: done, approved by 🧑** (with added Gate 1a, and a trained-readout arm B at Gate 3).
   - Per-call tempo: `src/timing.py` + `config/calls.json` (default 120, `wwry` 82). Calls 01–08 unchanged (regression test on `call_06` reproduces its committed score).
   - Target `calls/wwry.mid` built from `calls/call_spec_wwry.txt` (82 BPM, 2 bars = 5.854 s); passes `results/wwry_calls_check.json`.
   - Pattern equals bars 1–7 of the local reference arrangement with clap 39 → snare 38 (`results/wwry_reference.json`; reference file is gitignored). `NOTICE.md` updated.
   - One profiled run + what training can change: `results/wwry_profile.json`.
   - Tests (subagent-written): `tests/test_timing.py`, `tests/test_wwry_reference.py`; 79 passed.
-- Gate 1 — input coupling grid: next.
-- Gates 2–4 — before baseline, train, evaluate: not started.
+- **Gate 1a — saturation check: FAILED, stopped for 🧑.** `results/wwry_saturation.json`.
+  - APL is GABA and inhibitory in the graph (both cells, every outgoing edge negative); no sign fix needed. The graph is built from `consensus_nt`, the column the malecns-nt-audit README recommends; that README does not mention APL.
+  - Tonic drive at 100/50/25/10 % of upstream's 45 Hz: every Kenyon cell fires at the model ceiling at all four levels, call or silent. Motor rates barely follow the drive. Coupling passes at no level.
+  - New: `src/coupling.py` (metric), `src/sim_pool.py` (parallel runs), `src/saturation.py`; `run_fly` takes `drive_hz`.
+- Gate 1b (encoder grid), Gates 2–4: not started; blocked on Gate 1a.
 
 ## In progress
 - **Step 2.1 — lock export schema v1** on branch `phase-2-viewer-upgrade`. Draft in `docs/export_schema_v1.md`. Waiting on 🧑 checkpoint: approve the schema and decide how to place the antennal (JO) neurons, which have no recorded position.
@@ -52,7 +55,7 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
-- Phase S: waiting on 🧑 at Gate 0.
+- Phase S: Gate 1a pass check failed (Kenyon cells saturated at every tonic drive level). Waiting on 🧑.
 
 ## Post links
 - Post #1: —
