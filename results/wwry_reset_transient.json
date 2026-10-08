@@ -1,0 +1,1472 @@
+{
+ "phase": "S",
+ "step": "C4",
+ "seed": [
+  200,
+  201,
+  202,
+  203
+ ],
+ "git_sha": "f96fe9ce81c0df75640215d2f89dd0749676dfaa",
+ "git_dirty": true,
+ "timestamp": "2026-10-08T04:52:39.200753+00:00",
+ "machine": "macOS-15.6.1-arm64-arm-64bit",
+ "python": "3.12.8",
+ "call": "calls/wwry.mid",
+ "bpm": 82.0,
+ "dt_ms": 2.0,
+ "tonic_drive_hz": 0.0,
+ "encoder": {
+  "burst_duration_ms": 30.0,
+  "max_rate_hz": 150.0,
+  "velocity_full_scale": 127
+ },
+ "jo_set": "all 554 (build/jo_groups.json)",
+ "sim_ms_per_step": 100.0,
+ "decision": "state reset between beats; chosen to isolate the onset response",
+ "method": "per sixteenth step of the call: all neurons at rest, only that step's encoder spikes, 100 ms simulated",
+ "runaway_definition": "first 4 ms window (one refractory cycle) in which more than 50 % of KCs fire",
+ "kc_sparse_definition": "mean share of KCs that fire at least once in the 100 ms after a hit < 20 % (a sixteenth step is 183 ms, so this window is shorter and the test no stricter than Gate 1a's)",
+ "ci_method": "mean +- t(0.975, df=3) x sample std / sqrt(4) over seeds 200-203; per seed, mean spikes per step of each kind",
+ "motor_group_sizes": {
+  "Kick": 130,
+  "Snare": 116,
+  "Closed hat": 135,
+  "Open hat": 16,
+  "Tom": 44,
+  "Crash": 67
+ },
+ "silent_steps_total_spikes_all_seeds": 0,
+ "time_to_runaway_ms": {
+  "hit_steps": 48,
+  "reached_runaway": 48,
+  "min": 6.0,
+  "median": 8.0,
+  "max": 10.0,
+  "by_voice": {
+   "Kick": {
+    "hit_steps": 32,
+    "reached_runaway": 32,
+    "median": 8.0
+   },
+   "Snare": {
+    "hit_steps": 16,
+    "reached_runaway": 16,
+    "median": 7.0
+   }
+  }
+ },
+ "kc_pct_fired_within_100ms_of_a_hit_mean": 99.14,
+ "coupling_ci_by_window": {
+  "0-20ms": {
+   "Kick": {
+    "own_hit_mean_spikes": {
+     "per_seed": [
+      81.625,
+      77.25,
+      92.25,
+      80.625
+     ],
+     "mean": 82.94,
+     "ci95_low": 72.62,
+     "ci95_high": 93.26
+    },
+    "silent_step_mean_spikes": {
+     "per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "ci95_low": 0.0,
+     "ci95_high": 0.0
+    },
+    "change_pct_vs_silent_step": {
+     "per_seed": [
+      null,
+      null,
+      null,
+      null
+     ],
+     "mean": null,
+     "ci95_low": null,
+     "ci95_high": null
+    },
+    "change_pct_vs_other_voice_hit": {
+     "per_seed": [
+      -12.23,
+      -16.71,
+      -9.11,
+      -12.13
+     ],
+     "mean": -12.54,
+     "ci95_low": -17.53,
+     "ci95_high": -7.56
+    }
+   },
+   "Snare": {
+    "own_hit_mean_spikes": {
+     "per_seed": [
+      94.25,
+      93.5,
+      87.25,
+      85.0
+     ],
+     "mean": 90.0,
+     "ci95_low": 82.72,
+     "ci95_high": 97.28
+    },
+    "silent_step_mean_spikes": {
+     "per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "ci95_low": 0.0,
+     "ci95_high": 0.0
+    },
+    "change_pct_vs_silent_step": {
+     "per_seed": [
+      null,
+      null,
+      null,
+      null
+     ],
+     "mean": null,
+     "ci95_low": null,
+     "ci95_high": null
+    },
+    "change_pct_vs_other_voice_hit": {
+     "per_seed": [
+      73.73,
+      79.81,
+      43.03,
+      53.5
+     ],
+     "mean": 62.52,
+     "ci95_low": 35.17,
+     "ci95_high": 89.86
+    }
+   }
+  },
+  "0-50ms": {
+   "Kick": {
+    "own_hit_mean_spikes": {
+     "per_seed": [
+      183.0,
+      164.875,
+      189.625,
+      169.0
+     ],
+     "mean": 176.62,
+     "ci95_low": 158.12,
+     "ci95_high": 195.13
+    },
+    "silent_step_mean_spikes": {
+     "per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "ci95_low": 0.0,
+     "ci95_high": 0.0
+    },
+    "change_pct_vs_silent_step": {
+     "per_seed": [
+      null,
+      null,
+      null,
+      null
+     ],
+     "mean": null,
+     "ci95_low": null,
+     "ci95_high": null
+    },
+    "change_pct_vs_other_voice_hit": {
+     "per_seed": [
+      -4.69,
+      -10.76,
+      1.4,
+      -4.65
+     ],
+     "mean": -4.67,
+     "ci95_low": -12.57,
+     "ci95_high": 3.22
+    }
+   },
+   "Snare": {
+    "own_hit_mean_spikes": {
+     "per_seed": [
+      170.0,
+      183.0,
+      163.0,
+      164.75
+     ],
+     "mean": 170.19,
+     "ci95_low": 155.8,
+     "ci95_high": 184.58
+    },
+    "silent_step_mean_spikes": {
+     "per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "ci95_low": 0.0,
+     "ci95_high": 0.0
+    },
+    "change_pct_vs_silent_step": {
+     "per_seed": [
+      null,
+      null,
+      null,
+      null
+     ],
+     "mean": null,
+     "ci95_low": null,
+     "ci95_high": null
+    },
+    "change_pct_vs_other_voice_hit": {
+     "per_seed": [
+      25.0,
+      37.72,
+      29.62,
+      29.98
+     ],
+     "mean": 30.58,
+     "ci95_low": 22.19,
+     "ci95_high": 38.97
+    }
+   }
+  },
+  "0-100ms": {
+   "Kick": {
+    "own_hit_mean_spikes": {
+     "per_seed": [
+      371.875,
+      333.625,
+      363.5,
+      341.25
+     ],
+     "mean": 352.56,
+     "ci95_low": 323.81,
+     "ci95_high": 381.31
+    },
+    "silent_step_mean_spikes": {
+     "per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "ci95_low": 0.0,
+     "ci95_high": 0.0
+    },
+    "change_pct_vs_silent_step": {
+     "per_seed": [
+      null,
+      null,
+      null,
+      null
+     ],
+     "mean": null,
+     "ci95_low": null,
+     "ci95_high": null
+    },
+    "change_pct_vs_other_voice_hit": {
+     "per_seed": [
+      -0.17,
+      -2.59,
+      8.91,
+      8.25
+     ],
+     "mean": 3.6,
+     "ci95_low": -5.69,
+     "ci95_high": 12.89
+    }
+   },
+   "Snare": {
+    "own_hit_mean_spikes": {
+     "per_seed": [
+      340.75,
+      368.5,
+      335.0,
+      377.0
+     ],
+     "mean": 355.31,
+     "ci95_low": 322.59,
+     "ci95_high": 388.04
+    },
+    "silent_step_mean_spikes": {
+     "per_seed": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "mean": 0.0,
+     "ci95_low": 0.0,
+     "ci95_high": 0.0
+    },
+    "change_pct_vs_silent_step": {
+     "per_seed": [
+      null,
+      null,
+      null,
+      null
+     ],
+     "mean": null,
+     "ci95_low": null,
+     "ci95_high": null
+    },
+    "change_pct_vs_other_voice_hit": {
+     "per_seed": [
+      15.85,
+      16.71,
+      22.21,
+      32.86
+     ],
+     "mean": 21.91,
+     "ci95_low": 9.45,
+     "ci95_high": 34.36
+    }
+   }
+  }
+ },
+ "per_seed": {
+  "200": {
+   "by_window": {
+    "0-20ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 81.625,
+       "Snare": 54.25,
+       "Closed hat": 71.75,
+       "Open hat": 39.125,
+       "Tom": 61.0,
+       "Crash": 147.0
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 93.0,
+       "Snare": 94.25,
+       "Closed hat": 57.25,
+       "Open hat": 37.5,
+       "Tom": 57.5,
+       "Crash": 143.0
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    },
+    "0-50ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 183.0,
+       "Snare": 136.0,
+       "Closed hat": 171.25,
+       "Open hat": 91.75,
+       "Tom": 104.875,
+       "Crash": 329.375
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 192.0,
+       "Snare": 170.0,
+       "Closed hat": 130.0,
+       "Open hat": 103.0,
+       "Tom": 102.75,
+       "Crash": 331.75
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    },
+    "0-100ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 371.875,
+       "Snare": 294.125,
+       "Closed hat": 393.0,
+       "Open hat": 179.375,
+       "Tom": 208.75,
+       "Crash": 571.625
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 372.5,
+       "Snare": 340.75,
+       "Closed hat": 345.0,
+       "Open hat": 204.75,
+       "Tom": 175.75,
+       "Crash": 583.75
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    }
+   },
+   "coupling": {
+    "0-20ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 81.625,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 93.0,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -12.23
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 94.25,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 54.25,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 73.73
+     }
+    },
+    "0-50ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 183.0,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 192.0,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -4.69
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 170.0,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 136.0,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 25.0
+     }
+    },
+    "0-100ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 371.875,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 372.5,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -0.17
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 340.75,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 294.125,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 15.85
+     }
+    }
+   }
+  },
+  "201": {
+   "by_window": {
+    "0-20ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 77.25,
+       "Snare": 52.0,
+       "Closed hat": 67.0,
+       "Open hat": 41.875,
+       "Tom": 62.625,
+       "Crash": 148.875
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 92.75,
+       "Snare": 93.5,
+       "Closed hat": 77.5,
+       "Open hat": 31.25,
+       "Tom": 50.25,
+       "Crash": 129.0
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    },
+    "0-50ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 164.875,
+       "Snare": 132.875,
+       "Closed hat": 178.375,
+       "Open hat": 96.875,
+       "Tom": 109.5,
+       "Crash": 355.625
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 184.75,
+       "Snare": 183.0,
+       "Closed hat": 200.25,
+       "Open hat": 71.75,
+       "Tom": 80.25,
+       "Crash": 274.5
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    },
+    "0-100ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 333.625,
+       "Snare": 315.75,
+       "Closed hat": 417.0,
+       "Open hat": 184.375,
+       "Tom": 204.625,
+       "Crash": 687.75
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 342.5,
+       "Snare": 368.5,
+       "Closed hat": 474.75,
+       "Open hat": 175.75,
+       "Tom": 166.75,
+       "Crash": 517.75
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    }
+   },
+   "coupling": {
+    "0-20ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 77.25,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 92.75,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -16.71
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 93.5,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 52.0,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 79.81
+     }
+    },
+    "0-50ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 164.875,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 184.75,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -10.76
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 183.0,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 132.875,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 37.72
+     }
+    },
+    "0-100ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 333.625,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 342.5,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -2.59
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 368.5,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 315.75,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 16.71
+     }
+    }
+   }
+  },
+  "202": {
+   "by_window": {
+    "0-20ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 92.25,
+       "Snare": 61.0,
+       "Closed hat": 74.0,
+       "Open hat": 37.875,
+       "Tom": 62.0,
+       "Crash": 138.875
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 101.5,
+       "Snare": 87.25,
+       "Closed hat": 81.5,
+       "Open hat": 30.5,
+       "Tom": 55.75,
+       "Crash": 140.5
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    },
+    "0-50ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 189.625,
+       "Snare": 125.75,
+       "Closed hat": 180.125,
+       "Open hat": 84.75,
+       "Tom": 119.625,
+       "Crash": 321.75
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 187.0,
+       "Snare": 163.0,
+       "Closed hat": 220.5,
+       "Open hat": 84.25,
+       "Tom": 99.75,
+       "Crash": 270.0
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    },
+    "0-100ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 363.5,
+       "Snare": 274.125,
+       "Closed hat": 414.375,
+       "Open hat": 172.375,
+       "Tom": 231.625,
+       "Crash": 591.75
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 333.75,
+       "Snare": 335.0,
+       "Closed hat": 497.0,
+       "Open hat": 181.25,
+       "Tom": 185.75,
+       "Crash": 586.75
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    }
+   },
+   "coupling": {
+    "0-20ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 92.25,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 101.5,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -9.11
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 87.25,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 61.0,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 43.03
+     }
+    },
+    "0-50ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 189.625,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 187.0,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 1.4
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 163.0,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 125.75,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 29.62
+     }
+    },
+    "0-100ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 363.5,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 333.75,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 8.91
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 335.0,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 274.125,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 22.21
+     }
+    }
+   }
+  },
+  "203": {
+   "by_window": {
+    "0-20ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 80.625,
+       "Snare": 55.375,
+       "Closed hat": 68.75,
+       "Open hat": 38.0,
+       "Tom": 62.75,
+       "Crash": 150.5
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 91.75,
+       "Snare": 85.0,
+       "Closed hat": 64.0,
+       "Open hat": 33.25,
+       "Tom": 52.5,
+       "Crash": 130.0
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    },
+    "0-50ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 169.0,
+       "Snare": 126.75,
+       "Closed hat": 149.5,
+       "Open hat": 86.75,
+       "Tom": 102.5,
+       "Crash": 334.25
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 177.25,
+       "Snare": 164.75,
+       "Closed hat": 168.5,
+       "Open hat": 81.0,
+       "Tom": 104.75,
+       "Crash": 278.0
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    },
+    "0-100ms": {
+     "Kick": {
+      "steps": 8,
+      "mean_motor_spikes": {
+       "Kick": 341.25,
+       "Snare": 283.75,
+       "Closed hat": 350.125,
+       "Open hat": 174.5,
+       "Tom": 162.875,
+       "Crash": 633.0
+      }
+     },
+     "Snare": {
+      "steps": 4,
+      "mean_motor_spikes": {
+       "Kick": 315.25,
+       "Snare": 377.0,
+       "Closed hat": 417.75,
+       "Open hat": 171.5,
+       "Tom": 191.0,
+       "Crash": 528.25
+      }
+     },
+     "silent": {
+      "steps": 20,
+      "mean_motor_spikes": {
+       "Kick": 0.0,
+       "Snare": 0.0,
+       "Closed hat": 0.0,
+       "Open hat": 0.0,
+       "Tom": 0.0,
+       "Crash": 0.0
+      }
+     }
+    }
+   },
+   "coupling": {
+    "0-20ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 80.625,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 91.75,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -12.13
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 85.0,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 55.375,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 53.5
+     }
+    },
+    "0-50ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 169.0,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 177.25,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": -4.65
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 164.75,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 126.75,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 29.98
+     }
+    },
+    "0-100ms": {
+     "Kick": {
+      "own_hit_mean_spikes": 341.25,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 315.25,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 8.25
+     },
+     "Snare": {
+      "own_hit_mean_spikes": 377.0,
+      "silent_step_mean_spikes": 0.0,
+      "other_voice_hit_mean_spikes": 283.75,
+      "change_pct_vs_silent_step": null,
+      "change_pct_vs_other_voice_hit": 32.86
+     }
+    }
+   }
+  }
+ },
+ "hit_steps": [
+  {
+   "seed": 200,
+   "step": 0,
+   "voice": "Kick",
+   "input_spikes_delivered": 343,
+   "total_spikes": 365692,
+   "pct_neurons_fired": 25.97,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 200,
+   "step": 2,
+   "voice": "Kick",
+   "input_spikes_delivered": 316,
+   "total_spikes": 319994,
+   "pct_neurons_fired": 23.71,
+   "pct_kc_fired": 98.11,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 200,
+   "step": 4,
+   "voice": "Snare",
+   "input_spikes_delivered": 314,
+   "total_spikes": 308286,
+   "pct_neurons_fired": 23.21,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 6.0
+  },
+  {
+   "seed": 200,
+   "step": 8,
+   "voice": "Kick",
+   "input_spikes_delivered": 314,
+   "total_spikes": 332841,
+   "pct_neurons_fired": 24.61,
+   "pct_kc_fired": 97.86,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 200,
+   "step": 10,
+   "voice": "Kick",
+   "input_spikes_delivered": 322,
+   "total_spikes": 312907,
+   "pct_neurons_fired": 23.89,
+   "pct_kc_fired": 96.58,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 200,
+   "step": 12,
+   "voice": "Snare",
+   "input_spikes_delivered": 341,
+   "total_spikes": 310264,
+   "pct_neurons_fired": 24.56,
+   "pct_kc_fired": 98.89,
+   "time_to_runaway_ms": 6.0
+  },
+  {
+   "seed": 200,
+   "step": 16,
+   "voice": "Kick",
+   "input_spikes_delivered": 331,
+   "total_spikes": 333026,
+   "pct_neurons_fired": 25.13,
+   "pct_kc_fired": 99.31,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 200,
+   "step": 18,
+   "voice": "Kick",
+   "input_spikes_delivered": 312,
+   "total_spikes": 326083,
+   "pct_neurons_fired": 24.43,
+   "pct_kc_fired": 97.79,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 200,
+   "step": 20,
+   "voice": "Snare",
+   "input_spikes_delivered": 319,
+   "total_spikes": 346837,
+   "pct_neurons_fired": 24.62,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 200,
+   "step": 24,
+   "voice": "Kick",
+   "input_spikes_delivered": 287,
+   "total_spikes": 358925,
+   "pct_neurons_fired": 24.95,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 200,
+   "step": 26,
+   "voice": "Kick",
+   "input_spikes_delivered": 343,
+   "total_spikes": 345293,
+   "pct_neurons_fired": 25.05,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 200,
+   "step": 28,
+   "voice": "Snare",
+   "input_spikes_delivered": 313,
+   "total_spikes": 340374,
+   "pct_neurons_fired": 24.07,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 0,
+   "voice": "Kick",
+   "input_spikes_delivered": 292,
+   "total_spikes": 320331,
+   "pct_neurons_fired": 24.81,
+   "pct_kc_fired": 97.76,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 2,
+   "voice": "Kick",
+   "input_spikes_delivered": 330,
+   "total_spikes": 346698,
+   "pct_neurons_fired": 26.2,
+   "pct_kc_fired": 99.34,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 4,
+   "voice": "Snare",
+   "input_spikes_delivered": 319,
+   "total_spikes": 328651,
+   "pct_neurons_fired": 24.05,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 8,
+   "voice": "Kick",
+   "input_spikes_delivered": 326,
+   "total_spikes": 352583,
+   "pct_neurons_fired": 25.49,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 201,
+   "step": 10,
+   "voice": "Kick",
+   "input_spikes_delivered": 322,
+   "total_spikes": 328947,
+   "pct_neurons_fired": 24.1,
+   "pct_kc_fired": 96.56,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 12,
+   "voice": "Snare",
+   "input_spikes_delivered": 289,
+   "total_spikes": 348185,
+   "pct_neurons_fired": 24.7,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 16,
+   "voice": "Kick",
+   "input_spikes_delivered": 301,
+   "total_spikes": 332909,
+   "pct_neurons_fired": 24.66,
+   "pct_kc_fired": 97.81,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 18,
+   "voice": "Kick",
+   "input_spikes_delivered": 322,
+   "total_spikes": 353196,
+   "pct_neurons_fired": 25.72,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 201,
+   "step": 20,
+   "voice": "Snare",
+   "input_spikes_delivered": 320,
+   "total_spikes": 349249,
+   "pct_neurons_fired": 24.87,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 6.0
+  },
+  {
+   "seed": 201,
+   "step": 24,
+   "voice": "Kick",
+   "input_spikes_delivered": 336,
+   "total_spikes": 352366,
+   "pct_neurons_fired": 25.48,
+   "pct_kc_fired": 97.05,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 26,
+   "voice": "Kick",
+   "input_spikes_delivered": 313,
+   "total_spikes": 355648,
+   "pct_neurons_fired": 24.7,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 201,
+   "step": 28,
+   "voice": "Snare",
+   "input_spikes_delivered": 315,
+   "total_spikes": 309532,
+   "pct_neurons_fired": 22.56,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 202,
+   "step": 0,
+   "voice": "Kick",
+   "input_spikes_delivered": 326,
+   "total_spikes": 340639,
+   "pct_neurons_fired": 25.37,
+   "pct_kc_fired": 97.93,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 202,
+   "step": 2,
+   "voice": "Kick",
+   "input_spikes_delivered": 301,
+   "total_spikes": 334948,
+   "pct_neurons_fired": 25.56,
+   "pct_kc_fired": 99.83,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 202,
+   "step": 4,
+   "voice": "Snare",
+   "input_spikes_delivered": 333,
+   "total_spikes": 342952,
+   "pct_neurons_fired": 24.25,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 6.0
+  },
+  {
+   "seed": 202,
+   "step": 8,
+   "voice": "Kick",
+   "input_spikes_delivered": 342,
+   "total_spikes": 307478,
+   "pct_neurons_fired": 24.71,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 202,
+   "step": 10,
+   "voice": "Kick",
+   "input_spikes_delivered": 316,
+   "total_spikes": 347843,
+   "pct_neurons_fired": 24.43,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 202,
+   "step": 12,
+   "voice": "Snare",
+   "input_spikes_delivered": 320,
+   "total_spikes": 324276,
+   "pct_neurons_fired": 24.07,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 202,
+   "step": 16,
+   "voice": "Kick",
+   "input_spikes_delivered": 315,
+   "total_spikes": 341025,
+   "pct_neurons_fired": 25.01,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 202,
+   "step": 18,
+   "voice": "Kick",
+   "input_spikes_delivered": 335,
+   "total_spikes": 326221,
+   "pct_neurons_fired": 23.21,
+   "pct_kc_fired": 98.72,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 202,
+   "step": 20,
+   "voice": "Snare",
+   "input_spikes_delivered": 355,
+   "total_spikes": 340426,
+   "pct_neurons_fired": 24.38,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 6.0
+  },
+  {
+   "seed": 202,
+   "step": 24,
+   "voice": "Kick",
+   "input_spikes_delivered": 322,
+   "total_spikes": 343613,
+   "pct_neurons_fired": 24.3,
+   "pct_kc_fired": 97.88,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 202,
+   "step": 26,
+   "voice": "Kick",
+   "input_spikes_delivered": 342,
+   "total_spikes": 327015,
+   "pct_neurons_fired": 24.06,
+   "pct_kc_fired": 97.91,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 202,
+   "step": 28,
+   "voice": "Snare",
+   "input_spikes_delivered": 296,
+   "total_spikes": 340726,
+   "pct_neurons_fired": 24.52,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 6.0
+  },
+  {
+   "seed": 203,
+   "step": 0,
+   "voice": "Kick",
+   "input_spikes_delivered": 304,
+   "total_spikes": 328648,
+   "pct_neurons_fired": 24.52,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 203,
+   "step": 2,
+   "voice": "Kick",
+   "input_spikes_delivered": 316,
+   "total_spikes": 336290,
+   "pct_neurons_fired": 25.02,
+   "pct_kc_fired": 98.77,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 203,
+   "step": 4,
+   "voice": "Snare",
+   "input_spikes_delivered": 354,
+   "total_spikes": 348441,
+   "pct_neurons_fired": 24.71,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 6.0
+  },
+  {
+   "seed": 203,
+   "step": 8,
+   "voice": "Kick",
+   "input_spikes_delivered": 330,
+   "total_spikes": 333126,
+   "pct_neurons_fired": 24.26,
+   "pct_kc_fired": 98.23,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 203,
+   "step": 10,
+   "voice": "Kick",
+   "input_spikes_delivered": 337,
+   "total_spikes": 338030,
+   "pct_neurons_fired": 24.66,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 203,
+   "step": 12,
+   "voice": "Snare",
+   "input_spikes_delivered": 321,
+   "total_spikes": 323750,
+   "pct_neurons_fired": 23.91,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 203,
+   "step": 16,
+   "voice": "Kick",
+   "input_spikes_delivered": 296,
+   "total_spikes": 316451,
+   "pct_neurons_fired": 24.38,
+   "pct_kc_fired": 97.83,
+   "time_to_runaway_ms": 10.0
+  },
+  {
+   "seed": 203,
+   "step": 18,
+   "voice": "Kick",
+   "input_spikes_delivered": 322,
+   "total_spikes": 296628,
+   "pct_neurons_fired": 22.97,
+   "pct_kc_fired": 96.9,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 203,
+   "step": 20,
+   "voice": "Snare",
+   "input_spikes_delivered": 341,
+   "total_spikes": 317916,
+   "pct_neurons_fired": 24.72,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 6.0
+  },
+  {
+   "seed": 203,
+   "step": 24,
+   "voice": "Kick",
+   "input_spikes_delivered": 317,
+   "total_spikes": 310141,
+   "pct_neurons_fired": 23.94,
+   "pct_kc_fired": 97.74,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 203,
+   "step": 26,
+   "voice": "Kick",
+   "input_spikes_delivered": 313,
+   "total_spikes": 328968,
+   "pct_neurons_fired": 24.13,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  },
+  {
+   "seed": 203,
+   "step": 28,
+   "voice": "Snare",
+   "input_spikes_delivered": 298,
+   "total_spikes": 337445,
+   "pct_neurons_fired": 23.45,
+   "pct_kc_fired": 100.0,
+   "time_to_runaway_ms": 8.0
+  }
+ ],
+ "checks": {
+  "kc_sparse": false,
+  "motor_active": true,
+  "kick_ci_low_ge_20": null,
+  "snare_ci_low_ge_20": null
+ },
+ "gate_1a_pass": false,
+ "gate_1a_note": null
+}
