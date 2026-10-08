@@ -1,0 +1,216 @@
+{
+ "phase": "S",
+ "step": "D1",
+ "seed": null,
+ "git_sha": "737bc41a8a58572b9ea29b196086fed1212e0b45",
+ "git_dirty": true,
+ "timestamp": "2026-10-08T05:08:36.428147+00:00",
+ "machine": "macOS-15.6.1-arm64-arm-64bit",
+ "python": "3.12.8",
+ "seed_note": "no random numbers used",
+ "dataset": "MaleCNS v1.0 (connectome-weights, minconf 0.5)",
+ "neurons": 165122,
+ "pairs_in_raw_table": 151856684,
+ "region_definition": {
+  "brain_only": "superclass starting with ('cb_', 'ol_', 'visual_') or in ('descending_neuron', 'efferent_descending')",
+  "central_brain_without_optic_lobe": "brain_only minus superclass starting with ('ol_', 'visual_')",
+  "vnc": "superclass starting with ('vnc_',)",
+  "note": "CHOSEN grouping"
+ },
+ "input_synapses_per_neuron": {
+  "1_any_presynaptic_body": {
+   "what": "every synapse onto a traced neuron in the raw table, including from untraced fragments",
+   "whole_cns": {
+    "neurons": 165122,
+    "mean": 789.8,
+    "median": 368.0,
+    "p10": 118.0,
+    "p90": 1679.0,
+    "neurons_with_zero_input": 400,
+    "total_synapses": 130413767
+   },
+   "brain_only": {
+    "neurons": 141804,
+    "mean": 734.15,
+    "median": 357.0,
+    "p10": 125.0,
+    "p90": 1517.699999999997,
+    "neurons_with_zero_input": 108,
+    "total_synapses": 104105925
+   },
+   "central_brain_without_optic_lobe": {
+    "neurons": 38534,
+    "mean": 1327.34,
+    "median": 651.0,
+    "p10": 179.0,
+    "p90": 2893.7000000000044,
+    "neurons_with_zero_input": 98,
+    "total_synapses": 51147898
+   },
+   "vnc": {
+    "neurons": 20350,
+    "mean": 1075.59,
+    "median": 492.5,
+    "p10": 84.0,
+    "p90": 2583.100000000002,
+    "neurons_with_zero_input": 32,
+    "total_synapses": 21888270
+   }
+  },
+  "2_traced_to_traced": {
+   "what": "presynaptic body is also a traced neuron; no threshold",
+   "whole_cns": {
+    "neurons": 165122,
+    "mean": 751.11,
+    "median": 349.0,
+    "p10": 105.0,
+    "p90": 1612.0,
+    "neurons_with_zero_input": 659,
+    "total_synapses": 124025046
+   },
+   "brain_only": {
+    "neurons": 141804,
+    "mean": 703.4,
+    "median": 339.0,
+    "p10": 114.0,
+    "p90": 1466.0,
+    "neurons_with_zero_input": 184,
+    "total_synapses": 99745010
+   },
+   "central_brain_without_optic_lobe": {
+    "neurons": 38534,
+    "mean": 1264.59,
+    "median": 622.0,
+    "p10": 160.0,
+    "p90": 2758.0,
+    "neurons_with_zero_input": 143,
+    "total_synapses": 48729874
+   },
+   "vnc": {
+    "neurons": 20350,
+    "mean": 996.43,
+    "median": 451.0,
+    "p10": 63.0,
+    "p90": 2408.100000000002,
+    "neurons_with_zero_input": 77,
+    "total_synapses": 20277271
+   }
+  },
+  "3_traced_pairs_with_3_or_more": {
+   "what": "as 2, pairs with >= 3 synapses (the builder's candidates)",
+   "whole_cns": {
+    "neurons": 165122,
+    "mean": 631.13,
+    "median": 260.0,
+    "p10": 75.0,
+    "p90": 1367.8999999999942,
+    "neurons_with_zero_input": 1896,
+    "total_synapses": 104213652
+   },
+   "brain_only": {
+    "neurons": 141804,
+    "mean": 583.95,
+    "median": 253.0,
+    "p10": 81.0,
+    "p90": 1225.0,
+    "neurons_with_zero_input": 957,
+    "total_synapses": 82806604
+   },
+   "central_brain_without_optic_lobe": {
+    "neurons": 38534,
+    "mean": 1083.85,
+    "median": 451.0,
+    "p10": 101.0,
+    "p90": 2449.0,
+    "neurons_with_zero_input": 486,
+    "total_synapses": 41764954
+   },
+   "vnc": {
+    "neurons": 20350,
+    "mean": 880.15,
+    "median": 351.0,
+    "p10": 37.0,
+    "p90": 2171.2000000000044,
+    "neurons_with_zero_input": 468,
+    "total_synapses": 17910991
+   }
+  },
+  "4_in_simulation": {
+   "what": "as 3, minus edges from neurons with sign 0 (monoamines, unclear, unknown): the weight matrix",
+   "whole_cns": {
+    "neurons": 165122,
+    "mean": 617.22,
+    "median": 255.0,
+    "p10": 73.0,
+    "p90": 1336.0,
+    "neurons_with_zero_input": 1925,
+    "total_synapses": 101915785
+   },
+   "brain_only": {
+    "neurons": 141804,
+    "mean": 570.46,
+    "median": 249.0,
+    "p10": 80.0,
+    "p90": 1193.0,
+    "neurons_with_zero_input": 970,
+    "total_synapses": 80893324
+   },
+   "central_brain_without_optic_lobe": {
+    "neurons": 38534,
+    "mean": 1042.74,
+    "median": 426.0,
+    "p10": 93.0,
+    "p90": 2359.0,
+    "neurons_with_zero_input": 498,
+    "total_synapses": 40180782
+   },
+   "vnc": {
+    "neurons": 20350,
+    "mean": 867.43,
+    "median": 342.0,
+    "p10": 36.0,
+    "p90": 2141.100000000002,
+    "neurons_with_zero_input": 482,
+    "total_synapses": 17652228
+   }
+  }
+ },
+ "in_simulation_excitatory_vs_inhibitory": {
+  "whole_cns": {
+   "excitatory_mean": 377.22,
+   "inhibitory_mean": 240.0,
+   "excitatory_median": 135.0,
+   "inhibitory_median": 115.0
+  },
+  "brain_only": {
+   "excitatory_mean": 354.4,
+   "inhibitory_mean": 216.06,
+   "excitatory_median": 132.0,
+   "inhibitory_median": 111.0
+  },
+  "central_brain_without_optic_lobe": {
+   "excitatory_mean": 667.25,
+   "inhibitory_mean": 375.49,
+   "excitatory_median": 258.0,
+   "inhibitory_median": 177.0
+  },
+  "vnc": {
+   "excitatory_mean": 492.73,
+   "inhibitory_mean": 374.71,
+   "excitatory_median": 173.0,
+   "inhibitory_median": 165.0
+  }
+ },
+ "flywire_783": {
+  "available_locally": false,
+  "searched": [
+   "data/ (three MaleCNS feather files only)",
+   "reference_data/",
+   "docs/",
+   "repository text files"
+  ],
+  "ratio_malecns_over_flywire": null,
+  "implied_scale_flywire_over_malecns": null,
+  "note": "No FlyWire table or published FlyWire statistic is stored locally; no number is assumed."
+ }
+}
