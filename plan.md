@@ -379,3 +379,11 @@ Seeds 0–3 were used for screening in Gate 1a (tonic-drive grid, zero-drive che
 
 ### Arm A deprioritized (2026-10-08, 🧑's instruction)
 Gate 3 had two arms: A = upstream's mushroom-body loop as is, B = a trained readout from motor neurons only. If any of the Gate 1a follow-up variants (C1–C4: sign audit, timestep 0.2 ms, input strength at 0 Hz tonic drive, reset-per-hit transient) passes Gate 1a, the next step is the Gate 2 baseline and then **Arm B only**. Arm A is not run unless 🧑 asks for it again.
+
+### Global weight scale, taste calibration and Gate 1a metrics (2026-10-08, 🧑's instructions)
+- **Scale choice.** One global factor on all synaptic weights (wrapper, `src/weight_scale.py`). It is chosen by the scale screen (D2b) and the taste calibration (D3) only, never by coupling or F1; if several scales pass, the largest.
+- **D3 also fails a scale that runs away under the taste stimulus.** Every sugar and sugar+bitter run reports KC % active, % of neurons above 200 Hz, and whether activity ends within 500 ms of stimulus offset.
+- **Gate 1a at the chosen scale (D4), seeds 200–203.** "Hit vs silent" coupling is degenerate (the silent run holds 0 spikes); it is reported but decides nothing. Required instead: own-hit vs other-drum-hit selectivity per window 0–20 / 0–50 / 0–100 ms; pass = 95 % CI lower bound ≥ +20 % for kick AND snare in the same window. Also reported: latency from hit onset to first motor spike per voice (mean + range), hop count JO → motor group in the graph, spikes per hit per voice group (mean + 95 % CI).
+- **Arm A formally dropped.** At the scales that pass the screen no Kenyon cell fires, so the KC-sparsity criterion passes trivially and the mushroom-body loop has nothing to train. Gate 3 is Arm B only.
+- **Arm B guards (applied in Gate 3).** (1) never read JO/sensory neurons; (2) F1 of the same readout on the silent run ≤ random baseline (kept, trivially satisfied now); (3) report nonzero weights per voice; (4) **new:** the readout trained on wwry, applied to `calls/call_07`, must score higher F1 vs call_07 than vs wwry.
+

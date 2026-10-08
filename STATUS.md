@@ -55,7 +55,8 @@ One-song training sprint requested by 🧑, outside PLAN.md's step order. Five g
 - **D3 — Shiu taste validation: STOPPED, sugar GRNs not found by annotation.** `results/taste_search.json`. MN9 is annotated (2 neurons). Gustatory sensory neurons are typed (163 labellar, types LB1a–LB4b) but no column says which sense sugar or bitter; the only "sugar"/"bitter" strings sit on 10 second-order neurons. No taste was assigned by guess. New: `src/taste_search.py`.
 - **D2b — finer scale screen: 0.12 and 0.14 pass, on seeds 200–203.** `results/wwry_scale_screen_fine.json`. Stricter rule (no runaway after one kick, kick and snare motor groups both spike on the call, all activity over within 500 ms of the last hit). 0.10 fails (no snare-group spikes); 0.16, 0.18, 0.20, 0.30 fail (activity still running at the end of the run). At 0.12 / 0.14 the call run has 6.8 k / 9.6 k spikes in total, no Kenyon cell fires, and the kick/snare motor groups fire 56/16 and 90/65 spikes (seed 200). New: `src/scale_screen_fine.py`.
 - **D3 — taste calibration: STOPPED, table missing.** `reference/tastekin2026_tableS1.xlsx` is not in `reference/` (only the WWRY MIDI is). Nothing inferred from type names. `openpyxl` is also not installed in `.venv`.
-- **D4 — not run** (needs the scale chosen by D2b + D3). No scale has been chosen.
+- **D4 — not run** (needs the scale chosen by D2b + D3). No scale has been chosen. Metrics for it are fixed in the PLAN.md addendum (own-hit vs other-drum-hit selectivity decides; hit-vs-silent is degenerate).
+- **Arm A formally dropped (🧑).** At both passing scales (0.12, 0.14) Kenyon cells are 0 % active, so the KC criterion passes trivially and Arm A has nothing to train. Gate 3 = Arm B only, with a new guard: the wwry-trained readout applied to `calls/call_07` must score higher F1 vs call_07 than vs wwry.
 - Gate 1b (encoder grid), Gates 2–4: not started; blocked on Gate 1a.
 
 ## In progress
