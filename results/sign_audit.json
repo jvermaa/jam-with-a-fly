@@ -1,0 +1,298 @@
+{
+  "phase": "S",
+  "step": "C1",
+  "seed": null,
+  "git_sha": "b4274163892003b4853a842aceba0a75447fe8af",
+  "git_dirty": true,
+  "timestamp": "2026-10-08T04:41:12.342207+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "seed_note": "audit only; no simulation, no random numbers",
+  "graph": "build/graph.npz",
+  "transmitter_column_used_by_builder": "consensus_nt (missing -> 'unknown')",
+  "sign_table_applied": {
+    "acetylcholine": 1.0,
+    "gaba": -1.0,
+    "glutamate": -1.0,
+    "dopamine": 0.0,
+    "octopamine": 0.0,
+    "serotonin": 0.0,
+    "histamine": -1.0,
+    "unclear": 0.0,
+    "unknown": 0.0
+  },
+  "sign_for_any_other_label": 0.0,
+  "mv_per_synapse": 0.275,
+  "min_synapses_per_edge": 3,
+  "neurons_per_transmitter_label": {
+    "acetylcholine": 103718,
+    "glutamate": 29296,
+    "gaba": 22055,
+    "histamine": 5910,
+    "unclear": 3100,
+    "unknown": 502,
+    "dopamine": 392,
+    "octopamine": 101,
+    "serotonin": 48
+  },
+  "neurons_with_no_consensus_entry": 502,
+  "candidate_edges": 10511038,
+  "edges_in_simulator_matrix_by_presynaptic_transmitter": {
+    "acetylcholine": {
+      "excitatory": {
+        "edges": 6268194,
+        "sum_abs_mv": 17128888.0
+      }
+    },
+    "gaba": {
+      "inhibitory": {
+        "edges": 2077571,
+        "sum_abs_mv": 6040460.0
+      }
+    },
+    "glutamate": {
+      "inhibitory": {
+        "edges": 1838700,
+        "sum_abs_mv": 4716152.0
+      }
+    },
+    "histamine": {
+      "inhibitory": {
+        "edges": 43535,
+        "sum_abs_mv": 141341.5
+      }
+    }
+  },
+  "all_candidate_edges_by_consensus_nt": {
+    "acetylcholine": {
+      "excitatory": {
+        "edges": 6268194,
+        "sum_abs_mv": 17128887.3
+      }
+    },
+    "dopamine": {
+      "dropped": {
+        "edges": 54171,
+        "sum_abs_mv": 95315.3
+      }
+    },
+    "gaba": {
+      "inhibitory": {
+        "edges": 2077571,
+        "sum_abs_mv": 6040460.0
+      }
+    },
+    "glutamate": {
+      "inhibitory": {
+        "edges": 1838700,
+        "sum_abs_mv": 4716152.1
+      }
+    },
+    "histamine": {
+      "inhibitory": {
+        "edges": 43535,
+        "sum_abs_mv": 141341.5
+      }
+    },
+    "octopamine": {
+      "dropped": {
+        "edges": 43828,
+        "sum_abs_mv": 91852.8
+      }
+    },
+    "serotonin": {
+      "dropped": {
+        "edges": 10379,
+        "sum_abs_mv": 24729.1
+      }
+    },
+    "unclear": {
+      "dropped": {
+        "edges": 174660,
+        "sum_abs_mv": 420016.3
+      }
+    }
+  },
+  "all_candidate_edges_by_label_stored_in_graph": {
+    "acetylcholine": {
+      "excitatory": {
+        "edges": 6268194,
+        "sum_abs_mv": 17128887.3
+      }
+    },
+    "dopamine": {
+      "dropped": {
+        "edges": 54171,
+        "sum_abs_mv": 95315.3
+      }
+    },
+    "gaba": {
+      "inhibitory": {
+        "edges": 2077571,
+        "sum_abs_mv": 6040460.0
+      }
+    },
+    "glutamate": {
+      "inhibitory": {
+        "edges": 1838700,
+        "sum_abs_mv": 4716152.1
+      }
+    },
+    "histamine": {
+      "inhibitory": {
+        "edges": 43535,
+        "sum_abs_mv": 141341.5
+      }
+    },
+    "octopamine": {
+      "dropped": {
+        "edges": 43828,
+        "sum_abs_mv": 91852.8
+      }
+    },
+    "serotonin": {
+      "dropped": {
+        "edges": 10379,
+        "sum_abs_mv": 24729.1
+      }
+    },
+    "unclear": {
+      "dropped": {
+        "edges": 174660,
+        "sum_abs_mv": 420016.3
+      }
+    }
+  },
+  "all_candidate_edges_by_predicted_nt": {
+    "acetylcholine": {
+      "dropped": {
+        "edges": 15186,
+        "sum_abs_mv": 36084.9
+      },
+      "excitatory": {
+        "edges": 5974681,
+        "sum_abs_mv": 16557802.2
+      },
+      "inhibitory": {
+        "edges": 8304,
+        "sum_abs_mv": 31538.4
+      }
+    },
+    "dopamine": {
+      "dropped": {
+        "edges": 53675,
+        "sum_abs_mv": 94054.9
+      },
+      "excitatory": {
+        "edges": 203483,
+        "sum_abs_mv": 379479.6
+      }
+    },
+    "gaba": {
+      "dropped": {
+        "edges": 6514,
+        "sum_abs_mv": 18756.1
+      },
+      "excitatory": {
+        "edges": 6939,
+        "sum_abs_mv": 26629.3
+      },
+      "inhibitory": {
+        "edges": 2023844,
+        "sum_abs_mv": 5906471.4
+      }
+    },
+    "glutamate": {
+      "dropped": {
+        "edges": 12968,
+        "sum_abs_mv": 27920.8
+      },
+      "excitatory": {
+        "edges": 2048,
+        "sum_abs_mv": 6255.7
+      },
+      "inhibitory": {
+        "edges": 1838463,
+        "sum_abs_mv": 4708364.4
+      }
+    },
+    "histamine": {
+      "dropped": {
+        "edges": 165,
+        "sum_abs_mv": 382.5
+      },
+      "excitatory": {
+        "edges": 238,
+        "sum_abs_mv": 517.8
+      },
+      "inhibitory": {
+        "edges": 24364,
+        "sum_abs_mv": 90252.5
+      }
+    },
+    "octopamine": {
+      "dropped": {
+        "edges": 59009,
+        "sum_abs_mv": 120739.8
+      },
+      "excitatory": {
+        "edges": 199,
+        "sum_abs_mv": 300.6
+      },
+      "inhibitory": {
+        "edges": 2478,
+        "sum_abs_mv": 9236.7
+      }
+    },
+    "serotonin": {
+      "dropped": {
+        "edges": 49261,
+        "sum_abs_mv": 116796.6
+      },
+      "excitatory": {
+        "edges": 3570,
+        "sum_abs_mv": 11622.0
+      },
+      "inhibitory": {
+        "edges": 438,
+        "sum_abs_mv": 767.5
+      }
+    },
+    "unclear": {
+      "dropped": {
+        "edges": 86260,
+        "sum_abs_mv": 217177.7
+      },
+      "excitatory": {
+        "edges": 77036,
+        "sum_abs_mv": 146279.9
+      },
+      "inhibitory": {
+        "edges": 61915,
+        "sum_abs_mv": 151322.6
+      }
+    }
+  },
+  "consistency": {
+    "edges_in_matrix": 10228000,
+    "edges_recomputed_as_kept": 10228000,
+    "match": true,
+    "sum_abs_mv_in_matrix": 28026844.0,
+    "sum_abs_mv_recomputed_kept": 28026840.9,
+    "every_matrix_edge_sign_equals_presynaptic_sign": true
+  },
+  "answers": {
+    "glutamate": [
+      "inhibitory"
+    ],
+    "unknown_or_missing": "label 'unknown' (includes bodies with no consensus entry) and 'unclear' get sign 0: every edge from such a neuron is dropped from the matrix, so the neuron can be driven but excites or inhibits nothing",
+    "monoamines": "dopamine, serotonin, octopamine get sign 0: edges dropped",
+    "histamine": "sign -1 (inhibitory); not part of the reference convention's three classes"
+  },
+  "reference_convention": {
+    "acetylcholine": "excitatory",
+    "gaba": "inhibitory",
+    "glutamate": "inhibitory"
+  },
+  "mismatches_vs_reference_convention": []
+}
