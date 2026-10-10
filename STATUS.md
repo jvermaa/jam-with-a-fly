@@ -28,11 +28,16 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Extra calls (🧑 request).** `calls/call_06`–`08.mid` are script-generated transcriptions of well-known beats (`src/make_calls.py`, `calls/call_spec_famous.txt`); 6 more untrained runs in `results/batch_untrained_famous.json`. 🧑 chose `untrained_call_07_seed0` (Be My Baby pattern); `fly_drums_export.json` now holds it. Any claim is "best of 16 runs".
 
+- **Phase 1 code complete** on branch `phase-1-untrained-demo` (to be merged by 🧑). Step 1.8 (record + post) is deferred by 🧑, who is in no rush to post.
+
 ## In progress
-- **Step 1.8 — 🧑 records Post #1.** Clip A: `calls/call_07.mid` in Ableton. Clip B: screen-record the viewer; audio from `answers/untrained_call_07_seed0.mid` through an Ableton kit. Caption must say "best of 16 runs" and "simulation on the real wiring diagram", and credit Janelia FlyEM, Cambridge, Google Research, fly-drums. 🧑 drops the post link below.
+- **Step 2.1 — lock export schema v1** on branch `phase-2-viewer-upgrade`. Draft in `docs/export_schema_v1.md`. Waiting on 🧑 checkpoint: approve the schema and decide how to place the antennal (JO) neurons, which have no recorded position.
 
 ## Next
-- Merge `phase-1-untrained-demo`, then Phase 2 (viewer upgrade), Step 2.1: lock export schema v1.
+- `src/export_v1.py` + JSON-schema validation, then Step 2.2 (extend the viewer in `viewer/index.html`).
+
+## Deferred
+- Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
 - None.
