@@ -26,3 +26,6 @@ claude_decisions.md
 
 # Per-run spike recordings (large; regenerate with src/run_fly.py)
 results/*.npz
+
+# Third-party reference material (not ours to redistribute)
+reference/

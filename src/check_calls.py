@@ -1,14 +1,20 @@
-"""Validate the human-made call files (PLAN.md Step 1.2).
+"""Validate the call files (PLAN.md Step 1.2).
 
-Pass per file: tempo 120 BPM, length exactly CALL_SEC (+-1 tick), only the notes
-in config/voices.json. Pass for the set: all 6 voices used at least once.
+Pass per file: tempo as configured for that call (config/calls.json; 120 BPM
+unless listed), length exactly 2 bars (+-1 tick), only the notes in
+config/voices.json. Pass for the set: all 6 voices used at least once.
 The files are only read, never changed.
 
-Real vs. chosen: the calls are CHOSEN (a human programmed them in Ableton).
+Real vs. chosen: the calls are CHOSEN (programmed by a human in Ableton, or
+generated from a text grid by src/make_calls.py).
 
-Usage (from the repo root):  python -m src.check_calls
+Usage (from the repo root):
+  python -m src.check_calls                                   # calls/call_*.mid as a set
+  python -m src.check_calls --files calls/wwry.mid --out wwry_calls_check.json
+                                                              # named files, per-file checks only
 """
 
+import argparse
 import hashlib
 import json
 import pathlib
@@ -17,12 +23,15 @@ import mido
 
 from src import constants as c
 from src.provenance import provenance
+from src.timing import configured_bpm
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CALLS = ROOT / "calls"
+BPM_TOLERANCE = 0.01  # a MIDI tempo is whole microseconds per beat, so e.g. 82 BPM is stored as 82.00003
 
 
 def check_file(path, voices):
+    expected_bpm = float(configured_bpm(path))
     note_to_voice = {v["midi_note"]: v for v in voices}
     mid = mido.MidiFile(path)
     tpb = mid.ticks_per_beat
@@ -56,8 +65,8 @@ def check_file(path, voices):
             grid[note_to_voice[note]["name"]][step] = "x"
 
     checks = {
-        "tempo_is_120": bpm_values == [float(c.BPM)],
-        "length_is_4s_within_1_tick": abs(end_tick - expected_ticks) <= 1,
+        "tempo_as_configured": all(abs(b - expected_bpm) <= BPM_TOLERANCE for b in bpm_values),
+        "length_is_2_bars_within_1_tick": abs(end_tick - expected_ticks) <= 1,
         "only_allowed_notes": not other_notes,
     }
     return {
@@ -66,6 +75,7 @@ def check_file(path, voices):
         "pass": all(checks.values()),
         "checks": checks,
         "bpm": bpm_values,
+        "expected_bpm": expected_bpm,
         "tempo_source": tempo_source,
         "ticks_per_beat": tpb,
         "end_tick": end_tick,
@@ -81,16 +91,20 @@ def check_file(path, voices):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--files", nargs="+", type=pathlib.Path, help="check these files only (no set-level checks)")
+    ap.add_argument("--out", default="calls_check.json")
+    args = ap.parse_args()
+
     voices = json.loads((ROOT / "config" / "voices.json").read_text())["voices"]
-    files = sorted(CALLS.glob("call_*.mid"))
+    files = [f.resolve() for f in args.files] if args.files else sorted(CALLS.glob("call_*.mid"))
     reports = [check_file(f, voices) for f in files]
 
     used = {name for r in reports for name, n in r["hits_per_voice"].items() if n > 0}
-    set_checks = {
-        "five_or_more_files": len(files) >= 5,
-        "every_file_passes": bool(reports) and all(r["pass"] for r in reports),
-        "all_six_voices_used_across_set": used == {v["name"] for v in voices},
-    }
+    set_checks = {"every_file_passes": bool(reports) and all(r["pass"] for r in reports)}
+    if not args.files:
+        set_checks["five_or_more_files"] = len(files) >= 5
+        set_checks["all_six_voices_used_across_set"] = used == {v["name"] for v in voices}
     result = {
         "step": "1.2",
         **provenance(None),
@@ -99,7 +113,7 @@ def main():
         "set_checks": set_checks,
         "files": reports,
     }
-    out = ROOT / "results" / "calls_check.json"
+    out = ROOT / "results" / args.out
     out.write_text(json.dumps(result, indent=2) + "\n")
 
     for r in reports:

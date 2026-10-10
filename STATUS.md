@@ -30,6 +30,35 @@ Updated at the end of every step (PLAN.md guardrail 8).
 
 - **Phase 1 code complete** on branch `phase-1-untrained-demo` (to be merged by 🧑). Step 1.8 (record + post) is deferred by 🧑, who is in no rush to post.
 
+## Phase S — "We Will Rock You" sprint (branch `phase-s-wwry-sprint`)
+One-song training sprint requested by 🧑, outside PLAN.md's step order. Five gates (0–4), stop and report at each. Stacked on the Phase 2 branch; step 2.1 stays parked.
+
+- **Gate 0 — facts + setup: done, approved by 🧑** (with added Gate 1a, and a trained-readout arm B at Gate 3).
+  - Per-call tempo: `src/timing.py` + `config/calls.json` (default 120, `wwry` 82). Calls 01–08 unchanged (regression test on `call_06` reproduces its committed score).
+  - Target `calls/wwry.mid` built from `calls/call_spec_wwry.txt` (82 BPM, 2 bars = 5.854 s); passes `results/wwry_calls_check.json`.
+  - Pattern equals bars 1–7 of the local reference arrangement with clap 39 → snare 38 (`results/wwry_reference.json`; reference file is gitignored). `NOTICE.md` updated.
+  - One profiled run + what training can change: `results/wwry_profile.json`.
+  - Tests (subagent-written): `tests/test_timing.py`, `tests/test_wwry_reference.py`; 79 passed.
+- **Gate 1a — saturation check: FAILED, stopped for 🧑.** `results/wwry_saturation.json`.
+  - APL is GABA and inhibitory in the graph (both cells, every outgoing edge negative); no sign fix needed. The graph is built from `consensus_nt`, the column the malecns-nt-audit README recommends; that README does not mention APL.
+  - Tonic drive at 100/50/25/10 % of upstream's 45 Hz: every Kenyon cell fires at the model ceiling at all four levels, call or silent. Motor rates barely follow the drive. Coupling passes at no level.
+  - New: `src/coupling.py` (metric), `src/sim_pool.py` (parallel runs), `src/saturation.py`; `run_fly` takes `drive_hz`.
+- **Gate 1a step B — zero / 1 Hz drive: done.** `results/wwry_wake_check.json`. No drive and no sound: 0 spikes. The call alone ignites the same runaway state. Saturation is not KC-only (non-KC central brain, descending and motor neurons also have 12–17 % of cells above 200 Hz).
+- **Gate 1a step A — KC→KC scaled by 0 / 0.25 / 0.5: FAILED, stopped for 🧑.** `results/wwry_kc_gate.json`. KCs stay 67–93 % active per sixteenth step at every scale and drive; the rest of the network is unchanged; coupling confidence intervals (seeds 0–3) all include zero. New: `src/kc_recurrence.py` (wrapper), `src/wake_check.py`, `src/kc_gate.py`.
+- **C0 — housekeeping.** Seed policy in PLAN.md (training 100/101, screening 200–203, final eval 300–303). The hook fix was not possible from this session (the hook is outside the repo; access blocked) — 🧑 action. Arm A (upstream mushroom-body loop) is deprioritized: if a Gate 1a variant passes, next is the Gate 2 baseline, then Arm B only (PLAN.md addendum).
+- **C1 — sign audit: no mismatch.** `results/sign_audit.json`. ACh excitatory; GABA, glutamate and histamine inhibitory; dopamine, octopamine, serotonin and "unclear" dropped (sign 0). All 10,228,000 matrix edges carry their presynaptic neuron's sign.
+- **C2 — timestep check at dt 0.2 ms: screen FAILED, stopped for 🧑.** `results/wwry_dt02_check.json`. The runaway is not a 2 ms artefact: at 0.2 ms the Kenyon cells sit at 437–450 Hz (ceiling 454.5 Hz) whenever anything fires, and about 11 % of all neurons exceed 200 Hz. New: `src/sign_audit.py`, `src/dt_check.py`; `sim_pool` takes `dt_ms`.
+- **C4 — reset-per-hit transient: FAILED.** `results/wwry_reset_transient.json`. Every neuron reset to rest before each sixteenth step, only that step's input, 100 ms, no tonic drive, seeds 200–203. A single hit reaches runaway (more than half the Kenyon cells firing within 4 ms) in 6–10 ms, in all 48 hit steps; 99.1 % of Kenyon cells fire within 100 ms. Silent steps hold 0 spikes, so a % change against silent is undefined. Which drum was hit shows only briefly: in the first 20 ms the snare group fires +62.5 % [35.2, 89.9] more after a snare hit than after a kick hit; the kick group does not (−12.5 % [−17.5, −7.6]). New: `src/reset_transient.py`, `src/transient.py`.
+- **C3 — input strength at 0 Hz tonic drive: screen FAILED.** `results/wwry_input_strength.json`. All 12 configs (JO set all 554 / auditory-only 75 × 50/150/300 Hz × 15/30 ms, seed 200) ignite a self-sustained state: Kenyon cells 99.8–100 % active per sixteenth step, 3.2–3.9 M spikes in the window later than 500 ms after the last hit. The weakest input (85 input spikes over the whole call) still reaches runaway 18 ms after the first hit. No config went on to the 4-seed coupling run. New: `src/input_strength.py`.
+- **D1 — input-ratio check: done.** `results/input_ratio.json`. Input synapses per neuron in the simulation's weight matrix: whole CNS mean 617.2, median 255; brain-only mean 570.5, median 249. No FlyWire numbers are stored locally, so no ratio and no implied scale were computed. New: `src/input_ratio.py`.
+- **D2 — global weight scale screen: 0.3, 0.2 and 0.1 pass the screen as written.** `results/wwry_scale_screen.json`. Seed 200, no tonic drive. 0.5 still runs away 10 ms after one kick. 0.3 and 0.2 stay under the runaway threshold but one kick still starts activity that has not stopped after 500 ms, and the call run stays self-sustained (KCs 81.7 % and 25.9 % per sixteenth step). At 0.1 one kick dies out after 36 ms and the call barely reaches the motor side (9 kick-group spikes, 0 snare). 0.05: no motor spikes. New: `src/weight_scale.py` (wrapper), `src/scale_screen.py`; `sim_pool` jobs take `weight_scale`.
+- **D3 — Shiu taste validation: STOPPED, sugar GRNs not found by annotation.** `results/taste_search.json`. MN9 is annotated (2 neurons). Gustatory sensory neurons are typed (163 labellar, types LB1a–LB4b) but no column says which sense sugar or bitter; the only "sugar"/"bitter" strings sit on 10 second-order neurons. No taste was assigned by guess. New: `src/taste_search.py`.
+- **D2b — finer scale screen: 0.12 and 0.14 pass, on seeds 200–203.** `results/wwry_scale_screen_fine.json`. Stricter rule (no runaway after one kick, kick and snare motor groups both spike on the call, all activity over within 500 ms of the last hit). 0.10 fails (no snare-group spikes); 0.16, 0.18, 0.20, 0.30 fail (activity still running at the end of the run). At 0.12 / 0.14 the call run has 6.8 k / 9.6 k spikes in total, no Kenyon cell fires, and the kick/snare motor groups fire 56/16 and 90/65 spikes (seed 200). New: `src/scale_screen_fine.py`.
+- **D3 — taste calibration: STOPPED, the supplied table has no body IDs.** `reference/tastekin2025_biorxiv_v2_tableS1.xlsx` (gitignored) holds one sheet, "Stocks": 18 fly-stock rows with columns Genotype / Source / Figure Reference. It contains no body IDs, no GRN types and no MN9 entry, so no sugar or bitter set can be built from it. Nothing was inferred from type names or from the Gal4 driver names. No simulation run.
+- **D4 — not run** (needs the scale chosen by D2b + D3). No scale has been chosen. Metrics for it are fixed in the PLAN.md addendum (own-hit vs other-drum-hit selectivity decides; hit-vs-silent is degenerate).
+- **Arm A formally dropped (🧑).** At both passing scales (0.12, 0.14) Kenyon cells are 0 % active, so the KC criterion passes trivially and Arm A has nothing to train. Gate 3 = Arm B only, with a new guard: the wwry-trained readout applied to `calls/call_07` must score higher F1 vs call_07 than vs wwry.
+- Gate 1b (encoder grid), Gates 2–4: not started; blocked on Gate 1a.
+
 ## In progress
 - **Step 2.1 — lock export schema v1** on branch `phase-2-viewer-upgrade`. Draft in `docs/export_schema_v1.md`. Waiting on 🧑 checkpoint: approve the schema and decide how to place the antennal (JO) neurons, which have no recorded position.
 
@@ -40,7 +69,7 @@ Updated at the end of every step (PLAN.md guardrail 8).
 - Step 1.8 — Post #1 (🧑). Clip A `calls/call_07.mid`; Clip B the viewer + `answers/untrained_call_07_seed0.mid`; "best of 16 runs".
 
 ## Blockers
-- None.
+- Phase S: scales 0.12 and 0.14 pass the finer screen (D2b) on seeds 200–203. Taste calibration (D3) is blocked: the supplied Table S1 is the fly-stocks list and has no body IDs. No scale chosen, D4 not run. Waiting on 🧑 for the table that lists GRN body IDs.
 
 ## Post links
 - Post #1: —

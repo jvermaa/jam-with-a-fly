@@ -1,0 +1,782 @@
+{
+ "phase": "S",
+ "step": "C3",
+ "seed": 200,
+ "git_sha": "f96fe9ce81c0df75640215d2f89dd0749676dfaa",
+ "git_dirty": true,
+ "timestamp": "2026-10-08T04:55:02.481406+00:00",
+ "machine": "macOS-15.6.1-arm64-arm-64bit",
+ "python": "3.12.8",
+ "call": "calls/wwry.mid",
+ "bpm": 82.0,
+ "dt_ms": 2.0,
+ "tonic_drive_hz": 0.0,
+ "decision": "input strength chosen; tonic drive 0 Hz",
+ "jo_set_sizes": {
+  "all": {
+   "total": 554,
+   "per_group": [
+    93,
+    93,
+    92,
+    92,
+    92,
+    92
+   ]
+  },
+  "auditory": {
+   "total": 75,
+   "per_group": [
+    13,
+    8,
+    17,
+    30,
+    4,
+    3
+   ]
+  }
+ },
+ "screen_seed": 200,
+ "screen_rule": "no runaway (no spikes later than 500 ms after the last hit's burst ends, and KCs active per sixteenth step < 20 %) AND kick and snare motor groups fire more in the 100 ms after their own hits than in the silent run",
+ "runaway_definition": "time_to_runaway_ms = first 4 ms window in which more than 50 % of KCs fire",
+ "quiet_windows": "windows of the call run that start on sixteenth steps of the two bars where no voice is hit",
+ "ci_method": "mean +- t(0.975, df=3) x sample std / sqrt(4) over seeds 200-203",
+ "configs": [
+  {
+   "jo_set": "all",
+   "burst_rate_hz": 50.0,
+   "burst_duration_ms": 15.0,
+   "total_spikes": {
+    "call": 26427142,
+    "silent": 0
+   },
+   "input_spikes_delivered": 662,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 247.59,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 6.17,
+   "pct_all_neurons_fired": 34.8,
+   "motor_rate_hz": {
+    "Kick": 37.45,
+    "Snare": 38.49
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 10.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3895944,
+    "late_window_s": 0.948,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 3748,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 468.5,
+     "call_spikes_per_quiet_window": 495.3,
+     "change_pct_vs_quiet_windows": -5.41
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1831,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 457.75,
+     "call_spikes_per_quiet_window": 433.7,
+     "change_pct_vs_quiet_windows": 5.55
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "all",
+   "burst_rate_hz": 50.0,
+   "burst_duration_ms": 30.0,
+   "total_spikes": {
+    "call": 24632430,
+    "silent": 0
+   },
+   "input_spikes_delivered": 1365,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 247.7,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.82,
+   "pct_all_neurons_fired": 35.21,
+   "motor_rate_hz": {
+    "Kick": 38.46,
+    "Snare": 37.4
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 10.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3663233,
+    "late_window_s": 0.934,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 3852,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 481.5,
+     "call_spikes_per_quiet_window": 511.5,
+     "change_pct_vs_quiet_windows": -5.87
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1765,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 441.25,
+     "call_spikes_per_quiet_window": 419.9,
+     "change_pct_vs_quiet_windows": 5.08
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "all",
+   "burst_rate_hz": 150.0,
+   "burst_duration_ms": 15.0,
+   "total_spikes": {
+    "call": 24423136,
+    "silent": 0
+   },
+   "input_spikes_delivered": 1908,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 248.12,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.78,
+   "pct_all_neurons_fired": 35.51,
+   "motor_rate_hz": {
+    "Kick": 42.8,
+    "Snare": 36.83
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 8.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3546143,
+    "late_window_s": 0.948,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 4128,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 516.0,
+     "call_spikes_per_quiet_window": 560.65,
+     "change_pct_vs_quiet_windows": -7.96
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1749,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 437.25,
+     "call_spikes_per_quiet_window": 428.0,
+     "change_pct_vs_quiet_windows": 2.16
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "all",
+   "burst_rate_hz": 150.0,
+   "burst_duration_ms": 30.0,
+   "total_spikes": {
+    "call": 25457826,
+    "silent": 0
+   },
+   "input_spikes_delivered": 3877,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 247.81,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.85,
+   "pct_all_neurons_fired": 36.74,
+   "motor_rate_hz": {
+    "Kick": 40.18,
+    "Snare": 37.34
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 10.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3497130,
+    "late_window_s": 0.934,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 4045,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 505.62,
+     "call_spikes_per_quiet_window": 526.6,
+     "change_pct_vs_quiet_windows": -3.98
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1714,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 428.5,
+     "call_spikes_per_quiet_window": 435.45,
+     "change_pct_vs_quiet_windows": -1.6
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "all",
+   "burst_rate_hz": 300.0,
+   "burst_duration_ms": 15.0,
+   "total_spikes": {
+    "call": 25480376,
+    "silent": 0
+   },
+   "input_spikes_delivered": 3446,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 247.2,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.93,
+   "pct_all_neurons_fired": 36.32,
+   "motor_rate_hz": {
+    "Kick": 41.18,
+    "Snare": 37.02
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 8.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3625934,
+    "late_window_s": 0.948,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 4429,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 553.62,
+     "call_spikes_per_quiet_window": 536.75,
+     "change_pct_vs_quiet_windows": 3.14
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1848,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 462.0,
+     "call_spikes_per_quiet_window": 418.7,
+     "change_pct_vs_quiet_windows": 10.34
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "all",
+   "burst_rate_hz": 300.0,
+   "burst_duration_ms": 30.0,
+   "total_spikes": {
+    "call": 26466298,
+    "silent": 0
+   },
+   "input_spikes_delivered": 6661,
+   "kc_pct_active_per_16th_mean": 99.79,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 246.94,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.75,
+   "pct_all_neurons_fired": 37.88,
+   "motor_rate_hz": {
+    "Kick": 40.75,
+    "Snare": 38.39
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 8.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3868435,
+    "late_window_s": 0.934,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 3921,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 490.12,
+     "call_spikes_per_quiet_window": 506.9,
+     "change_pct_vs_quiet_windows": -3.31
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1881,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 470.25,
+     "call_spikes_per_quiet_window": 449.5,
+     "change_pct_vs_quiet_windows": 4.62
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "auditory",
+   "burst_rate_hz": 50.0,
+   "burst_duration_ms": 15.0,
+   "total_spikes": {
+    "call": 23901924,
+    "silent": 0
+   },
+   "input_spikes_delivered": 85,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 247.84,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.46,
+   "pct_all_neurons_fired": 34.35,
+   "motor_rate_hz": {
+    "Kick": 39.42,
+    "Snare": 37.46
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 18.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3467354,
+    "late_window_s": 0.948,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 3667,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 458.38,
+     "call_spikes_per_quiet_window": 506.95,
+     "change_pct_vs_quiet_windows": -9.58
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1846,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 461.5,
+     "call_spikes_per_quiet_window": 436.85,
+     "change_pct_vs_quiet_windows": 5.64
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "auditory",
+   "burst_rate_hz": 50.0,
+   "burst_duration_ms": 30.0,
+   "total_spikes": {
+    "call": 26772121,
+    "silent": 0
+   },
+   "input_spikes_delivered": 180,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 248.43,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 6.32,
+   "pct_all_neurons_fired": 33.78,
+   "motor_rate_hz": {
+    "Kick": 46.73,
+    "Snare": 39.51
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 16.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3783608,
+    "late_window_s": 0.934,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 4626,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 578.25,
+     "call_spikes_per_quiet_window": 621.4,
+     "change_pct_vs_quiet_windows": -6.94
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1789,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 447.25,
+     "call_spikes_per_quiet_window": 461.25,
+     "change_pct_vs_quiet_windows": -3.04
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "auditory",
+   "burst_rate_hz": 150.0,
+   "burst_duration_ms": 15.0,
+   "total_spikes": {
+    "call": 22291794,
+    "silent": 0
+   },
+   "input_spikes_delivered": 247,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 247.48,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.03,
+   "pct_all_neurons_fired": 33.52,
+   "motor_rate_hz": {
+    "Kick": 35.12,
+    "Snare": 35.54
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 20.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3160494,
+    "late_window_s": 0.948,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 3323,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 415.38,
+     "call_spikes_per_quiet_window": 469.2,
+     "change_pct_vs_quiet_windows": -11.47
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1562,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 390.5,
+     "call_spikes_per_quiet_window": 414.55,
+     "change_pct_vs_quiet_windows": -5.8
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "auditory",
+   "burst_rate_hz": 150.0,
+   "burst_duration_ms": 30.0,
+   "total_spikes": {
+    "call": 25161447,
+    "silent": 0
+   },
+   "input_spikes_delivered": 490,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 247.73,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.75,
+   "pct_all_neurons_fired": 34.43,
+   "motor_rate_hz": {
+    "Kick": 42.13,
+    "Snare": 39.44
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 24.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3679444,
+    "late_window_s": 0.934,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 4253,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 531.62,
+     "call_spikes_per_quiet_window": 541.1,
+     "change_pct_vs_quiet_windows": -1.75
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1872,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 468.0,
+     "call_spikes_per_quiet_window": 443.55,
+     "change_pct_vs_quiet_windows": 5.51
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "auditory",
+   "burst_rate_hz": 300.0,
+   "burst_duration_ms": 15.0,
+   "total_spikes": {
+    "call": 24699239,
+    "silent": 0
+   },
+   "input_spikes_delivered": 439,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 247.6,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.58,
+   "pct_all_neurons_fired": 34.56,
+   "motor_rate_hz": {
+    "Kick": 39.3,
+    "Snare": 36.19
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 22.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3847495,
+    "late_window_s": 0.948,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 4009,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 501.12,
+     "call_spikes_per_quiet_window": 495.3,
+     "change_pct_vs_quiet_windows": 1.18
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1831,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 457.75,
+     "call_spikes_per_quiet_window": 421.5,
+     "change_pct_vs_quiet_windows": 8.6
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  },
+  {
+   "jo_set": "auditory",
+   "burst_rate_hz": 300.0,
+   "burst_duration_ms": 30.0,
+   "total_spikes": {
+    "call": 24335532,
+    "silent": 0
+   },
+   "input_spikes_delivered": 828,
+   "kc_pct_active_per_16th_mean": 100.0,
+   "kc_pct_active_per_16th_max": 100.0,
+   "kc_mean_rate_hz": 248.18,
+   "kc_pct_active_per_16th_mean_silent": 0.0,
+   "pct_all_neurons_above_200hz": 5.45,
+   "pct_all_neurons_fired": 36.47,
+   "motor_rate_hz": {
+    "Kick": 37.78,
+    "Snare": 37.47
+   },
+   "motor_rate_hz_silent": {
+    "Kick": 0.0,
+    "Snare": 0.0
+   },
+   "time_to_runaway_ms": 10.0,
+   "after_last_hit": {
+    "last_spike_s": 6.584,
+    "spikes_after_ms": 500.0,
+    "spikes_after": 3391255,
+    "late_window_s": 0.934,
+    "self_sustained": true
+   },
+   "motor_after_own_hits_0_100ms": {
+    "Kick": {
+     "hits": 8,
+     "call_spikes": 3927,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 490.88,
+     "call_spikes_per_quiet_window": 497.7,
+     "change_pct_vs_quiet_windows": -1.37
+    },
+    "Snare": {
+     "hits": 4,
+     "call_spikes": 1730,
+     "silent_spikes": 0,
+     "change_pct_vs_silent": null,
+     "quiet_windows": 20,
+     "call_spikes_per_hit_window": 432.5,
+     "call_spikes_per_quiet_window": 422.2,
+     "change_pct_vs_quiet_windows": 2.44
+    }
+   },
+   "checks": {
+    "not_self_sustained": false,
+    "kc_sparse_per_16th": false,
+    "no_runaway": false,
+    "motor_rises_after_kick_and_snare_hits": true
+   },
+   "screen_pass": false
+  }
+ ],
+ "screen_pass": false,
+ "confirmed": [],
+ "gate_1a_pass": false,
+ "total_wall_time_s": 95.0
+}

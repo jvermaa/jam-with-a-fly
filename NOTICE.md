@@ -39,3 +39,11 @@ implemented in `mushroom.py`. Not affiliated with Janelia, Google, Magenta,
 or fruitflydev.
 
 Additional credits: MaleCNS v1.0 (HHMI Janelia FlyEM, Cambridge Connectomics Group, Google Research, CC-BY 4.0); sykeriin/fly-drums (MIT); fruitflydev/flycoinrh; Bagel Fat One font (SIL OFL) used in assets/.
+
+`calls/wwry.mid` (the Phase S target call) is built by `src/make_calls.py` from
+our own text grid in `calls/call_spec_wwry.txt`. The pattern was verified
+against the "We Will Rock You — Queen" drum score (Midi Drum Scores) and the
+MIDI arrangement at onlinesequencer.net/1499428. Both are reference only and
+are not redistributed: the arrangement is read from a local, gitignored
+`reference/` folder by `src/wwry_reference.py`, and only the resulting hit
+grid is recorded in `results/wwry_reference.json`.

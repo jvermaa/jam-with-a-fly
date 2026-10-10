@@ -1,0 +1,133 @@
+{
+  "phase": "S",
+  "gate": 0,
+  "seed": 0,
+  "git_sha": "141eddf1c844418f9fc20981769dee381f8c1bbb",
+  "git_dirty": true,
+  "timestamp": "2026-10-07T23:43:42.053489+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "call": "calls/wwry.mid",
+  "bpm": 82.0,
+  "dt_ms": 2.0,
+  "sim_seconds": 6.586,
+  "sim_steps": 3293,
+  "cpu_count_logical": 10,
+  "omp_num_threads_env": null,
+  "load_brain_s": 0.43,
+  "rss_after_load_mb": 427.6,
+  "one_call_run": {
+    "wall_s": 42.79,
+    "cpu_s": 40.67,
+    "cpu_over_wall": 0.951
+  },
+  "one_silent_run": {
+    "wall_s": 43.57,
+    "cpu_s": 42.32,
+    "cpu_over_wall": 0.971
+  },
+  "peak_rss_after_one_run_mb": 1420.8,
+  "peak_rss_whole_script_mb": 2352.1,
+  "total_spikes_call_run": 29475168,
+  "upstream_training_settings": {
+    "source": "fly_drums_sim.py",
+    "generations": 10,
+    "population": 4,
+    "mutate_sigma": 0.14,
+    "mutation_rng": "np.random (unseeded) upstream"
+  },
+  "trainable": {
+    "what": "one gain per KC->MBON synapse (mushroom.MushroomBody.gain), multiplying that synapse's weight",
+    "synapses": 44042,
+    "reward_side": 24005,
+    "punish_side": 20037,
+    "kenyon_cells": 4064,
+    "mbons": 97,
+    "mbon_types_without_a_side": [],
+    "gain_floor": 0.25,
+    "gain_ceiling": 1.0,
+    "dopamine_lr": 0.06,
+    "trace_decay_per_observe": 0.55,
+    "loaded_stored_gains": false
+  },
+  "kenyon_cell_activity_call_run": {
+    "kcs_that_fired": 4064,
+    "kc_spikes": 6657859,
+    "mean_rate_hz": 248.7,
+    "model_max_rate_hz": 250.0
+  },
+  "gain_sensitivity": {
+    "mutant": {
+      "mean_gain": 0.9441,
+      "synapses_below_1": 22026,
+      "motor_step_counts_identical": false,
+      "sim_steps_that_differ": 3277,
+      "sim_steps_total": 3293,
+      "motor_spikes_base": {
+        "Kick": 46681,
+        "Snare": 16588,
+        "Closed hat": 31143,
+        "Open hat": 8477,
+        "Tom": 13025,
+        "Crash": 55487
+      },
+      "motor_spikes_other": {
+        "Kick": 43896,
+        "Snare": 16653,
+        "Closed hat": 27576,
+        "Open hat": 8565,
+        "Tom": 13194,
+        "Crash": 55346
+      },
+      "motor_spikes_change_pct": {
+        "Kick": -5.97,
+        "Snare": 0.39,
+        "Closed hat": -11.45,
+        "Open hat": 1.04,
+        "Tom": 1.3,
+        "Crash": -0.25
+      },
+      "decoded_cells_that_flip": 20,
+      "decoded_cells_total": 216,
+      "f1_base": 0.3846153846153846,
+      "f1_other": 0.1818181818181818,
+      "threshold_note": "both decoded against the untrained silent run of the same seed"
+    },
+    "floor": {
+      "mean_gain": 0.25,
+      "synapses_below_1": 44042,
+      "motor_step_counts_identical": false,
+      "sim_steps_that_differ": 3282,
+      "sim_steps_total": 3293,
+      "motor_spikes_base": {
+        "Kick": 46681,
+        "Snare": 16588,
+        "Closed hat": 31143,
+        "Open hat": 8477,
+        "Tom": 13025,
+        "Crash": 55487
+      },
+      "motor_spikes_other": {
+        "Kick": 43620,
+        "Snare": 16121,
+        "Closed hat": 26118,
+        "Open hat": 8726,
+        "Tom": 13619,
+        "Crash": 55738
+      },
+      "motor_spikes_change_pct": {
+        "Kick": -6.56,
+        "Snare": -2.82,
+        "Closed hat": -16.14,
+        "Open hat": 2.94,
+        "Tom": 4.56,
+        "Crash": 0.45
+      },
+      "decoded_cells_that_flip": 18,
+      "decoded_cells_total": 216,
+      "f1_base": 0.3846153846153846,
+      "f1_other": 0.1111111111111111,
+      "threshold_note": "both decoded against the untrained silent run of the same seed"
+    }
+  }
+}

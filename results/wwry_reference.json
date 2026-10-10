@@ -1,0 +1,149 @@
+{
+  "phase": "S",
+  "gate": 0,
+  "seed": null,
+  "git_sha": "141eddf1c844418f9fc20981769dee381f8c1bbb",
+  "git_dirty": true,
+  "timestamp": "2026-10-07T23:39:38.034464+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "seed_note": "comparison only; no random numbers used",
+  "reference_file": "reference/Queen_-_We_Will_Rock_You_n.mid",
+  "reference_note": "third-party arrangement, local only (gitignored), not redistributed",
+  "reference_sha256": "9087b3d208acebae7a61b61b20717a3d65e08a8bf1327aaf91e4d86fc7365b58",
+  "ticks_per_beat": 384,
+  "n_tracks": 9,
+  "file_bpm": [
+    85.00004250002125
+  ],
+  "drum_track": 0,
+  "drum_channel_1_based": 10,
+  "bars_1_based": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "reference_grid_per_bar": {
+    "1": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "39": [
+        4.0,
+        12.0
+      ]
+    },
+    "2": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "39": [
+        4.0,
+        12.0
+      ]
+    },
+    "3": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "39": [
+        4.0,
+        12.0
+      ]
+    },
+    "4": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "39": [
+        4.0,
+        12.0
+      ]
+    },
+    "5": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "39": [
+        4.0,
+        12.0
+      ]
+    },
+    "6": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "39": [
+        4.0,
+        12.0
+      ]
+    },
+    "7": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "39": [
+        4.0,
+        12.0
+      ]
+    }
+  },
+  "reference_bars_identical": true,
+  "note_map": {
+    "39": 38
+  },
+  "our_call": "calls/wwry.mid",
+  "our_grid_per_bar": {
+    "1": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "38": [
+        4.0,
+        12.0
+      ]
+    },
+    "2": {
+      "36": [
+        0.0,
+        2.0,
+        8.0,
+        10.0
+      ],
+      "38": [
+        4.0,
+        12.0
+      ]
+    }
+  },
+  "our_bpm": 82,
+  "pass": true
+}

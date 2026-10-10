@@ -1,0 +1,503 @@
+{
+ "phase": "S",
+ "step": "D2",
+ "seed": 200,
+ "git_sha": "993089dad3e1dd5828cc13fee0d480f2f2f823f5",
+ "git_dirty": true,
+ "timestamp": "2026-10-08T05:10:57.137110+00:00",
+ "machine": "macOS-15.6.1-arm64-arm-64bit",
+ "python": "3.12.8",
+ "call": "calls/wwry.mid",
+ "bpm": 82.0,
+ "dt_ms": 2.0,
+ "tonic_drive_hz": 0.0,
+ "encoder": {
+  "burst_duration_ms": 30.0,
+  "max_rate_hz": 150.0,
+  "velocity_full_scale": 127
+ },
+ "jo_set": "all 554 (build/jo_groups.json)",
+ "modelling_choice": "all synaptic weights multiplied by one global factor in a wrapper (src/weight_scale.py); CHOSEN, not stated by the connectome",
+ "d1_implied_scale": null,
+ "d1_implied_scale_note": "not computed: no FlyWire numbers available locally (results/input_ratio.json)",
+ "screen_rule": "no runaway after a single kick from rest (never more than 50 % of KCs firing within one 4 ms refractory cycle, 500 ms simulated) AND the full call evokes nonzero motor spikes (any of the 6 motor groups)",
+ "levels": [
+  {
+   "scale": 0.5,
+   "silent_run": {
+    "total_spikes": 0,
+    "kc_pct_active_per_16th_mean": 0.0,
+    "kc_pct_active_per_16th_max": 0.0,
+    "kc_mean_rate_hz": 0.0,
+    "pct_all_neurons_above_200hz": 0.0,
+    "pct_all_neurons_fired": 0.0,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 0.0,
+     "Snare": 0.0,
+     "Closed hat": 0.0,
+     "Open hat": 0.0,
+     "Tom": 0.0,
+     "Crash": 0.0
+    },
+    "motor_spikes": {
+     "Kick": 0,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 0,
+     "Tom": 0,
+     "Crash": 0
+    },
+    "wall_time_s": 1.29
+   },
+   "single_kick_from_rest": {
+    "voice_hit": "Kick",
+    "sim_ms": 500.0,
+    "input_spikes_delivered": 343,
+    "total_spikes": 1113924,
+    "spikes_outside_jo": 1113644,
+    "neurons_fired": 32059,
+    "pct_kc_fired": 93.92,
+    "time_to_runaway_ms": 10.0,
+    "last_spike_ms": 498.0,
+    "spikes_in_last_100ms": 235189,
+    "motor_spikes": {
+     "Kick": 1262,
+     "Snare": 1625,
+     "Closed hat": 1359,
+     "Open hat": 601,
+     "Tom": 732,
+     "Crash": 2992
+    },
+    "wall_time_s": 1.73
+   },
+   "call_run": {
+    "total_spikes": 15572320,
+    "kc_pct_active_per_16th_mean": 95.65,
+    "kc_pct_active_per_16th_max": 96.26,
+    "kc_mean_rate_hz": 199.19,
+    "pct_all_neurons_above_200hz": 3.09,
+    "pct_all_neurons_fired": 23.56,
+    "time_to_runaway_ms": 10.0,
+    "motor_rate_hz": {
+     "Kick": 20.15,
+     "Snare": 28.53,
+     "Closed hat": 24.09,
+     "Open hat": 66.64,
+     "Tom": 31.21,
+     "Crash": 91.92
+    },
+    "motor_spikes": {
+     "Kick": 17249,
+     "Snare": 21798,
+     "Closed hat": 21418,
+     "Open hat": 7022,
+     "Tom": 9043,
+     "Crash": 40559
+    },
+    "wall_time_s": 25.4,
+    "input_spikes_delivered": 3877,
+    "after_last_hit": {
+     "last_spike_s": 6.584,
+     "spikes_after_ms": 500.0,
+     "spikes_after": 2261693,
+     "late_window_s": 0.934,
+     "self_sustained": true
+    }
+   },
+   "mv_per_synapse": 0.1375,
+   "checks": {
+    "no_runaway_after_single_hit": false,
+    "call_evokes_motor_activity": true,
+    "info_call_kick_and_snare_motor_both_fire": true,
+    "info_call_run_no_runaway": false,
+    "info_call_run_kc_sparse": false,
+    "info_call_run_not_self_sustained": false
+   },
+   "screen_pass": false
+  },
+  {
+   "scale": 0.3,
+   "silent_run": {
+    "total_spikes": 0,
+    "kc_pct_active_per_16th_mean": 0.0,
+    "kc_pct_active_per_16th_max": 0.0,
+    "kc_mean_rate_hz": 0.0,
+    "pct_all_neurons_above_200hz": 0.0,
+    "pct_all_neurons_fired": 0.0,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 0.0,
+     "Snare": 0.0,
+     "Closed hat": 0.0,
+     "Open hat": 0.0,
+     "Tom": 0.0,
+     "Crash": 0.0
+    },
+    "motor_spikes": {
+     "Kick": 0,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 0,
+     "Tom": 0,
+     "Crash": 0
+    },
+    "wall_time_s": 1.29
+   },
+   "single_kick_from_rest": {
+    "voice_hit": "Kick",
+    "sim_ms": 500.0,
+    "input_spikes_delivered": 343,
+    "total_spikes": 534414,
+    "spikes_outside_jo": 534134,
+    "neurons_fired": 19588,
+    "pct_kc_fired": 80.78,
+    "time_to_runaway_ms": null,
+    "last_spike_ms": 498.0,
+    "spikes_in_last_100ms": 117909,
+    "motor_spikes": {
+     "Kick": 740,
+     "Snare": 1231,
+     "Closed hat": 736,
+     "Open hat": 266,
+     "Tom": 493,
+     "Crash": 2054
+    },
+    "wall_time_s": 1.15
+   },
+   "call_run": {
+    "total_spikes": 7646414,
+    "kc_pct_active_per_16th_mean": 81.65,
+    "kc_pct_active_per_16th_max": 83.17,
+    "kc_mean_rate_hz": 87.84,
+    "pct_all_neurons_above_200hz": 0.69,
+    "pct_all_neurons_fired": 13.9,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 10.67,
+     "Snare": 20.96,
+     "Closed hat": 10.92,
+     "Open hat": 31.59,
+     "Tom": 22.49,
+     "Crash": 53.34
+    },
+    "motor_spikes": {
+     "Kick": 9138,
+     "Snare": 16013,
+     "Closed hat": 9711,
+     "Open hat": 3329,
+     "Tom": 6516,
+     "Crash": 23539
+    },
+    "wall_time_s": 16.84,
+    "input_spikes_delivered": 3877,
+    "after_last_hit": {
+     "last_spike_s": 6.584,
+     "spikes_after_ms": 500.0,
+     "spikes_after": 1105496,
+     "late_window_s": 0.934,
+     "self_sustained": true
+    }
+   },
+   "mv_per_synapse": 0.0825,
+   "checks": {
+    "no_runaway_after_single_hit": true,
+    "call_evokes_motor_activity": true,
+    "info_call_kick_and_snare_motor_both_fire": true,
+    "info_call_run_no_runaway": true,
+    "info_call_run_kc_sparse": false,
+    "info_call_run_not_self_sustained": false
+   },
+   "screen_pass": true
+  },
+  {
+   "scale": 0.2,
+   "silent_run": {
+    "total_spikes": 0,
+    "kc_pct_active_per_16th_mean": 0.0,
+    "kc_pct_active_per_16th_max": 0.0,
+    "kc_mean_rate_hz": 0.0,
+    "pct_all_neurons_above_200hz": 0.0,
+    "pct_all_neurons_fired": 0.0,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 0.0,
+     "Snare": 0.0,
+     "Closed hat": 0.0,
+     "Open hat": 0.0,
+     "Tom": 0.0,
+     "Crash": 0.0
+    },
+    "motor_spikes": {
+     "Kick": 0,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 0,
+     "Tom": 0,
+     "Crash": 0
+    },
+    "wall_time_s": 1.34
+   },
+   "single_kick_from_rest": {
+    "voice_hit": "Kick",
+    "sim_ms": 500.0,
+    "input_spikes_delivered": 343,
+    "total_spikes": 12357,
+    "spikes_outside_jo": 12077,
+    "neurons_fired": 3312,
+    "pct_kc_fired": 0.0,
+    "time_to_runaway_ms": null,
+    "last_spike_ms": 498.0,
+    "spikes_in_last_100ms": 1335,
+    "motor_spikes": {
+     "Kick": 17,
+     "Snare": 25,
+     "Closed hat": 14,
+     "Open hat": 19,
+     "Tom": 35,
+     "Crash": 2106
+    },
+    "wall_time_s": 0.22
+   },
+   "call_run": {
+    "total_spikes": 2080653,
+    "kc_pct_active_per_16th_mean": 25.9,
+    "kc_pct_active_per_16th_max": 39.71,
+    "kc_mean_rate_hz": 11.57,
+    "pct_all_neurons_above_200hz": 0.01,
+    "pct_all_neurons_fired": 8.59,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 4.34,
+     "Snare": 5.52,
+     "Closed hat": 4.3,
+     "Open hat": 13.12,
+     "Tom": 12.57,
+     "Crash": 63.06
+    },
+    "motor_spikes": {
+     "Kick": 3718,
+     "Snare": 4218,
+     "Closed hat": 3824,
+     "Open hat": 1383,
+     "Tom": 3642,
+     "Crash": 27825
+    },
+    "wall_time_s": 7.07,
+    "input_spikes_delivered": 3877,
+    "after_last_hit": {
+     "last_spike_s": 6.584,
+     "spikes_after_ms": 500.0,
+     "spikes_after": 422709,
+     "late_window_s": 0.934,
+     "self_sustained": true
+    }
+   },
+   "mv_per_synapse": 0.055,
+   "checks": {
+    "no_runaway_after_single_hit": true,
+    "call_evokes_motor_activity": true,
+    "info_call_kick_and_snare_motor_both_fire": true,
+    "info_call_run_no_runaway": true,
+    "info_call_run_kc_sparse": false,
+    "info_call_run_not_self_sustained": false
+   },
+   "screen_pass": true
+  },
+  {
+   "scale": 0.1,
+   "silent_run": {
+    "total_spikes": 0,
+    "kc_pct_active_per_16th_mean": 0.0,
+    "kc_pct_active_per_16th_max": 0.0,
+    "kc_mean_rate_hz": 0.0,
+    "pct_all_neurons_above_200hz": 0.0,
+    "pct_all_neurons_fired": 0.0,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 0.0,
+     "Snare": 0.0,
+     "Closed hat": 0.0,
+     "Open hat": 0.0,
+     "Tom": 0.0,
+     "Crash": 0.0
+    },
+    "motor_spikes": {
+     "Kick": 0,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 0,
+     "Tom": 0,
+     "Crash": 0
+    },
+    "wall_time_s": 1.3
+   },
+   "single_kick_from_rest": {
+    "voice_hit": "Kick",
+    "sim_ms": 500.0,
+    "input_spikes_delivered": 343,
+    "total_spikes": 407,
+    "spikes_outside_jo": 127,
+    "neurons_fired": 189,
+    "pct_kc_fired": 0.0,
+    "time_to_runaway_ms": null,
+    "last_spike_ms": 36.0,
+    "spikes_in_last_100ms": 0,
+    "motor_spikes": {
+     "Kick": 0,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 1,
+     "Tom": 4,
+     "Crash": 0
+    },
+    "wall_time_s": 0.13
+   },
+   "call_run": {
+    "total_spikes": 4645,
+    "kc_pct_active_per_16th_mean": 0.0,
+    "kc_pct_active_per_16th_max": 0.0,
+    "kc_mean_rate_hz": 0.0,
+    "pct_all_neurons_above_200hz": 0.0,
+    "pct_all_neurons_fired": 0.31,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 0.01,
+     "Snare": 0.0,
+     "Closed hat": 0.0,
+     "Open hat": 0.02,
+     "Tom": 0.03,
+     "Crash": 0.04
+    },
+    "motor_spikes": {
+     "Kick": 9,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 2,
+     "Tom": 9,
+     "Crash": 16
+    },
+    "wall_time_s": 1.61,
+    "input_spikes_delivered": 3877,
+    "after_last_hit": {
+     "last_spike_s": 5.162,
+     "spikes_after_ms": 500.0,
+     "spikes_after": 0,
+     "late_window_s": 0.934,
+     "self_sustained": false
+    }
+   },
+   "mv_per_synapse": 0.0275,
+   "checks": {
+    "no_runaway_after_single_hit": true,
+    "call_evokes_motor_activity": true,
+    "info_call_kick_and_snare_motor_both_fire": false,
+    "info_call_run_no_runaway": true,
+    "info_call_run_kc_sparse": true,
+    "info_call_run_not_self_sustained": true
+   },
+   "screen_pass": true
+  },
+  {
+   "scale": 0.05,
+   "silent_run": {
+    "total_spikes": 0,
+    "kc_pct_active_per_16th_mean": 0.0,
+    "kc_pct_active_per_16th_max": 0.0,
+    "kc_mean_rate_hz": 0.0,
+    "pct_all_neurons_above_200hz": 0.0,
+    "pct_all_neurons_fired": 0.0,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 0.0,
+     "Snare": 0.0,
+     "Closed hat": 0.0,
+     "Open hat": 0.0,
+     "Tom": 0.0,
+     "Crash": 0.0
+    },
+    "motor_spikes": {
+     "Kick": 0,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 0,
+     "Tom": 0,
+     "Crash": 0
+    },
+    "wall_time_s": 1.29
+   },
+   "single_kick_from_rest": {
+    "voice_hit": "Kick",
+    "sim_ms": 500.0,
+    "input_spikes_delivered": 343,
+    "total_spikes": 289,
+    "spikes_outside_jo": 9,
+    "neurons_fired": 98,
+    "pct_kc_fired": 0.0,
+    "time_to_runaway_ms": null,
+    "last_spike_ms": 32.0,
+    "spikes_in_last_100ms": 0,
+    "motor_spikes": {
+     "Kick": 0,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 0,
+     "Tom": 0,
+     "Crash": 0
+    },
+    "wall_time_s": 0.12
+   },
+   "call_run": {
+    "total_spikes": 3356,
+    "kc_pct_active_per_16th_mean": 0.0,
+    "kc_pct_active_per_16th_max": 0.0,
+    "kc_mean_rate_hz": 0.0,
+    "pct_all_neurons_above_200hz": 0.0,
+    "pct_all_neurons_fired": 0.13,
+    "time_to_runaway_ms": null,
+    "motor_rate_hz": {
+     "Kick": 0.0,
+     "Snare": 0.0,
+     "Closed hat": 0.0,
+     "Open hat": 0.0,
+     "Tom": 0.0,
+     "Crash": 0.0
+    },
+    "motor_spikes": {
+     "Kick": 0,
+     "Snare": 0,
+     "Closed hat": 0,
+     "Open hat": 0,
+     "Tom": 0,
+     "Crash": 0
+    },
+    "wall_time_s": 1.57,
+    "input_spikes_delivered": 3877,
+    "after_last_hit": {
+     "last_spike_s": 5.152,
+     "spikes_after_ms": 500.0,
+     "spikes_after": 0,
+     "late_window_s": 0.934,
+     "self_sustained": false
+    }
+   },
+   "mv_per_synapse": 0.01375,
+   "checks": {
+    "no_runaway_after_single_hit": true,
+    "call_evokes_motor_activity": false,
+    "info_call_kick_and_snare_motor_both_fire": false,
+    "info_call_run_no_runaway": true,
+    "info_call_run_kc_sparse": true,
+    "info_call_run_not_self_sustained": true
+   },
+   "screen_pass": false
+  }
+ ],
+ "passing_scales": [
+  0.3,
+  0.2,
+  0.1
+ ],
+ "screen_pass": true,
+ "total_wall_time_s": 30.5
+}
