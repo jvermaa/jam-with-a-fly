@@ -1,0 +1,176 @@
+{
+  "step": "1.5",
+  "seed": 1,
+  "git_sha": "04d32698d0d0464f05c48a80abc9974c912e68de",
+  "git_dirty": true,
+  "timestamp": "2026-10-03T18:57:15.357295+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "run_id": "untrained_call_05_seed1",
+  "run_npz": "results/run_call_05_seed1.npz",
+  "silent_npz": "results/silent_seed1.npz",
+  "answer_mid": "answers/untrained_call_05_seed1.mid",
+  "lag_steps": 0,
+  "f1": 0.0,
+  "baseline_f1": 0.038167919799498747,
+  "score": {
+    "overall": {
+      "f1": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "matched": 0,
+      "call_hits": 17,
+      "answer_hits": 1
+    },
+    "per_voice": [
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 7,
+        "answer_hits": 0
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 5,
+        "answer_hits": 0
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 3,
+        "answer_hits": 0
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 1,
+        "answer_hits": 1
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 1,
+        "answer_hits": 0
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 0,
+        "answer_hits": 0
+      }
+    ]
+  },
+  "random_baseline": {
+    "overall_f1_mean": 0.038167919799498747,
+    "overall_f1_std": 0.04778487542236729,
+    "per_voice_f1_mean": [
+      0.0,
+      0.0,
+      0.0,
+      0.18033333333333335,
+      0.0,
+      0.0
+    ],
+    "n_runs": 100,
+    "seed": 1
+  },
+  "n_answer_hits": 1,
+  "hit_density": 0.005208333333333333,
+  "voices_used": 1,
+  "not_silent_not_saturated": true,
+  "per_voice": [
+    {
+      "voice": "Kick",
+      "threshold": 936.3190940672447,
+      "silent_mean": 836.9444444444445,
+      "silent_std": 49.68732481140014,
+      "call_hits": 7,
+      "answer_hits": 0,
+      "f1": 0.0,
+      "baseline_f1": 0.0,
+      "call_grid": "x..x..x...x.....x..x....x.......",
+      "answer_grid": "................................"
+    },
+    {
+      "voice": "Snare",
+      "threshold": 447.3799553401341,
+      "silent_mean": 345.25,
+      "silent_std": 51.06497767006703,
+      "call_hits": 5,
+      "answer_hits": 0,
+      "f1": 0.0,
+      "baseline_f1": 0.0,
+      "call_grid": "....x.......x.......x.......x..x",
+      "answer_grid": "................................"
+    },
+    {
+      "voice": "Closed hat",
+      "threshold": 653.4619288994097,
+      "silent_mean": 537.3888888888889,
+      "silent_std": 58.03652000526038,
+      "call_hits": 3,
+      "answer_hits": 0,
+      "f1": 0.0,
+      "baseline_f1": 0.0,
+      "call_grid": "..x.....x.....x.................",
+      "answer_grid": "................................"
+    },
+    {
+      "voice": "Open hat",
+      "threshold": 184.19967423935225,
+      "silent_mean": 162.36111111111111,
+      "silent_std": 10.919281564120562,
+      "call_hits": 1,
+      "answer_hits": 1,
+      "f1": 0.0,
+      "baseline_f1": 0.18033333333333335,
+      "call_grid": "......................x.........",
+      "answer_grid": "....................x..........."
+    },
+    {
+      "voice": "Tom",
+      "threshold": 367.436916888367,
+      "silent_mean": 251.61111111111111,
+      "silent_std": 57.91290288862797,
+      "call_hits": 1,
+      "answer_hits": 0,
+      "f1": 0.0,
+      "baseline_f1": 0.0,
+      "call_grid": "..........................x.....",
+      "answer_grid": "................................"
+    },
+    {
+      "voice": "Crash",
+      "threshold": 1218.3412419503475,
+      "silent_mean": 1108.5277777777778,
+      "silent_std": 54.90673208628484,
+      "call_hits": 0,
+      "answer_hits": 0,
+      "f1": 0.0,
+      "baseline_f1": 0.0,
+      "call_grid": "................................",
+      "answer_grid": "................................"
+    }
+  ],
+  "answer_hits": [
+    {
+      "step": 20,
+      "t": 2.5,
+      "voice": 3,
+      "vel": 45
+    }
+  ]
+}

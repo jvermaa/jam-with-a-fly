@@ -1,0 +1,256 @@
+{
+  "step": "1.1",
+  "seed": 0,
+  "git_sha": "3d5385847c31093d5cad24ce390ce970657c7632",
+  "git_dirty": false,
+  "timestamp": "2026-10-03T18:14:52.429496+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "seed_note": "grouping is deterministic; no random numbers were drawn",
+  "jo": {
+    "filter": "FlyBrain.where(type_re='^JO') on build/graph.npz, keeping neurons with >=1 outgoing edge in W",
+    "total_before_dropping_unconnected": 673,
+    "dropped_unconnected": 119,
+    "method": "subtypes assigned to groups to balance counts (largest first into smallest group)",
+    "total": 554,
+    "n_subtypes": 32,
+    "with_output_in_W": 554,
+    "side": {
+      "L": 346,
+      "R": 208
+    },
+    "annotated_function": {
+      "(none)": 18,
+      "auditory": 75,
+      "grooming": 64,
+      "wind_gravity": 397
+    },
+    "type_counts": {
+      "JO-FV": 69,
+      "JO-EV1": 50,
+      "JO-EV3": 45,
+      "JO-ED2_a": 38,
+      "JO-EV2": 36,
+      "JO-CM": 30,
+      "JO-unclear": 25,
+      "JO-EV5": 23,
+      "JO-ED2_b": 21,
+      "JO-EV6": 21,
+      "JO-CL": 19,
+      "JO-ED1": 18,
+      "JO-B1_a": 15,
+      "JO-ED2_c": 14,
+      "JO-A2": 13,
+      "JO-B1_b": 12,
+      "JO-B4_b": 12,
+      "JO-B3": 11,
+      "JO-mz": 11,
+      "JO-B1_c": 10,
+      "JO-CA1": 10,
+      "JO-B2": 9,
+      "JO-CA2": 9,
+      "JO-A1": 8,
+      "JO-DA": 5,
+      "JO-FD1": 4,
+      "JO-FD2": 4,
+      "JO-A4": 3,
+      "JO-B4_a": 3,
+      "JO-DP": 3,
+      "JO-A3": 2,
+      "JO-EV4": 1
+    },
+    "groups": [
+      {
+        "group": 0,
+        "count": 93,
+        "with_output_in_W": 93,
+        "side": {
+          "L": 53,
+          "R": 40
+        },
+        "annotated_function": {
+          "auditory": 13,
+          "grooming": 60,
+          "wind_gravity": 20
+        },
+        "types": {
+          "JO-B1_b": 12,
+          "JO-B2": 9,
+          "JO-DP": 3,
+          "JO-FV": 69
+        }
+      },
+      {
+        "group": 1,
+        "count": 93,
+        "with_output_in_W": 93,
+        "side": {
+          "L": 65,
+          "R": 28
+        },
+        "annotated_function": {
+          "auditory": 8,
+          "wind_gravity": 85
+        },
+        "types": {
+          "JO-A3": 2,
+          "JO-B4_b": 12,
+          "JO-CA2": 9,
+          "JO-CL": 19,
+          "JO-EV1": 50,
+          "JO-EV4": 1
+        }
+      },
+      {
+        "group": 2,
+        "count": 92,
+        "with_output_in_W": 92,
+        "side": {
+          "L": 56,
+          "R": 36
+        },
+        "annotated_function": {
+          "auditory": 17,
+          "wind_gravity": 75
+        },
+        "types": {
+          "JO-A2": 13,
+          "JO-A4": 3,
+          "JO-CA1": 10,
+          "JO-EV3": 45,
+          "JO-EV6": 21
+        }
+      },
+      {
+        "group": 3,
+        "count": 92,
+        "with_output_in_W": 92,
+        "side": {
+          "L": 59,
+          "R": 33
+        },
+        "annotated_function": {
+          "auditory": 30,
+          "wind_gravity": 62
+        },
+        "types": {
+          "JO-A1": 8,
+          "JO-B1_a": 15,
+          "JO-B1_c": 10,
+          "JO-ED2_a": 38,
+          "JO-ED2_b": 21
+        }
+      },
+      {
+        "group": 4,
+        "count": 92,
+        "with_output_in_W": 92,
+        "side": {
+          "L": 60,
+          "R": 32
+        },
+        "annotated_function": {
+          "(none)": 1,
+          "auditory": 4,
+          "wind_gravity": 87
+        },
+        "types": {
+          "JO-B3": 11,
+          "JO-B4_a": 3,
+          "JO-DA": 5,
+          "JO-ED2_c": 14,
+          "JO-EV2": 36,
+          "JO-EV5": 23
+        }
+      },
+      {
+        "group": 5,
+        "count": 92,
+        "with_output_in_W": 92,
+        "side": {
+          "L": 53,
+          "R": 39
+        },
+        "annotated_function": {
+          "(none)": 17,
+          "auditory": 3,
+          "grooming": 4,
+          "wind_gravity": 68
+        },
+        "types": {
+          "JO-CM": 30,
+          "JO-ED1": 18,
+          "JO-FD1": 4,
+          "JO-FD2": 4,
+          "JO-mz": 11,
+          "JO-unclear": 25
+        }
+      }
+    ]
+  },
+  "motor": {
+    "filter": "FlyBrain.where(subclass=<name>) as upstream, then superclass in ['vnc_motor', 'cb_motor']",
+    "groups": {
+      "fl": {
+        "count": 135,
+        "superclass": {
+          "vnc_motor": 135
+        },
+        "upstream_count": 250,
+        "dropped_non_motor": {
+          "descending_neuron": 115
+        }
+      },
+      "ml": {
+        "count": 116,
+        "superclass": {
+          "vnc_motor": 116
+        },
+        "upstream_count": 118,
+        "dropped_non_motor": {
+          "descending_neuron": 2
+        }
+      },
+      "hl": {
+        "count": 130,
+        "superclass": {
+          "vnc_motor": 130
+        },
+        "upstream_count": 132,
+        "dropped_non_motor": {
+          "descending_neuron": 2
+        }
+      },
+      "wm": {
+        "count": 67,
+        "superclass": {
+          "vnc_motor": 67
+        },
+        "upstream_count": 67,
+        "dropped_non_motor": {}
+      },
+      "hm": {
+        "count": 16,
+        "superclass": {
+          "vnc_motor": 16
+        },
+        "upstream_count": 16,
+        "dropped_non_motor": {}
+      },
+      "nm": {
+        "count": 44,
+        "superclass": {
+          "cb_motor": 20,
+          "vnc_motor": 24
+        },
+        "upstream_count": 44,
+        "dropped_non_motor": {}
+      }
+    }
+  },
+  "pass": {
+    "jo_six_nonempty_groups_with_both_sides": true,
+    "jo_total_at_least_50": true,
+    "motor_six_nonempty_groups": true
+  }
+}

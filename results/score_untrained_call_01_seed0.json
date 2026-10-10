@@ -1,0 +1,218 @@
+{
+  "step": "1.5",
+  "seed": 0,
+  "git_sha": "0f3b98ca4929e6cf5f6a6dee398f87339f3584e6",
+  "git_dirty": false,
+  "timestamp": "2026-10-03T18:51:08.158785+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "run_id": "untrained_call_01_seed0",
+  "run_npz": "results/run_call_01_seed0.npz",
+  "silent_npz": "results/silent_seed0.npz",
+  "answer_mid": "answers/untrained_call_01_seed0.mid",
+  "lag_steps": 0,
+  "f1": 0.30303030303030304,
+  "baseline_f1": 0.2302333462710598,
+  "score": {
+    "overall": {
+      "f1": 0.30303030303030304,
+      "precision": 0.625,
+      "recall": 0.2,
+      "matched": 5,
+      "call_hits": 25,
+      "answer_hits": 8
+    },
+    "per_voice": [
+      {
+        "f1": 0.7499999999999999,
+        "precision": 1.0,
+        "recall": 0.6,
+        "matched": 3,
+        "call_hits": 5,
+        "answer_hits": 3
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 4,
+        "answer_hits": 1
+      },
+      {
+        "f1": 0.2222222222222222,
+        "precision": 1.0,
+        "recall": 0.125,
+        "matched": 2,
+        "call_hits": 16,
+        "answer_hits": 2
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 0,
+        "answer_hits": 0
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 0,
+        "answer_hits": 1
+      },
+      {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "matched": 0,
+        "call_hits": 0,
+        "answer_hits": 1
+      }
+    ]
+  },
+  "random_baseline": {
+    "overall_f1_mean": 0.2302333462710598,
+    "overall_f1_std": 0.05447549802288704,
+    "per_voice_f1_mean": [
+      0.35999999999999993,
+      0.22799999999999984,
+      0.20444444444444404,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "n_runs": 100,
+    "seed": 0
+  },
+  "n_answer_hits": 8,
+  "hit_density": 0.041666666666666664,
+  "voices_used": 5,
+  "not_silent_not_saturated": true,
+  "per_voice": [
+    {
+      "voice": "Kick",
+      "threshold": 959.4665957545291,
+      "silent_mean": 833.0277777777778,
+      "silent_std": 63.219408988375605,
+      "call_hits": 5,
+      "answer_hits": 3,
+      "f1": 0.7499999999999999,
+      "baseline_f1": 0.35999999999999993,
+      "call_grid": "x.......x.......x.......x.x.....",
+      "answer_grid": "x..............x..........x....."
+    },
+    {
+      "voice": "Snare",
+      "threshold": 385.2988629552823,
+      "silent_mean": 295.77777777777777,
+      "silent_std": 44.76054258875227,
+      "call_hits": 4,
+      "answer_hits": 1,
+      "f1": 0.0,
+      "baseline_f1": 0.22799999999999984,
+      "call_grid": "....x.......x.......x.......x...",
+      "answer_grid": "..................x............."
+    },
+    {
+      "voice": "Closed hat",
+      "threshold": 675.1086741504726,
+      "silent_mean": 600.8611111111111,
+      "silent_std": 37.12378151968072,
+      "call_hits": 16,
+      "answer_hits": 2,
+      "f1": 0.2222222222222222,
+      "baseline_f1": 0.20444444444444404,
+      "call_grid": "x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.",
+      "answer_grid": "......x....................x...."
+    },
+    {
+      "voice": "Open hat",
+      "threshold": 188.2557911118994,
+      "silent_mean": 160.80555555555554,
+      "silent_std": 13.725117778171937,
+      "call_hits": 0,
+      "answer_hits": 0,
+      "f1": 0.0,
+      "baseline_f1": 0.0,
+      "call_grid": "................................",
+      "answer_grid": "................................"
+    },
+    {
+      "voice": "Tom",
+      "threshold": 359.4571179567756,
+      "silent_mean": 278.75,
+      "silent_std": 40.353558978387795,
+      "call_hits": 0,
+      "answer_hits": 1,
+      "f1": 0.0,
+      "baseline_f1": 0.0,
+      "call_grid": "................................",
+      "answer_grid": "....x..........................."
+    },
+    {
+      "voice": "Crash",
+      "threshold": 1155.5030130124096,
+      "silent_mean": 1005.9444444444445,
+      "silent_std": 74.77928428398263,
+      "call_hits": 0,
+      "answer_hits": 1,
+      "f1": 0.0,
+      "baseline_f1": 0.0,
+      "call_grid": "................................",
+      "answer_grid": ".......x........................"
+    }
+  ],
+  "answer_hits": [
+    {
+      "step": 0,
+      "t": 0.0,
+      "voice": 0,
+      "vel": 65
+    },
+    {
+      "step": 4,
+      "t": 0.5,
+      "voice": 4,
+      "vel": 46
+    },
+    {
+      "step": 6,
+      "t": 0.75,
+      "voice": 2,
+      "vel": 54
+    },
+    {
+      "step": 7,
+      "t": 0.875,
+      "voice": 5,
+      "vel": 49
+    },
+    {
+      "step": 15,
+      "t": 1.875,
+      "voice": 0,
+      "vel": 42
+    },
+    {
+      "step": 18,
+      "t": 2.25,
+      "voice": 1,
+      "vel": 46
+    },
+    {
+      "step": 26,
+      "t": 3.25,
+      "voice": 0,
+      "vel": 50
+    },
+    {
+      "step": 27,
+      "t": 3.375,
+      "voice": 2,
+      "vel": 43
+    }
+  ]
+}

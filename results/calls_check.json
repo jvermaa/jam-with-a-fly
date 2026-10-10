@@ -1,0 +1,318 @@
+{
+  "step": "1.2",
+  "seed": null,
+  "git_sha": "cb02b9d8d39603d1a609e26531d8e9b0c9cc611c",
+  "git_dirty": false,
+  "timestamp": "2026-10-03T19:17:55.521385+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "seed_note": "validation only; no random numbers used",
+  "pass": true,
+  "set_checks": {
+    "five_or_more_files": true,
+    "every_file_passes": true,
+    "all_six_voices_used_across_set": true
+  },
+  "files": [
+    {
+      "file": "calls/call_01.mid",
+      "sha256": "98de3427406194701d972ba859a340ec09b6fda63abfa3f905fa8639841c6100",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 25,
+      "hits_per_voice": {
+        "Kick": 5,
+        "Snare": 4,
+        "Closed hat": 16,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.......x.......x.......x.x.....",
+        "Snare": "....x.......x.......x.......x...",
+        "Closed hat": "x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x."
+      }
+    },
+    {
+      "file": "calls/call_02.mid",
+      "sha256": "8432220f11e2d059a8baeafdd010bfbc4542ec195b6a3f5dcf8361156dda1e27",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 10,
+      "hits_per_voice": {
+        "Kick": 4,
+        "Snare": 3,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 2,
+        "Crash": 1
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.......x.......x.x.............",
+        "Snare": "....x.......x.......x...........",
+        "Tom": "........................x.x.....",
+        "Crash": "............................x..."
+      }
+    },
+    {
+      "file": "calls/call_03.mid",
+      "sha256": "f30945fa1247e8981fc128d7592e625c29f3db6652113d0a214b344a8c567121",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 16,
+      "hits_per_voice": {
+        "Kick": 6,
+        "Snare": 4,
+        "Closed hat": 0,
+        "Open hat": 4,
+        "Tom": 1,
+        "Crash": 1
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.....x.x.......x.....x.x.......",
+        "Snare": "....x.......x.......x.......x...",
+        "Open hat": "..x.......x.......x.......x.....",
+        "Tom": "..............................x.",
+        "Crash": "x..............................."
+      }
+    },
+    {
+      "file": "calls/call_04.mid",
+      "sha256": "e4cb7b01fe5234b5d5e8a5f05612cb4511e52b787eade87131fdc75015121587",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 16,
+      "hits_per_voice": {
+        "Kick": 3,
+        "Snare": 4,
+        "Closed hat": 5,
+        "Open hat": 0,
+        "Tom": 4,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.......x.......x...............",
+        "Snare": "....x.......x...............x.x.",
+        "Closed hat": "x...x...x...x...x...............",
+        "Tom": "....................x.x.x.x....."
+      }
+    },
+    {
+      "file": "calls/call_05.mid",
+      "sha256": "06a9fac015c49234fa765ecd61a5e969e531cc8525723db99eda31a29f96fc0f",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 17,
+      "hits_per_voice": {
+        "Kick": 7,
+        "Snare": 5,
+        "Closed hat": 3,
+        "Open hat": 1,
+        "Tom": 1,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x..x..x...x.....x..x....x.......",
+        "Snare": "....x.......x.......x.......x..x",
+        "Closed hat": "..x.....x.....x.................",
+        "Open hat": "......................x.........",
+        "Tom": "..........................x....."
+      }
+    },
+    {
+      "file": "calls/call_06.mid",
+      "sha256": "9f7559c6884137faf36afeb80c62aa793aeabe851f4d566e4609df622e556a5c",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 6,
+      "hits_per_voice": {
+        "Kick": 4,
+        "Snare": 2,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x...x...........x...x...........",
+        "Snare": "........x...............x......."
+      }
+    },
+    {
+      "file": "calls/call_07.mid",
+      "sha256": "4b58609b75938874c47ea1a07a54fa33982d7ed6b7381557fd3b897898ef881a",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 8,
+      "hits_per_voice": {
+        "Kick": 6,
+        "Snare": 2,
+        "Closed hat": 0,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.....x.x.......x.....x.x.......",
+        "Snare": "............x...............x..."
+      }
+    },
+    {
+      "file": "calls/call_08.mid",
+      "sha256": "77120db650487d6923587d8f510b8c76d965cd6c213bbb05e4220d66e9fc192e",
+      "pass": true,
+      "checks": {
+        "tempo_is_120": true,
+        "length_is_4s_within_1_tick": true,
+        "only_allowed_notes": true
+      },
+      "bpm": [
+        120.0
+      ],
+      "tempo_source": "file",
+      "ticks_per_beat": 480,
+      "end_tick": 3840,
+      "expected_end_tick": 3840,
+      "length_sec": 4.0,
+      "disallowed_notes": [],
+      "n_hits": 34,
+      "hits_per_voice": {
+        "Kick": 8,
+        "Snare": 10,
+        "Closed hat": 16,
+        "Open hat": 0,
+        "Tom": 0,
+        "Crash": 0
+      },
+      "velocities": [
+        110
+      ],
+      "off_grid_hits": 0,
+      "step_grid": {
+        "Kick": "x.x.......xx....x.x.......xx....",
+        "Snare": "....x..x.x..x..x....x..x.x..x..x",
+        "Closed hat": "x.x.x.x.x.x.x.x.x.x.x.x.x.x.x.x."
+      }
+    }
+  ]
+}

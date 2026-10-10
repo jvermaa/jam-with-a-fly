@@ -960,7 +960,9 @@ function useRecorded(reason){
       recordedTimer = setInterval(()=>{
         if(mode!=="recorded" || !playing || paused) return;
         while(nextBarTime < actx.currentTime + 0.12){
-          scheduleBar(hitsByBar[cur], 100, cur);
+          // Fly Drum Jam: tempo comes from the export (jam.bpm) when present; upstream's own exports have no
+          // such field and keep upstream's fixed 100. Only logic change to this file (approved by the human).
+          scheduleBar(hitsByBar[cur], (data.jam && data.jam.bpm) || 100, cur);
           sectionReadout.textContent = barSection[cur];
           barReadout.textContent = cur+1;
           cur = (cur+1) % bars;

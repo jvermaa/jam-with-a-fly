@@ -1,0 +1,87 @@
+{
+  "step": "1.4",
+  "seed": 0,
+  "git_sha": "fba6a2f8083ddf57ba1c604a999772f7e4ac024e",
+  "git_dirty": false,
+  "timestamp": "2026-10-03T18:45:41.826217+00:00",
+  "machine": "macOS-15.6.1-arm64-arm-64bit",
+  "python": "3.12.8",
+  "dt_ms": 2.0,
+  "tonic_drive": {
+    "target": "superclass vnc_intrinsic",
+    "rate_hz": 45.0,
+    "note": "chosen, kept from upstream"
+  },
+  "call_run": {
+    "call": "calls/call_01.mid",
+    "seed": 0,
+    "runtime_s": 30.66,
+    "sim_seconds": 4.5,
+    "steps": 2250,
+    "n_hits": 25,
+    "input_spikes_delivered": 8018,
+    "total_spikes_all_neurons": 20377529,
+    "jo_spikes_during_call": {
+      "Kick": 1331,
+      "Snare": 1067,
+      "Closed hat": 4190,
+      "Open hat": 0,
+      "Tom": 0,
+      "Crash": 0
+    },
+    "motor_spikes_during_call": {
+      "Kick": 27298,
+      "Snare": 9826,
+      "Closed hat": 19373,
+      "Open hat": 5093,
+      "Tom": 8713,
+      "Crash": 32117
+    },
+    "motor_spikes_in_tail": {
+      "Kick": 3441,
+      "Snare": 1361,
+      "Closed hat": 2396,
+      "Open hat": 665,
+      "Tom": 1024,
+      "Crash": 4519
+    },
+    "npz": "results/run_call_01_seed0.npz"
+  },
+  "silent_run": {
+    "call": null,
+    "seed": 0,
+    "runtime_s": 31.17,
+    "sim_seconds": 4.5,
+    "steps": 2250,
+    "n_hits": 0,
+    "input_spikes_delivered": 0,
+    "total_spikes_all_neurons": 19486633,
+    "jo_spikes_during_call": {
+      "Kick": 0,
+      "Snare": 0,
+      "Closed hat": 0,
+      "Open hat": 0,
+      "Tom": 0,
+      "Crash": 0
+    },
+    "motor_spikes_during_call": {
+      "Kick": 26557,
+      "Snare": 9328,
+      "Closed hat": 19206,
+      "Open hat": 5160,
+      "Tom": 8882,
+      "Crash": 32123
+    },
+    "motor_spikes_in_tail": {
+      "Kick": 3432,
+      "Snare": 1320,
+      "Closed hat": 2425,
+      "Open hat": 629,
+      "Tom": 1153,
+      "Crash": 4091
+    },
+    "npz": "results/silent_seed0.npz"
+  },
+  "motor_step_counts_identical": false,
+  "pass": true
+}

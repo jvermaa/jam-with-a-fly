@@ -37,7 +37,7 @@ Copied from PLAN.md section 0. PLAN.md is the authority if the two ever differ.
 
 1. **Never edit** `flysim.py`, `flysim_gpu.py`, `mushroom.py`, `mb_sides.py`. Wrap them; don't modify them.
 2. One step at a time. Do not start step N+1 until step N's pass check is met and committed.
-3. After each step: `git commit` + `git tag step-XX`.
+3. After each step: `git commit`. **Do not create git tags** (the human turned off PLAN.md's per-step tagging on 2026-10-03; existing `step-*` tags stay).
 4. Every number you report must come from an actual run, saved in `results/`. Never write numbers by hand.
 5. Fixed seeds everywhere. Every results file includes `seed`, `git_sha`, `timestamp`.
 6. If a pass check fails twice: **stop and report at a checkpoint**. Never loosen a pass check to make it pass.

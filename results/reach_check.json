@@ -1,0 +1,1248 @@
+{
+ "step": "1.1",
+ "seed": 0,
+ "git_sha": "8f449ff1b7a466a5d83ebcda8300321f810ab0b7",
+ "git_dirty": false,
+ "timestamp": "2026-10-03T18:11:46.268479+00:00",
+ "machine": "macOS-15.6.1-arm64-arm-64bit",
+ "python": "3.12.8",
+ "seed_note": "no random numbers used",
+ "max_hops": 6,
+ "ears": {
+  "all_JO": {
+   "n": 673,
+   "any_sign": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 249,
+     "within_1_hops": 23,
+     "within_2_hops": 206,
+     "within_3_hops": 246,
+     "within_4_hops": 249,
+     "within_5_hops": 249,
+     "within_6_hops": 249
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 134,
+     "within_1_hops": 0,
+     "within_2_hops": 97,
+     "within_3_hops": 131,
+     "within_4_hops": 134,
+     "within_5_hops": 134,
+     "within_6_hops": 134
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 23,
+     "within_2_hops": 109,
+     "within_3_hops": 115,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 89,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 87,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 89,
+     "within_3_hops": 131,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 87,
+     "within_3_hops": 129,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 67,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 16,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 4,
+     "within_2_hops": 44,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   },
+   "excitatory_only": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 245,
+     "within_1_hops": 23,
+     "within_2_hops": 184,
+     "within_3_hops": 238,
+     "within_4_hops": 245,
+     "within_5_hops": 245,
+     "within_6_hops": 245
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 130,
+     "within_1_hops": 0,
+     "within_2_hops": 76,
+     "within_3_hops": 123,
+     "within_4_hops": 130,
+     "within_5_hops": 130,
+     "within_6_hops": 130
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 23,
+     "within_2_hops": 108,
+     "within_3_hops": 115,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 82,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 80,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 72,
+     "within_3_hops": 129,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 71,
+     "within_3_hops": 127,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 1,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 66,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 14,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 4,
+     "within_2_hops": 44,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   }
+  },
+  "all_JO_with_output": {
+   "n": 554,
+   "any_sign": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 249,
+     "within_1_hops": 23,
+     "within_2_hops": 206,
+     "within_3_hops": 246,
+     "within_4_hops": 249,
+     "within_5_hops": 249,
+     "within_6_hops": 249
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 134,
+     "within_1_hops": 0,
+     "within_2_hops": 97,
+     "within_3_hops": 131,
+     "within_4_hops": 134,
+     "within_5_hops": 134,
+     "within_6_hops": 134
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 23,
+     "within_2_hops": 109,
+     "within_3_hops": 115,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 89,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 87,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 89,
+     "within_3_hops": 131,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 87,
+     "within_3_hops": 129,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 67,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 16,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 4,
+     "within_2_hops": 44,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   },
+   "excitatory_only": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 245,
+     "within_1_hops": 23,
+     "within_2_hops": 184,
+     "within_3_hops": 238,
+     "within_4_hops": 245,
+     "within_5_hops": 245,
+     "within_6_hops": 245
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 130,
+     "within_1_hops": 0,
+     "within_2_hops": 76,
+     "within_3_hops": 123,
+     "within_4_hops": 130,
+     "within_5_hops": 130,
+     "within_6_hops": 130
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 23,
+     "within_2_hops": 108,
+     "within_3_hops": 115,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 82,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 80,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 72,
+     "within_3_hops": 129,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 71,
+     "within_3_hops": 127,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 1,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 66,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 14,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 4,
+     "within_2_hops": 44,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   }
+  },
+  "auditory_JO": {
+   "n": 115,
+   "any_sign": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 249,
+     "within_1_hops": 0,
+     "within_2_hops": 130,
+     "within_3_hops": 244,
+     "within_4_hops": 249,
+     "within_5_hops": 249,
+     "within_6_hops": 249
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 134,
+     "within_1_hops": 0,
+     "within_2_hops": 59,
+     "within_3_hops": 129,
+     "within_4_hops": 134,
+     "within_5_hops": 134,
+     "within_6_hops": 134
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 0,
+     "within_2_hops": 71,
+     "within_3_hops": 115,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 50,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 49,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 1,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 58,
+     "within_3_hops": 131,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 56,
+     "within_3_hops": 129,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 39,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 11,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 0,
+     "within_2_hops": 41,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   },
+   "excitatory_only": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 245,
+     "within_1_hops": 0,
+     "within_2_hops": 50,
+     "within_3_hops": 237,
+     "within_4_hops": 244,
+     "within_5_hops": 244,
+     "within_6_hops": 245
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 130,
+     "within_1_hops": 0,
+     "within_2_hops": 16,
+     "within_3_hops": 123,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 130
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 0,
+     "within_2_hops": 34,
+     "within_3_hops": 114,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 26,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 25,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 1,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 16,
+     "within_3_hops": 122,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 16,
+     "within_3_hops": 120,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 0,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 30,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 9,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 0,
+     "within_2_hops": 31,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   }
+  },
+  "auditory_JO_with_output": {
+   "n": 75,
+   "any_sign": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 249,
+     "within_1_hops": 0,
+     "within_2_hops": 130,
+     "within_3_hops": 244,
+     "within_4_hops": 249,
+     "within_5_hops": 249,
+     "within_6_hops": 249
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 134,
+     "within_1_hops": 0,
+     "within_2_hops": 59,
+     "within_3_hops": 129,
+     "within_4_hops": 134,
+     "within_5_hops": 134,
+     "within_6_hops": 134
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 0,
+     "within_2_hops": 71,
+     "within_3_hops": 115,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 50,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 49,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 1,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 58,
+     "within_3_hops": 131,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 56,
+     "within_3_hops": 129,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 39,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 11,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 0,
+     "within_2_hops": 41,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   },
+   "excitatory_only": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 245,
+     "within_1_hops": 0,
+     "within_2_hops": 50,
+     "within_3_hops": 237,
+     "within_4_hops": 244,
+     "within_5_hops": 244,
+     "within_6_hops": 245
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 130,
+     "within_1_hops": 0,
+     "within_2_hops": 16,
+     "within_3_hops": 123,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 130
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 0,
+     "within_2_hops": 34,
+     "within_3_hops": 114,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 26,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 25,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 1,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 16,
+     "within_3_hops": 122,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 16,
+     "within_3_hops": 120,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 0,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 30,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 9,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 0,
+     "within_2_hops": 31,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   }
+  },
+  "wind_gravity_JO_with_output": {
+   "n": 397,
+   "any_sign": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 249,
+     "within_1_hops": 5,
+     "within_2_hops": 169,
+     "within_3_hops": 244,
+     "within_4_hops": 249,
+     "within_5_hops": 249,
+     "within_6_hops": 249
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 134,
+     "within_1_hops": 0,
+     "within_2_hops": 67,
+     "within_3_hops": 129,
+     "within_4_hops": 134,
+     "within_5_hops": 134,
+     "within_6_hops": 134
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 5,
+     "within_2_hops": 102,
+     "within_3_hops": 115,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 82,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 80,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 75,
+     "within_3_hops": 131,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 73,
+     "within_3_hops": 129,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 65,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 15,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 4,
+     "within_2_hops": 43,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   },
+   "excitatory_only": {
+    "fl_as_upstream": {
+     "n": 250,
+     "reached": 245,
+     "within_1_hops": 5,
+     "within_2_hops": 130,
+     "within_3_hops": 238,
+     "within_4_hops": 244,
+     "within_5_hops": 245,
+     "within_6_hops": 245
+    },
+    "fl_motor_only": {
+     "n": 135,
+     "reached": 130,
+     "within_1_hops": 0,
+     "within_2_hops": 59,
+     "within_3_hops": 123,
+     "within_4_hops": 129,
+     "within_5_hops": 130,
+     "within_6_hops": 130
+    },
+    "fl_descending_only": {
+     "n": 115,
+     "reached": 115,
+     "within_1_hops": 5,
+     "within_2_hops": 71,
+     "within_3_hops": 115,
+     "within_4_hops": 115,
+     "within_5_hops": 115,
+     "within_6_hops": 115
+    },
+    "ml_as_upstream": {
+     "n": 118,
+     "reached": 118,
+     "within_1_hops": 0,
+     "within_2_hops": 80,
+     "within_3_hops": 118,
+     "within_4_hops": 118,
+     "within_5_hops": 118,
+     "within_6_hops": 118
+    },
+    "ml_motor_only": {
+     "n": 116,
+     "reached": 116,
+     "within_1_hops": 0,
+     "within_2_hops": 78,
+     "within_3_hops": 116,
+     "within_4_hops": 116,
+     "within_5_hops": 116,
+     "within_6_hops": 116
+    },
+    "ml_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 2,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "hl_as_upstream": {
+     "n": 132,
+     "reached": 131,
+     "within_1_hops": 0,
+     "within_2_hops": 66,
+     "within_3_hops": 127,
+     "within_4_hops": 131,
+     "within_5_hops": 131,
+     "within_6_hops": 131
+    },
+    "hl_motor_only": {
+     "n": 130,
+     "reached": 129,
+     "within_1_hops": 0,
+     "within_2_hops": 65,
+     "within_3_hops": 125,
+     "within_4_hops": 129,
+     "within_5_hops": 129,
+     "within_6_hops": 129
+    },
+    "hl_descending_only": {
+     "n": 2,
+     "reached": 2,
+     "within_1_hops": 0,
+     "within_2_hops": 1,
+     "within_3_hops": 2,
+     "within_4_hops": 2,
+     "within_5_hops": 2,
+     "within_6_hops": 2
+    },
+    "wm_as_upstream": {
+     "n": 67,
+     "reached": 67,
+     "within_1_hops": 0,
+     "within_2_hops": 64,
+     "within_3_hops": 67,
+     "within_4_hops": 67,
+     "within_5_hops": 67,
+     "within_6_hops": 67
+    },
+    "hm_as_upstream": {
+     "n": 16,
+     "reached": 16,
+     "within_1_hops": 0,
+     "within_2_hops": 13,
+     "within_3_hops": 16,
+     "within_4_hops": 16,
+     "within_5_hops": 16,
+     "within_6_hops": 16
+    },
+    "nm_as_upstream": {
+     "n": 44,
+     "reached": 44,
+     "within_1_hops": 4,
+     "within_2_hops": 43,
+     "within_3_hops": 44,
+     "within_4_hops": 44,
+     "within_5_hops": 44,
+     "within_6_hops": 44
+    }
+   }
+  }
+ }
+}
